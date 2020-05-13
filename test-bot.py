@@ -13,6 +13,8 @@ async def on_message(message):
 	 	return
 	if (len(args)>=2 and args[1] == "hello"):
 		await message.channel.send("Hello, I am a test bot.")
+	if (len(args)>=2 and args[1] == "help"):
+	 	await message.channel.send("olym hello \n  olym def <word>")
 
 f = open("secret.txt","r")
 token = f.read()
