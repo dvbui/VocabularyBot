@@ -35,16 +35,14 @@ async def on_message(message):
 				mess+="\n"
 			else:
 				page=vocs.getPage(word)
-				print(page)
 				mess+=word+"\n"
 				mess+=vocs.getShortDefinition(page)+"\n"
 				mess+=vocs.getLongDefinition(page)+"\n"
 	
 	if (len(args)>=2 and args[1] == "help"):
-	 	mess = "olym hello\nolym def <word>"
+	 	mess = "olym hello\nolym def <word>"	
 	
-	
-	await message.channel.send(mess)
+	await message.author.send(mess)
 
 f = open("secret.txt","r")
 token = f.read()
