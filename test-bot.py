@@ -10,8 +10,6 @@ wordFile = open("wordDatabase.json","r")
 wordDatabase = json.load(wordFile)
 wordFile.close()
 
-# list of users
-users = []
 @client.event
 async def on_message(message):
 	if (message.author == client.user):
@@ -42,7 +40,7 @@ async def on_message(message):
 				mess+=vocs.getShortDefinition(page)+"\n"
 				mess+=vocs.getLongDefinition(page)+"\n"
 	if (len(args)>=2 and args[1] == "register"):
-	   users.append(message.author)
+	   client.registerUser(message.author)
 	   mess = "You have been registered."
 	
 	if (len(args)>=2 and args[1] == "help"):
