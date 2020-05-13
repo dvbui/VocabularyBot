@@ -4,7 +4,7 @@ import asyncio
 
 class MyClient(discord.Client):
 	def __init__(self,*args,**kwargs):
-		super().__init__(*args,**kargs)
+		super().__init__(*args,**kwargs)
 		self.listOfUsers = []
 		self.bg_task = self.loop.create_task(self.my_background_task())
 	
