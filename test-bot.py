@@ -4,10 +4,6 @@ import vocs
 import asyncio
 import random
 
-# constant
-client = discord.Client()
-bot_channel = client.get_channel(710081986466676757)
-
 # load word database
 wordFile = open("wordDatabase.json","r")
 wordDatabase = json.load(wordFile)
@@ -19,6 +15,10 @@ keyWord = ""
 clues = []
 listOfUsers = {}
 answers = {}
+
+# constant
+client = discord.Client()
+bot_channel = client.get_channel(710081986466676757)
 
 def registerUser(user):
 	listOfUsers[user] = {"answer" : "", "score" : 0 }
@@ -40,7 +40,7 @@ def pickKeyWord():
 async def main_game():
 	await client.wait_until_ready()
 	
-
+	status = 0
 	while True:
 		if (status==0): # Registering phase
 			channel = bot_channel
