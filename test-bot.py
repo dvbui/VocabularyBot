@@ -96,7 +96,7 @@ async def main_game():
 			status+=1
 			
 		if (status==6): # Puzzle is solved
-			mess = "Puzzle solved"
+			mess = "Puzzle solved - "
 			mess += keyWord+"\n"
 			mess += wordDatabase[keyWord]["long"]
 			await channel.send(mess)
@@ -123,7 +123,6 @@ async def on_message(message):
 	if (args[0]!="olym"):
 	 	return
 	
-	mess = " "
 	if (len(args)>=2 and args[1] == "hello"):
 		mess = "Hello, I am a test bot."
 	
@@ -161,7 +160,9 @@ async def on_message(message):
 			status = 0
 			await bot_channel.send(str(message.author)+" "+"solved the puzzle")
 			listOfUsers[message.author]["score"]+=8
-			await message.author.send("Puzzle solved")
+			mess = "Puzzle solved"
+		else:
+		 	mess = "Puzzle is not solved"
 	
 	await message.author.send(mess)
 
