@@ -152,7 +152,7 @@ async def on_message(message):
 		mess = "You have been unregistered."
 		stopUser(message.author)
 	
-	if (len(args)>=3 and args[1] == "solve" and 1<=status and status<=5 and message.author in listOfusers):
+	if (len(args)>=3 and args[1] == "solve" and 1<=status and status<=5 and message.author in listOfUsers):
 		keyAnswer = ""
 		for i in range(2,len(args)):
 			keyAnswer+=args[i]+" "
