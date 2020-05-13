@@ -33,6 +33,7 @@ async def on_message(message):
 				mess+="\n"
 			else:
 				page=vocs.getPage(word)
+				print(page)
 				mess+=word+"\n"
 				mess+=vocs.getShortDefinition(page)+"\n"
 				mess+=vocs.getLongDefinition(page)+"\n"
