@@ -16,6 +16,7 @@ async def main_game():
 	counter = 0
 	while not client.is_closed:
 		counter+=1
+		await client.change_presence(game=discord.Game(name=str(counter)))
 		for user in listOfUsers:
 			await user.send(str(counter))
 		await asyncio.sleep(1)
@@ -49,11 +50,13 @@ async def on_message(message):
 				mess+=word+"\n"
 				mess+=vocs.getShortDefinition(page)+"\n"
 				mess+=vocs.getLongDefinition(page)+"\n"
+	
 	if (len(args)>=2 and args[1] == "register"):
-	   mess = "You have been registered."
+		mess = "You have been registered."
+		listOfUsers.append(message.author)
 	
 	if (len(args)>=2 and args[1] == "help"):
-	 	mess = "olym hello\nolym def <word>"
+		mess = "olym hello\nolym def <word>"
 	
 	await message.author.send(mess)
 
