@@ -25,6 +25,8 @@ def registerUser(user):
 
 def stopUser(user):
 	listOfUsers.pop(user)
+def gameIsRunning():
+	return (1<=status and status<=5)
 
 def pickKeyWord():
 	word = ""
@@ -47,9 +49,9 @@ def pickKeyWord():
 	return word, clues
 
 async def main_game():
-	status = 0
 	await client.wait_until_ready()
-
+	
+	global status
 	while True:
 		channel = client.get_channel(710081986466676757)
 		if (status==0): # Registering phase
@@ -99,17 +101,17 @@ async def main_game():
 
 @client.event
 async def on_ready():
-	status = 0
 	print("Bot is ready.")
 
 @client.event
 async def on_message(message):
+	global status
 	if (message.author == client.user):
 		return
 	if (message.author.bot):
 		return;
 	
-	if (message.author in listOfUsers) and (1<=status and status<=5):
+	if (message.author in listOfUsers) and gameIsRunning():
 		listOfUsers[message.author] = message.content
 		await message.author.send("Your current answer is"+message.content)
 
