@@ -2,8 +2,8 @@ import discord
 import json
 import vocs
 import asyncio
-from background_task import MyClient
-client = MyClient()
+
+client = discord.Client()
 
 # load word database
 wordFile = open("wordDatabase.json","r")
@@ -40,7 +40,6 @@ async def on_message(message):
 				mess+=vocs.getShortDefinition(page)+"\n"
 				mess+=vocs.getLongDefinition(page)+"\n"
 	if (len(args)>=2 and args[1] == "register"):
-	   client.registerUser(message.author)
 	   mess = "You have been registered."
 	
 	if (len(args)>=2 and args[1] == "help"):
@@ -51,5 +50,6 @@ async def on_message(message):
 
 f = open("secret.txt","r")
 token = f.read()
+f.close()
 client.run(token)
 
