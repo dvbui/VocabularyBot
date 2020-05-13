@@ -69,7 +69,7 @@ async def main_game():
 			for user in listOfUsers:
 				listOfUsers[user]["answer"] = ""
 				await user.send(question)
-			await asynio.sleep(15)
+			await asyncio.sleep(15)
 			
 			if (1<=status and status<=5):
 				for user in listOfUsers:
@@ -82,7 +82,8 @@ async def main_game():
 			status+=1
 			
 		if (status==6): # Puzzle is solved
-			mess = keyWord+"\n"
+			mess = "Puzzle solved"
+			mess += keyWord+"\n"
 			mess += wordDatabase[keyword]["long"]
 			await channel.send(mess)
 			status = 0
