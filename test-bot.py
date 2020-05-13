@@ -1,9 +1,9 @@
 import discord
 import json
 import vocs
-import time
-
-client = discord.Client()
+import asyncio
+from background_task import MyClient
+client = MyClient()
 
 # load word database
 wordFile = open("wordDatabase.json","r")
@@ -54,10 +54,4 @@ async def on_message(message):
 f = open("secret.txt","r")
 token = f.read()
 client.run(token)
-
-while (True):
-	for user in users:
-		user.send("ping")
-	
-	time.delay(5)
 
