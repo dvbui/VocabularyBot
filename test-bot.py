@@ -24,7 +24,7 @@ async def on_message(message):
 	if (args[0]!="olym"):
 	 	return
 	
-	mess = ""
+	mess = " "
 	if (len(args)>=2 and args[1] == "hello"):
 		mess = "Hello, I am a test bot."
 	
@@ -43,9 +43,10 @@ async def on_message(message):
 				mess+=vocs.getLongDefinition(page)+"\n"
 	if (len(args)>=2 and args[1] == "register"):
 	   users.append(message.author)
+	   mess = "You have been registered."
 	
 	if (len(args)>=2 and args[1] == "help"):
-	 	mess = "olym hello\nolym def <word>"	
+	 	mess = "olym hello\nolym def <word>"
 	
 	await message.author.send(mess)
 
