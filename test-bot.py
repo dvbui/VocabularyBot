@@ -40,7 +40,6 @@ def pickKeyWord():
 async def main_game():
 	await client.wait_until_ready()
 	
-	status = 0
 	while True:
 		if (status==0): # Registering phase
 			channel = bot_channel
