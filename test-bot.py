@@ -3,6 +3,9 @@ import json
 import vocs
 import asyncio
 
+# constant
+bot_channel = 710081986466676757
+
 client = discord.Client()
 
 # load word database
@@ -10,6 +13,8 @@ wordFile = open("wordDatabase.json","r")
 wordDatabase = json.load(wordFile)
 wordFile.close()
 
+# game information
+status = 0
 listOfUsers = {}
 
 def registerUser(user):
@@ -20,8 +25,12 @@ def stopUser(user):
 
 async def main_game():
 	await client.wait_until_ready()
-	print("I'm here")
-	counter = 0
+	
+	if (status==0): # Registering phase
+		channel = client.get_channel(bot_channel)
+		channel.send("Registering phase")
+		await asyncio.sleep(60)
+
 	while True:
 		print("I'm here")
 		counter+=1
