@@ -3,6 +3,7 @@ import json
 import vocs
 import asyncio
 import random
+import time
 
 # load word database
 wordFile = open("wordDatabase.json","r")
@@ -40,7 +41,7 @@ def pickKeyWord():
 		suitable = []
 		for clue in info["synonym"]:
 			page = vocs.getPage(clue)
-			await asyncio.sleep(1)
+			time.sleep(1)
 			performance+=1
 			if (vocs.getShortDefinition(page)!=""):
 				suitable.append(clue)
@@ -62,8 +63,8 @@ async def main_game():
 	while True:
 		channel = client.get_channel(710081986466676757)
 		if (status==0): # Registering phase
-			await channel.send("Registering phase")
 			keyWord, clues = pickKeyWord()
+			await channel.send("Registering phase")
 			print(keyWord)
 			print(clues)
 			await asyncio.sleep(5)
