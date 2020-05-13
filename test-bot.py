@@ -2,11 +2,11 @@ import discord
 import json
 import vocs
 import asyncio
+import random
 
 # constant
-bot_channel = 710081986466676757
-
 client = discord.Client()
+bot_channel = client.get_channel(710081986466676757)
 
 # load word database
 wordFile = open("wordDatabase.json","r")
@@ -15,13 +15,27 @@ wordFile.close()
 
 # game information
 status = 0
+keyWord = ""
+clues = []
 listOfUsers = {}
+answers = {}
 
 def registerUser(user):
-	listOfUsers[user] = {}
+	listOfUsers[user] = {"answer" : "", "score" : 0 }
 
 def stopUser(user):
 	listOfUsers.pop(user)
+
+def pickKeyWord():
+	word = ""
+	clues = []
+	while True:
+		word, info = random.choice(list(wordDatabase.items()))
+		if (len(info["synonym"])>=4):
+			random.shuffle(info["synonym"])
+			clues = info["synonym"][0:4]
+			break
+	return word, clues
 
 async def main_game():
 	await client.wait_until_ready()
@@ -29,15 +43,49 @@ async def main_game():
 
 	while True:
 		if (status==0): # Registering phase
-			channel = client.get_channel(bot_channel)
+			channel = bot_channel
+			keyWord, clues = pickKeyWord()
+			print(keyWord)
+			print(clues)
 			await channel.send("Registering phase")
 			await asyncio.sleep(60)
-		print("I'm here")
-		print(len(listOfUsers))	
-		for user in listOfUsers:
-			print(user)
-			await user.send("Hello")
-		await asyncio.sleep(15)
+			status+=1
+		
+		if (1<=status and status<=5): # During the game
+			if (status<=4):
+				answer = clues[status-1]
+			else:
+				answer = keyWord
+			
+			question = ""
+			if (answer in wordDatabase):
+				question = wordDatabase[answer]["short"]
+			else:
+				page = vocs.getPage(answer)
+				question = vocs.getShortDefinition(page)
+				question = question.replace(answer,"_"*len(answer))
+			
+			await channel.send(question)
+			for user in listOfUsers:
+				listOfUsers[user]["answer"] = ""
+				await user.send(question)
+			await asynio.sleep(15)
+			
+			if (1<=status and status<=5):
+				for user in listOfUsers:
+					if (listOfUsers[user]["answer"] == answer):
+						await user.send("Accepted")
+						listOfUsers[user]["score"]+=1
+					else:
+						await user.send("Wrong Answer")
+
+			status+=1
+			
+		if (status==6): # Puzzle is solved
+			mess = keyWord+"\n"
+			mess += wordDatabase[keyword]["long"]
+			await channel.send(mess)
+			status = 0
 
 @client.event
 async def on_ready():
@@ -49,6 +97,10 @@ async def on_message(message):
 		return
 	if (message.author.bot):
 		return;
+	
+	if (message.author in listOfUsers) and (1<=status and status<=5):
+		listOfUsers[message.author] = message.content
+		await message.author.send("Your current answer is"+message.content)
 
 	message.content = message.content.lower()
 	args = message.content.split(' ')
@@ -83,7 +135,17 @@ async def on_message(message):
 	if (len(args)>=2 and args[1] == "stop"):
 		mess = "You have been unregistered."
 		stopUser(message.author)
-
+	
+	if (len(args)>=3 and args[1] == "solve" and 1<=status and status<=5 and message.author in listOfusers):
+		keyAnswer = ""
+		for i in range(2,len(args)):
+			keyAnswer+=args[i]+" "
+		keyAnswer = keyAnswer[:-1]
+		if (keyAnswer==keyWord.lower()):
+			status = 0
+			await bot_channel.send(str(message.author)+" "+"solved the puzzle")
+			listOfUsers[message.author]["score"]+=8
+			await message.author.send("Puzzle solved")
 	
 	await message.author.send(mess)
 
