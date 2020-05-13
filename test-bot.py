@@ -54,6 +54,7 @@ async def main_game():
 	global status
 	global keyWord
 	global clues
+	global bot_channel
 	while True:
 		channel = client.get_channel(710081986466676757)
 		if (status==0): # Registering phase
