@@ -20,6 +20,8 @@ async def main_game():
 		counter+=1
 		print(counter)
 		print(len(listOfUsers))	
+		for user in listOfUsers:
+			print(user)
 		await asyncio.sleep(1)
 
 @client.event
