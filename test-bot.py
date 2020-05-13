@@ -19,9 +19,7 @@ async def main_game():
 		print("I'm here")
 		counter+=1
 		print(counter)
-		await client.change_presence(game=discord.Game(name=str(counter)))
-		for user in listOfUsers:
-			await user.send(str(counter))
+		print(len(listOfUsers))	
 		await asyncio.sleep(1)
 
 @client.event
