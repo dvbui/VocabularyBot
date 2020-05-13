@@ -11,7 +11,7 @@ async def on_message(message):
 	args = message.content.split(' ')
 	if (args[0]!="olym"):
 	 	return
-	if (args[1].startswith("hello")):
+	if (len(args)>=2 and args[1] == "hello"):
 		await message.channel.send("Hello, I am a test bot.")
 
 f = open("secret.txt","r")
