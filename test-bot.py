@@ -15,7 +15,7 @@ async def main_game():
 	await client.wait_until_ready()
 	print("I'm here")
 	counter = 0
-	while not client.is_closed:
+	while True:
 		print("I'm here")
 		counter+=1
 		print(counter)
@@ -23,7 +23,7 @@ async def main_game():
 		for user in listOfUsers:
 			print(user)
 			await user.send("Hello")
-		await asyncio.sleep(1)
+		await asyncio.sleep(15)
 
 @client.event
 async def on_ready():
