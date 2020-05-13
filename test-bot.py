@@ -100,8 +100,9 @@ async def main_game():
 						listOfUsers[user]["score"]+=1
 					else:
 						await user.send("Wrong Answer")
+				if (status!=0):
+					status+=1
 				await asyncio.sleep(5)
-				status+=1
 			
 		if (status==6): # Puzzle is solved
 			mess = "Puzzle solved - "
