@@ -27,7 +27,7 @@ async def on_message(message):
 		mess = "Hello, I am a test bot."
 	
 	if (len(args)>=3 and args[1] == "def"):
-		for i in range(2,5):
+		for i in range(2,min(len(args),5)):
 			word = args[i]
 			if (word in wordDatabase):
 				mess+=word+"\n"
