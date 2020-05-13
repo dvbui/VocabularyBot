@@ -68,9 +68,10 @@ async def main_game():
 			else:
 				answer = keyWord
 			
+			print(answer)
 			question = ""
 			if (answer in wordDatabase):
-				question = wordDatabase[answer]["short"]
+				question = wordDatabase[answer]["short"].lower()
 			else:
 				page = vocs.getPage(answer)
 				question = vocs.getShortDefinition(page)
@@ -80,6 +81,7 @@ async def main_game():
 			for user in listOfUsers:
 				listOfUsers[user]["answer"] = ""
 				await user.send(question)
+			
 			await asyncio.sleep(15)
 			
 			if (1<=status and status<=5):
@@ -112,7 +114,7 @@ async def on_message(message):
 		return;
 	
 	if (message.author in listOfUsers) and gameIsRunning():
-		listOfUsers[message.author] = message.content
+		listOfUsers[message.author]["answer"] = message.content
 		await message.author.send("Your current answer is"+message.content)
 
 	message.content = message.content.lower()
