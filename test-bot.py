@@ -11,6 +11,13 @@ wordDatabase = json.load(wordFile)
 wordFile.close()
 
 listOfUsers = {}
+
+def registerUser(user):
+	listOfUsers[user] = {}
+
+def stopUser(user)
+	listOfUsers.pop(user):
+
 async def main_game():
 	await client.wait_until_ready()
 	print("I'm here")
@@ -61,10 +68,15 @@ async def on_message(message):
 	
 	if (len(args)>=2 and args[1] == "register"):
 		mess = "You have been registered."
-		listOfUsers[message.author] = ""
+		registerUser(message.author)
 	
 	if (len(args)>=2 and args[1] == "help"):
 		mess = "olym hello\nolym def <word>"
+	
+	if (len(args)>=2 and args[1] == "stop"):
+		mess = "You have been unregistered."
+		stopUser(message.author)
+
 	
 	await message.author.send(mess)
 
