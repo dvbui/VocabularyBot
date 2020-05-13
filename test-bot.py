@@ -15,8 +15,8 @@ listOfUsers = {}
 def registerUser(user):
 	listOfUsers[user] = {}
 
-def stopUser(user)
-	listOfUsers.pop(user):
+def stopUser(user):
+	listOfUsers.pop(user)
 
 async def main_game():
 	await client.wait_until_ready()
