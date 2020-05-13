@@ -14,6 +14,8 @@ wordFile.close()
 async def on_message(message):
 	if (message.author == client.user):
 		return
+	if (message.author.bot) return;
+
 	message.content = message.content.lower()
 	args = message.content.split(' ')
 	if (args[0]!="olym"):
@@ -24,7 +26,7 @@ async def on_message(message):
 		mess = "Hello, I am a test bot."
 	
 	if (len(args)>=3 and args[1] == "def"):
-		for i in range(2,len(args)):
+		for i in range(2,5):
 			word = args[i]
 			if (word in wordDatabase):
 				mess+=word+"\n"
