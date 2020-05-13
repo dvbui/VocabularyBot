@@ -13,6 +13,7 @@ wordFile.close()
 listOfUsers = []
 async def main_game():
 	await client.wait_until_ready()
+	print("I'm here")
 	counter = 0
 	while not client.is_closed:
 		counter+=1
@@ -21,6 +22,10 @@ async def main_game():
 		for user in listOfUsers:
 			await user.send(str(counter))
 		await asyncio.sleep(1)
+
+@client.event
+async def on_ready():
+	print("Bot is ready.")
 
 @client.event
 async def on_message(message):
