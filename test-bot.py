@@ -10,7 +10,7 @@ wordFile = open("wordDatabase.json","r")
 wordDatabase = json.load(wordFile)
 wordFile.close()
 
-listOfUsers = []
+listOfUsers = {}
 async def main_game():
 	await client.wait_until_ready()
 	print("I'm here")
@@ -61,7 +61,7 @@ async def on_message(message):
 	
 	if (len(args)>=2 and args[1] == "register"):
 		mess = "You have been registered."
-		listOfUsers.append(message.author)
+		listOfUsers[message.author] = ""
 	
 	if (len(args)>=2 and args[1] == "help"):
 		mess = "olym hello\nolym def <word>"
