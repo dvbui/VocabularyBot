@@ -74,8 +74,9 @@ async def main_game():
 				question = wordDatabase[answer]["short"].lower()
 			else:
 				page = vocs.getPage(answer)
-				question = vocs.getShortDefinition(page)
-				question = question.replace(answer,"."*len(answer))
+				question = vocs.getShortDefinition(page).lower()
+			
+			question = question.replace(answer,"."*len(answer))
 			
 			await channel.send(question)
 			for user in listOfUsers:
@@ -97,7 +98,7 @@ async def main_game():
 		if (status==6): # Puzzle is solved
 			mess = "Puzzle solved"
 			mess += keyWord+"\n"
-			mess += wordDatabase[keyword]["long"]
+			mess += wordDatabase[keyWord]["long"]
 			await channel.send(mess)
 			status = 0
 
