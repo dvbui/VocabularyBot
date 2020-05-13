@@ -48,7 +48,7 @@ async def main_game():
 			print(keyWord)
 			print(clues)
 			await channel.send("Registering phase")
-			await asyncio.sleep(60)
+			await asyncio.sleep(5)
 			status+=1
 		
 		if (1<=status and status<=5): # During the game
