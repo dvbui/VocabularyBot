@@ -31,9 +31,18 @@ def pickKeyWord():
 	clues = []
 	while True:
 		word, info = random.choice(list(wordDatabase.items()))
-		if (len(info["synonym"])>=4):
-			random.shuffle(info["synonym"])
-			clues = info["synonym"][0:4]
+		if (wordDatabase[word]["short"]==""):
+			continue
+		
+		suitable = []
+		for clue in info["synonym"]:
+			page = vocs.getPage(clue)
+			if (getShortDefinition(clue)!=""):
+				suitable.append(clue)
+		
+		if (len(suitable)>=4):
+			random.shuffle(suitable)
+			clues = suitable[0:4]
 			break
 	return word, clues
 
@@ -63,7 +72,7 @@ async def main_game():
 			else:
 				page = vocs.getPage(answer)
 				question = vocs.getShortDefinition(page)
-				question = question.replace(answer,"_"*len(answer))
+				question = question.replace(answer,"."*len(answer))
 			
 			await channel.send(question)
 			for user in listOfUsers:
