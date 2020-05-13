@@ -88,6 +88,7 @@ async def main_game():
 
 @client.event
 async def on_ready():
+	status = 0
 	print("Bot is ready.")
 
 @client.event
