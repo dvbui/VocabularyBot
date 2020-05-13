@@ -115,7 +115,7 @@ async def on_message(message):
 	
 	if (message.author in listOfUsers) and gameIsRunning():
 		listOfUsers[message.author]["answer"] = message.content
-		await message.author.send("Your current answer is"+message.content)
+		await message.author.send("Your current answer is "+message.content)
 
 	message.content = message.content.lower()
 	args = message.content.split(' ')
