@@ -15,6 +15,7 @@ class MyClient(discord.Client):
 		await self.wait_until_ready()
 		counter = 0
 		for counter in range(0,100):
+			print(counter)
 			if self.is_closed():
 				break
 			for user in listOfUsers:
