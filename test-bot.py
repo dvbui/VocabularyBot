@@ -22,6 +22,7 @@ async def main_game():
 		print(len(listOfUsers))	
 		for user in listOfUsers:
 			print(user)
+			await user.send("Hello")
 		await asyncio.sleep(1)
 
 @client.event
