@@ -163,7 +163,7 @@ async def on_message(message):
 			listOfUsers[message.author]["score"]+=8
 			mess = "Puzzle solved"
 		else:
-		 	mess = "Puzzle is not solved"
+		 	mess = "Puzzle is not solved\n"+keyAnswer+" "+keyWord.lower()
 	
 	await message.author.send(mess)
 
