@@ -28,7 +28,7 @@ def stopUser(user):
 def gameIsRunning():
 	return (1<=status and status<=5)
 
-async def pickKeyWord():
+def pickKeyWord():
 	word = ""
 	clues = []
 	performance = 0
