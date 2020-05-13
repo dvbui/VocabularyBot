@@ -63,8 +63,8 @@ async def main_game():
 	while True:
 		channel = client.get_channel(710081986466676757)
 		if (status==0): # Registering phase
-			keyWord, clues = pickKeyWord()
 			await channel.send("Registering phase")
+			keyWord, clues = pickKeyWord()
 			print(keyWord)
 			print(clues)
 			await asyncio.sleep(5)
