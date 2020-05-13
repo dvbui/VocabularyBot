@@ -11,5 +11,7 @@ async def on_message(message):
 	if (message.content.startswith("hello")):
 		await message.channel.send("Hello, I am a test bot.")
 
-client.run("NzA5OTE5NTMxODc0Nzc5MTg2.Xrs6aA.uG1a3fdXv4clu3_ry6eYDd6uwaI")
+f = open("secret.txt","r")
+token = f.read()
+client.run(token)
 
