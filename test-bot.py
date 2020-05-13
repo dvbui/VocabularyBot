@@ -1,12 +1,14 @@
 import discord
 import json
+import vocs
 
 client = discord.Client()
 
+# load word database
 wordFile = open("wordDatabase.json","r")
 wordDatabase = json.load(wordFile)
+wordFile.close()
 
-print(wordDatabase)
 
 @client.event
 async def on_message(message):
@@ -16,10 +18,30 @@ async def on_message(message):
 	args = message.content.split(' ')
 	if (args[0]!="olym"):
 	 	return
+	
+	mess = ""
 	if (len(args)>=2 and args[1] == "hello"):
-		await message.channel.send("Hello, I am a test bot.")
+		mess = "Hello, I am a test bot."
+	
+	if (len(args)>=3 and args[1] == "def"):
+	 	for i in range(3,len(args)):
+			word = args[i]
+			if (word in wordDatabase):
+				mess+=word+"\n"
+				mess+=wordDatabase[word]["short"]+"\n"
+				mess+=wordDatabase[word]["long"]+"\n"
+				mess+="\n"
+			else:
+				page=vocs.getPage(word)
+				mess+=word+"\n"
+				mess+=vocs.getShortDefinition(page)+"\n"
+				mess+=vocs.getLongDefinition(page)+"\n"
+	
 	if (len(args)>=2 and args[1] == "help"):
-	 	await message.channel.send("olym hello\nolym def <word>")
+	 	mess = "olym hello\nolym def <word>"
+	
+	
+	await message.channel.send(mess)
 
 f = open("secret.txt","r")
 token = f.read()
