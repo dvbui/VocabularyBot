@@ -61,5 +61,7 @@ async def on_message(message):
 f = open("secret.txt","r")
 token = f.read()
 f.close()
+
+client.loop.create_task(main_game())
 client.run(token)
 
