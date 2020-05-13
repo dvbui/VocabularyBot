@@ -28,7 +28,7 @@ def stopUser(user):
 def gameIsRunning():
 	return (1<=status and status<=5)
 
-def pickKeyWord():
+async def pickKeyWord():
 	word = ""
 	clues = []
 	performance = 0
@@ -40,6 +40,7 @@ def pickKeyWord():
 		suitable = []
 		for clue in info["synonym"]:
 			page = vocs.getPage(clue)
+			await asyncio.sleep(1)
 			performance+=1
 			if (vocs.getShortDefinition(page)!=""):
 				suitable.append(clue)
@@ -61,10 +62,10 @@ async def main_game():
 	while True:
 		channel = client.get_channel(710081986466676757)
 		if (status==0): # Registering phase
-			keyWord, clues = pickKeyWord()
+			await channel.send("Registering phase")
+			await keyWord, clues = pickKeyWord()
 			print(keyWord)
 			print(clues)
-			await channel.send("Registering phase")
 			await asyncio.sleep(5)
 			status+=1
 		
@@ -98,6 +99,7 @@ async def main_game():
 						listOfUsers[user]["score"]+=1
 					else:
 						await user.send("Wrong Answer")
+				await asyncio.sleep(5)
 				status+=1
 			
 		if (status==6): # Puzzle is solved
