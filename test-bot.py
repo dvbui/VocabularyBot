@@ -164,7 +164,6 @@ async def on_message(message):
 		keyAnswer = keyAnswer[:-1]
 		if (keyAnswer==keyWord.lower()):
 			status = 0
-			await bot_channel.send(str(message.author)+" "+"solved the puzzle")
 			listOfUsers[message.author]["score"]+=8
 			mess = "Puzzle solved"
 		else:
