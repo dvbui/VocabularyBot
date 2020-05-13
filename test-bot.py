@@ -16,6 +16,7 @@ async def main_game():
 	counter = 0
 	while not client.is_closed:
 		counter+=1
+		print(counter)
 		await client.change_presence(game=discord.Game(name=str(counter)))
 		for user in listOfUsers:
 			await user.send(str(counter))
