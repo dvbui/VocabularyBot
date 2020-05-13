@@ -122,7 +122,8 @@ async def on_message(message):
 	args = message.content.split(' ')
 	if (args[0]!="olym"):
 	 	return
-	
+
+	mess = "Placeholder"
 	if (len(args)>=2 and args[1] == "hello"):
 		mess = "Hello, I am a test bot."
 	
