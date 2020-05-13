@@ -37,7 +37,7 @@ def pickKeyWord():
 		suitable = []
 		for clue in info["synonym"]:
 			page = vocs.getPage(clue)
-			if (getShortDefinition(clue)!=""):
+			if (vocs.getShortDefinition(page)!=""):
 				suitable.append(clue)
 		
 		if (len(suitable)>=4):
