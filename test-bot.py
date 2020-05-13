@@ -127,54 +127,57 @@ async def on_message(message):
 	if (message.author in listOfUsers) and gameIsRunning():
 		listOfUsers[message.author]["answer"] = message.content
 		await message.author.send("Your current answer is "+message.content)
-
-	message.content = message.content.lower()
-	args = message.content.split(' ')
-	if (args[0]!="olym"):
-	 	return
-
-	mess = "Placeholder"
-	if (len(args)>=2 and args[1] == "hello"):
-		mess = "Hello, I am a test bot."
 	
-	if (len(args)>=3 and args[1] == "def"):
-		for i in range(2,min(len(args),5)):
-			word = args[i]
-			if (word in wordDatabase):
-				mess+=word+"\n"
-				mess+=wordDatabase[word]["short"]+"\n"
-				mess+=wordDatabase[word]["long"]+"\n"
-				mess+="\n"
+	try:
+		message.content = message.content.lower()
+		args = message.content.split(' ')
+		if (args[0]!="olym"):
+			return
+
+		mess = "Placeholder"
+		if (len(args)>=2 and args[1] == "hello"):
+			mess = "Hello, I am a test bot."
+		
+		if (len(args)>=3 and args[1] == "def"):
+			for i in range(2,min(len(args),5)):
+				word = args[i]
+				if (word in wordDatabase):
+					mess+=word+"\n"
+					mess+=wordDatabase[word]["short"]+"\n"
+					mess+=wordDatabase[word]["long"]+"\n"
+					mess+="\n"
+				else:
+					page=vocs.getPage(word)
+					mess+=word+"\n"
+					mess+=vocs.getShortDefinition(page)+"\n"
+					mess+=vocs.getLongDefinition(page)+"\n"
+		
+		if (len(args)>=2 and args[1] == "register"):
+			mess = "You have been registered."
+			registerUser(message.author)
+		
+		if (len(args)>=2 and args[1] == "help"):
+			mess = "olym hello\nolym def <word>"
+		
+		if (len(args)>=2 and args[1] == "stop"):
+			mess = "You have been unregistered."
+			stopUser(message.author)
+		
+		if (len(args)>=3 and args[1] == "solve" and 1<=status and status<=5 and message.author in listOfUsers):
+			keyAnswer = ""
+			for i in range(2,len(args)):
+				keyAnswer+=args[i]+" "
+			keyAnswer = keyAnswer[:-1]
+			if (keyAnswer==keyWord.lower()):
+				status = 0
+				listOfUsers[message.author]["score"]+=8
+				mess = "Puzzle solved"
 			else:
-				page=vocs.getPage(word)
-				mess+=word+"\n"
-				mess+=vocs.getShortDefinition(page)+"\n"
-				mess+=vocs.getLongDefinition(page)+"\n"
-	
-	if (len(args)>=2 and args[1] == "register"):
-		mess = "You have been registered."
-		registerUser(message.author)
-	
-	if (len(args)>=2 and args[1] == "help"):
-		mess = "olym hello\nolym def <word>"
-	
-	if (len(args)>=2 and args[1] == "stop"):
-		mess = "You have been unregistered."
-		stopUser(message.author)
-	
-	if (len(args)>=3 and args[1] == "solve" and 1<=status and status<=5 and message.author in listOfUsers):
-		keyAnswer = ""
-		for i in range(2,len(args)):
-			keyAnswer+=args[i]+" "
-		keyAnswer = keyAnswer[:-1]
-		if (keyAnswer==keyWord.lower()):
-			status = 0
-			listOfUsers[message.author]["score"]+=8
-			mess = "Puzzle solved"
-		else:
-		 	mess = "Puzzle is not solved\n"+keyAnswer+" "+keyWord.lower()
-	
-	await message.author.send(mess)
+				mess = "Puzzle is not solved\n"+keyAnswer+" "+keyWord.lower()
+		
+		await message.author.send(mess)
+	except:
+		print("Error")
 
 
 f = open("secret.txt","r")
