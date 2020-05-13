@@ -28,7 +28,7 @@ async def main_game():
 	
 	if (status==0): # Registering phase
 		channel = client.get_channel(bot_channel)
-		channel.send("Registering phase")
+		await channel.send("Registering phase")
 		await asyncio.sleep(60)
 
 	while True:
