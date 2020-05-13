@@ -31,6 +31,7 @@ def gameIsRunning():
 def pickKeyWord():
 	word = ""
 	clues = []
+	performance = 0
 	while True:
 		word, info = random.choice(list(wordDatabase.items()))
 		if (wordDatabase[word]["short"]==""):
@@ -39,6 +40,7 @@ def pickKeyWord():
 		suitable = []
 		for clue in info["synonym"]:
 			page = vocs.getPage(clue)
+			performance+=1
 			if (vocs.getShortDefinition(page)!=""):
 				suitable.append(clue)
 		
@@ -46,6 +48,7 @@ def pickKeyWord():
 			random.shuffle(suitable)
 			clues = suitable[0:4]
 			break
+	print("need "+str(performance)+" loops")
 	return word, clues
 
 async def main_game():
