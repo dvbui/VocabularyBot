@@ -20,4 +20,4 @@ class MyClient(discord.Client):
 				break
 			for user in listOfUsers:
 				await user.send(str(counter))
-			await asyncio.sleep(15)
+			await asyncio.sleep(1)
