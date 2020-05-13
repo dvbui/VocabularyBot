@@ -38,8 +38,9 @@ def pickKeyWord():
 	return word, clues
 
 async def main_game():
+	status = 0
 	await client.wait_until_ready()
-	
+
 	while True:
 		if (status==0): # Registering phase
 			channel = bot_channel
