@@ -26,15 +26,13 @@ def stopUser(user):
 async def main_game():
 	await client.wait_until_ready()
 	
-	if (status==0): # Registering phase
-		channel = client.get_channel(bot_channel)
-		await channel.send("Registering phase")
-		await asyncio.sleep(60)
 
 	while True:
+		if (status==0): # Registering phase
+			channel = client.get_channel(bot_channel)
+			await channel.send("Registering phase")
+			await asyncio.sleep(60)
 		print("I'm here")
-		counter+=1
-		print(counter)
 		print(len(listOfUsers))	
 		for user in listOfUsers:
 			print(user)
