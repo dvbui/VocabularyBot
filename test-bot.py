@@ -42,7 +42,7 @@ async def main_game():
 	await client.wait_until_ready()
 
 	while True:
-		channel = bot_channel
+		channel = client.get_channel(710081986466676757)
 		if (status==0): # Registering phase
 			keyWord, clues = pickKeyWord()
 			print(keyWord)
