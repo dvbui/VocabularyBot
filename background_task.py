@@ -17,5 +17,6 @@ class MyClient(discord.Client):
 		for counter in range(0,100):
 			if self.is_closed():
 				break
-			await channel.send(str(counter))
+			for user in listOfUsers:
+				await user.send(str(counter))
 			await asyncio.sleep(15)
