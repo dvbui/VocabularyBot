@@ -52,6 +52,8 @@ async def main_game():
 	await client.wait_until_ready()
 	
 	global status
+	global keyWord
+	global clues
 	while True:
 		channel = client.get_channel(710081986466676757)
 		if (status==0): # Registering phase
@@ -109,6 +111,8 @@ async def on_ready():
 @client.event
 async def on_message(message):
 	global status
+	global keyWord
+	global clues
 	if (message.author == client.user):
 		return
 	if (message.author.bot):
