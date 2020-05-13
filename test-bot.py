@@ -1,6 +1,7 @@
 import discord
 import json
 import vocs
+import time
 
 client = discord.Client()
 
@@ -9,7 +10,8 @@ wordFile = open("wordDatabase.json","r")
 wordDatabase = json.load(wordFile)
 wordFile.close()
 
-
+# list of users
+users = []
 @client.event
 async def on_message(message):
 	if (message.author == client.user):
@@ -39,13 +41,22 @@ async def on_message(message):
 				mess+=word+"\n"
 				mess+=vocs.getShortDefinition(page)+"\n"
 				mess+=vocs.getLongDefinition(page)+"\n"
+	if (len(args)>=2 and args[1] == "register"):
+	   users.append(message.author)
 	
 	if (len(args)>=2 and args[1] == "help"):
 	 	mess = "olym hello\nolym def <word>"	
 	
 	await message.author.send(mess)
 
+
 f = open("secret.txt","r")
 token = f.read()
 client.run(token)
+
+while (True):
+	for user in users:
+		user.send("ping")
+	
+	time.delay(5)
 
