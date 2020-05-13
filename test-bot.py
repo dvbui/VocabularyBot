@@ -15,7 +15,7 @@ async def main_game():
 	await client.wait_until_ready()
 	print("I'm here")
 	counter = 0
-	while True:
+	while not client.is_closed:
 		print("I'm here")
 		counter+=1
 		print(counter)
