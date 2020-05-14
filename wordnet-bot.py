@@ -7,7 +7,6 @@ import nltk
 from nltk.corpus import wordnet
 import wordDef
 import os
-from boto.s3.connection import S3Connection
 
 # load word database
 wordFile = open("wordDatabase.json","r")
@@ -176,7 +175,7 @@ async def on_message(message):
 		print("Error")
 
 
-token = S3Connection(os.environ['CLIENT_TOKEN'], os.environ['CLIENT_TOKEN'])
+token = os.environ['CLIENT_TOKEN']
 
 
 client.loop.create_task(main_game())
