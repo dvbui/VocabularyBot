@@ -154,6 +154,7 @@ async def main_game():
                 if wrong_keyWords != "":
                     for user in listOfUsers:
                         await send_message(user, "Wrong keywords are "+wrong_keyWords)
+                    channel.send("Wrong keywords are "+wrong_keyWords)
                 await asyncio.sleep(5)
 
                 for user in listOfUsers:
