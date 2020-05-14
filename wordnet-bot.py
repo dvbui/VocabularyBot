@@ -219,88 +219,87 @@ async def on_message(message):
     if message.author.bot:
         return
 
-    try:
-        message.content = message.content.lower()
-        if (message.author in listOfUsers) and is_game_running() and (not message.content.startswith("olym ")):
-            if listOfUsers[message.author]["eliminate"]:
-                await message.author.send("You have been eliminated from the game.")
+    message.content = message.content.lower()
+    if (message.author in listOfUsers) and is_game_running() and (not message.content.startswith("olym ")):
+        if listOfUsers[message.author]["eliminate"]:
+            await message.author.send("You have been eliminated from the game.")
+        else:
+            listOfUsers[message.author]["answer"] = message.content
+            await message.author.send("Your current answer is " + message.content)
+
+    args = message.content.split(' ')
+    if args[0] != "olym":
+        return
+
+    mess = "Placeholder"
+    if len(args) >= 2 and args[1] == "hello":
+        mess = "Hello, I am a test bot."
+
+    if len(args) >= 3 and args[1] == "def":
+        for i in range(2, min(len(args), 5)):
+            word = args[i]
+            mess = "```\n"
+            if word in wordDatabase:
+                mess += word + "\n"
+                mess += wordDatabase[word]["short"] + "\n"
+                mess += wordDatabase[word]["long"] + "\n"
+                mess += "\n"
             else:
-                listOfUsers[message.author]["answer"] = message.content
-                await message.author.send("Your current answer is " + message.content)
+                page = vocs.getPage(word)
+                mess += word + "\n"
+                mess += vocs.getShortDefinition(page) + "\n"
+                mess += vocs.getLongDefinition(page) + "\n"
+            mess += "```"
 
-        args = message.content.split(' ')
-        if args[0] != "olym":
-            return
-
-        mess = "Placeholder"
-        if len(args) >= 2 and args[1] == "hello":
-            mess = "Hello, I am a test bot."
-
-        if len(args) >= 3 and args[1] == "def":
-            for i in range(2, min(len(args), 5)):
-                word = args[i]
-                mess = "```\n"
-                if word in wordDatabase:
-                    mess += word + "\n"
-                    mess += wordDatabase[word]["short"] + "\n"
-                    mess += wordDatabase[word]["long"] + "\n"
-                    mess += "\n"
-                else:
-                    page = vocs.getPage(word)
-                    mess += word + "\n"
-                    mess += vocs.getShortDefinition(page) + "\n"
-                    mess += vocs.getLongDefinition(page) + "\n"
-                mess += "```"
-
-        if len(args) >= 2 and args[1] == "register":
-            mess = "You have been registered."
-            register_user(message.author)
-            if is_game_running():
-                await message.author.send(messenger.keyword_message(len(keyWord)))
-                question = clues[status-1][1]
-                if status == 5:
-                    answer = keyWord
-                else:
-                    answer = clues[status-1][0]
-                await message.author.send(messenger.question_message(question, status, len(answer)))
-
-        if len(args) >= 2 and args[1] == "help":
-            mess = "olym hello\nolym def <word>"
-
-        if len(args) >= 2 and args[1] == "stop":
-            mess = "You have been unregistered."
-            stop_user(message.author)
-
-        if len(args) >= 3 and args[1] == "solve" and 1 <= status <= 5 and message.author in listOfUsers:
-            if listOfUsers[message.author]["eliminate"]:
-                mess = "You have been eliminated from this game."
+    if len(args) >= 2 and args[1] == "register":
+        mess = "You have been registered."
+        register_user(message.author)
+        if is_game_running():
+            await message.author.send(messenger.keyword_message(len(keyWord)))
+            question = clues[status-1][1]
+            if status == 5:
+                answer = keyWord
             else:
-                key_answer = ""
-                for i in range(2, len(args)):
-                    key_answer += args[i] + " "
-                key_answer = key_answer[:-1]
-                if key_answer.lower() == keyWord.lower():
-                    listOfUsers[message.author]["score"] += (5-status)*2
-                    global winner
-                    winner = str(message.author)
-                    mess = "Puzzle solved. Everyone is eliminated!\n"
-                    mess += "You gained {} points for your keyword answer".format((5-status)*2)
-                    status = 6
-                else:
-                    similarity = 0
-                    if len(key_answer) == len(keyWord):
-                        similarity = wordDef.get_similarity(key_answer, "", keyWord)
-                    score = (5-status)*2*similarity
-                    listOfUsers[message.author]["score"] += score
-                    mess = "Puzzle is not solved.\n"
-                    mess += "You get {} points for your answer.".format(score)+"\n"
-                    mess += "You have been eliminated from the game."
-                    wrong_keyWords += " {}".format(key_answer)
-                listOfUsers[message.author]["eliminate"] = True
+                answer = clues[status-1][0]
+            await message.author.send(messenger.question_message(question, status, len(answer)))
 
-        await message.author.send(mess)
-    except:
-        print("Error")
+    if len(args) >= 2 and args[1] == "help":
+        mess = "olym hello\nolym def <word>"
+
+    if len(args) >= 2 and args[1] == "stop":
+        mess = "You have been unregistered."
+        stop_user(message.author)
+
+    if len(args) >= 3 and args[1] == "solve" and 1 <= status <= 5 and message.author in listOfUsers:
+        if listOfUsers[message.author]["eliminate"]:
+            mess = "You have been eliminated from this game."
+        else:
+            key_answer = ""
+            for i in range(2, len(args)):
+                key_answer += args[i] + " "
+            key_answer = key_answer[:-1].lower()
+            if key_answer == keyWord.lower():
+                listOfUsers[message.author]["score"] += (5-status)*2
+                global winner
+                winner = str(message.author)
+                mess = "Puzzle solved. Everyone is eliminated!\n"
+                mess += "You gained {} points for your keyword answer".format((5-status)*2)
+                status = 6
+            else:
+                similarity = 0
+                if len(key_answer) == len(keyWord):
+                    similarity = wordDef.get_similarity(key_answer, "", keyWord)
+                score = (5-status)*2*similarity
+                listOfUsers[message.author]["score"] += score
+                mess = "Puzzle is not solved.\n"
+                mess += "You get {} points for your answer.".format(score)+"\n"
+                mess += "You have been eliminated from the game."
+                global wrong_keyWords
+                wrong_keyWords += " {}".format(key_answer)
+
+            listOfUsers[message.author]["eliminate"] = True
+
+    await message.author.send(mess)
 
 
 token = os.environ['CLIENT_TOKEN']
