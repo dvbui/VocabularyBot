@@ -112,7 +112,7 @@ async def main_game():
                 if listOfUsers[user]["receive_message"]:
                     await user.send(m)
             keyWord, clues = pick_keyword()
-            await asyncio.sleep(10)
+            await asyncio.sleep(30)
             await channel.send(messenger.keyword_message(len(keyWord)))
             for user in listOfUsers:
                 if listOfUsers[user]["receive_message"]:
