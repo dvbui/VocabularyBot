@@ -263,7 +263,9 @@ async def on_message(message):
                     mess += "You gained 8 points for your keyword answer"
                     status = 6
                 else:
-                    similarity = wordDef.get_similarity(key_answer, "", keyWord)
+                    similarity = 0
+                    if len(key_answer) == len(keyWord):
+                        similarity = wordDef.get_similarity(key_answer, "", keyWord)
                     score = 8*similarity
                     mess = "Puzzle is not solved.\n"
                     mess += "You get {} points for your answer.".format(score)+"\n"
