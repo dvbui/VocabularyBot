@@ -131,7 +131,7 @@ async def on_message(message):
     if message.author.bot:
         return;
 
-    if (message.author in listOfUsers) and is_game_running():
+    if (message.author in listOfUsers) and is_game_running() and not message.content.startswith("olym "):
         listOfUsers[message.author]["answer"] = message.content
         await message.author.send("Your current answer is " + message.content)
 
