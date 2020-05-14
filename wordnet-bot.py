@@ -43,9 +43,10 @@ def pickKeyWord():
 	while True:
 		word, info = random.choice(list(wordDatabase.items()))	
 		details = wordDef.chooseQuestions(word)
+		print(word)
+		print(details)
 		if (details == None):
-			continue
-	
+			continue	
 	for k in details:
 		clues.append( (k,details[k]) )
 
