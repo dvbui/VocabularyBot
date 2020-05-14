@@ -149,6 +149,7 @@ async def main_game():
             if 1 <= status <= 5:
                 fake_list = {}
                 for user in listOfUsers:
+                    fake_list[user] = {}
                     fake_list[user]["answer"] = listOfUsers[user]["answer"]
 
                 user_answers = messenger.show_user_answer(fake_list)
