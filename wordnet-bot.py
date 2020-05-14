@@ -112,6 +112,7 @@ async def main_game():
     global clues
     global wrong_keyWords
     global winner
+    global acceptingAnswers, acceptingKeyword
     while True:
         channel = client.get_channel(710081986466676757)
         if status == 0:  # Registering phase
@@ -133,7 +134,6 @@ async def main_game():
             status += 1
 
         if 1 <= status <= 5:  # During the game
-            global acceptingAnswers, acceptingKeyword
             acceptingAnswers = True
             acceptingKeyword = True
             if status <= 4:
