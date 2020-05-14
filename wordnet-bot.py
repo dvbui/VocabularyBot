@@ -1,9 +1,11 @@
 import discord
 import json
-import vocs
 import asyncio
 import random
 import time
+import nltk
+from nltk.corpus import wordnet
+import wordDef
 
 # load word database
 wordFile = open("wordDatabase.json","r")
@@ -22,12 +24,18 @@ client = discord.Client()
 bot_channel = client.get_channel(710081986466676757)
 
 def registerUser(user):
+	global listOfUsers
 	listOfUsers[user] = {"answer" : "", "score" : 0 }
 
 def stopUser(user):
+	global listOfUsers
 	listOfUsers.pop(user)
+
 def gameIsRunning():
+	global status
 	return (1<=status and status<=5)
+
+
 
 def pickKeyWord():
 	word = ""
@@ -35,8 +43,7 @@ def pickKeyWord():
 	performance = 0
 	while True:
 		word, info = random.choice(list(wordDatabase.items()))
-		if (wordDatabase[word]["short"]==""):
-			continue
+		
 		
 		suitable = []
 		for clue in info["synonym"]:
