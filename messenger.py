@@ -26,9 +26,16 @@ def question_message(question, index="", number_of_character=""):
 
 def block_end_message(word, long_definition):
     mess = "```\n"
-    mess += "This block is "+word+"\n"
+    mess += "The keyword is "+word+"\n"
     mess += "\n"
     mess += "From Vocabulary.com:\n"
     mess += long_definition + "\n"
+    mess += "```\n"
+    return mess
+
+
+def keyword_message(length):
+    mess = "```\n"
+    mess += "The keyword has {}".format(length)+"\n"
     mess += "```\n"
     return mess
