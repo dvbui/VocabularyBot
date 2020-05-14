@@ -40,7 +40,7 @@ def keyword_message(length, not_keywords=""):
     mess = "```\n"
     mess += "The keyword has {}".format(length)+" characters.\n"
     if not_keywords != "":
-        mess += "The keyword is not{}".format(not_keywords)+"\n"
+        mess += "The keyword is not:{}".format(not_keywords)+"\n"
     mess += "```\n"
     return mess
 
