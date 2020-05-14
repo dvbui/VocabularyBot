@@ -173,7 +173,7 @@ async def main_game():
                 if not listOfUsers[user]["receive_message"]:
                     continue
                 await user.send(mess)
-                await user.send("```You current have "+str(listOfUsers[user]["score"])+" points.```")
+                await user.send("```Your current score is "+str(listOfUsers[user]["score"])+"```")
                 await user.send(messenger.ranklist_message(listOfUsers))
             save_user_data()
             await channel.send(messenger.ranklist_message(listOfUsers))
