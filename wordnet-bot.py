@@ -103,7 +103,8 @@ async def main_game():
                             m = "You get {} points for your answer. The correct answer is {}".format(similarity, answer)
                             await user.send(m)
                         else:
-                            await user.send("We did not receive any answer. 0 points")
+                            m = "We did not receive any answer. 0 points\n. The correct answer is "+answer
+                            await user.send(m)
 
                 if status != 0:
                     status += 1
