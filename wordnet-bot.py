@@ -143,7 +143,7 @@ async def main_game():
 
             print(answer)
             question = clues[status - 1][1]
-            message_to_send = messenger.question_message(question, status, len(answer),status==5)
+            message_to_send = messenger.question_message(question, status, len(answer), status == 5)
             message_to_send += messenger.keyword_message(len(keyWord), wrong_keyWords)
             await channel.send(message_to_send)
             for user in listOfUsers:

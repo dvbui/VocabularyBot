@@ -17,9 +17,10 @@ def question_message(question, index="", number_of_character="",final_clue=False
     mess += "You have 25 seconds to answer this clue.\n"
     if not final_clue:
         mess += "Type your best answer (and only your answer) to answer this clue.\n"
+        mess += "To guess the keyword, type \"olym solve [keyword]\"\n"
     else:
         mess += "The answer for this clue is the keyword.\n"
-    mess += "To guess the keyword, type only your keyword or \"olym solve [keyword]\"\n"
+        mess += "Type your best guess (and only your guess) for the keyword.\n"
     mess += "```"
     return mess
 
