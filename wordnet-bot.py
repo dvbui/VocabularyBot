@@ -15,7 +15,7 @@ wordFile.close()
 # game information
 status = 0
 keyWord = ""
-clues = []
+clues = {}
 listOfUsers = {}
 answers = {}
 
@@ -40,23 +40,15 @@ def gameIsRunning():
 def pickKeyWord():
 	word = ""
 	clues = []
-	performance = 0
 	while True:
-		word, info = random.choice(list(wordDatabase.items()))
-		
-		
-		suitable = []
-		for clue in info["synonym"]:
-			page = vocs.getPage(clue)
-			performance+=1
-			if (vocs.getShortDefinition(page)!=""):
-				suitable.append(clue)
-		
-		if (len(suitable)>=4):
-			random.shuffle(suitable)
-			clues = suitable[0:4]
-			break
-	print("need "+str(performance)+" loops")
+		word, info = random.choice(list(wordDatabase.items()))	
+		details = wordDef.chooseQuestions(word)
+		if (details == None):
+			continue
+	
+	for k in details:
+		clues.append( (k,details[k]) )
+
 	return word, clues
 
 async def main_game():
@@ -71,26 +63,17 @@ async def main_game():
 		if (status==0): # Registering phase
 			await channel.send("Registering phase")
 			keyWord, clues = pickKeyWord()
-			print(keyWord)
-			print(clues)
 			await asyncio.sleep(5)
 			status+=1
 		
 		if (1<=status and status<=5): # During the game
 			if (status<=4):
-				answer = clues[status-1]
+				answer = clues[status-1][0]
 			else:
 				answer = keyWord
 			
 			print(answer)
-			question = ""
-			if (answer in wordDatabase):
-				question = wordDatabase[answer]["short"].lower()
-			else:
-				page = vocs.getPage(answer)
-				question = vocs.getShortDefinition(page).lower()
-			
-			question = question.replace(answer,"."*len(answer))
+			question = clues[status-1][1]
 			
 			await channel.send(question)
 			for user in listOfUsers:

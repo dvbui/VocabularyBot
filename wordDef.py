@@ -69,6 +69,9 @@ def chooseQuestions(word,n=4):
 		if (len(s)>=n):
 			break
 		s = merge(s,getRelated(word,t))
+	
+	if (len(s)<n):
+		return None
 
 	best = {}
 	not_best = {}
