@@ -68,7 +68,7 @@ async def main_game():
         if status == 0:  # Registering phase
             await channel.send(messenger.register_message())
             keyWord, clues = pick_keyword()
-            await asyncio.sleep(5)
+            await asyncio.sleep(30)
             status += 1
 
         if 1 <= status <= 5:  # During the game
@@ -93,13 +93,14 @@ async def main_game():
                         await user.send("Accepted")
                         listOfUsers[user]["score"] += 1
                     else:
-                        await user.send("Wrong Answer")
+                        if listOfUsers[user]["answer"] != "":
+                            await user.send("Wrong Answer")
                 if status != 0:
                     status += 1
                 await asyncio.sleep(5)
 
         if status == 6:  # Puzzle is solved
-            mess = messenger.block_end_message(keyWord,wordDatabase[keyWord]["long"])
+            mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"])
             await channel.send(mess)
             status = 0
 

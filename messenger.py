@@ -1,9 +1,9 @@
 def register_message():
     mess = "```\n"
     mess += "Registration Phase\n"
-    mess += "Generating new block\n"
+    mess += "Generating a new block in 30 seconds\n"
     mess += "Type \"olym register\" to solve this block\n"
-    mess += "Note: You need to register once for each block."
+    mess += "Note: You need to register once for each block.\n"
     mess += "```\n"
     return mess
 
@@ -11,7 +11,8 @@ def register_message():
 def question_message(question, index="", number_of_character=""):
     mess = "```\n"
     mess += "\n"
-    mess += "Clue {} ({} characters): {}\n".format(index, number_of_character, question)
+    mess += "Clue {} ({} characters):\n".format(index, number_of_character)
+    mess += question+"\n"
     mess += "\n"
     mess += "You have 15 seconds to answer this clue.\n"
     mess += "Type your best answer (and only your answer) to answer this clue.\n"
