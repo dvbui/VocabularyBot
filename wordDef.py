@@ -92,3 +92,18 @@ def choose_questions(word, n=4):
         res[k] = s[k]
 
     return res
+
+
+def get_similarity(first_word,first_definition,second_word):
+    first_synset = wordnet.synsets(first_word)
+    second_synset = wordnet.synsets(second_word)
+    best_similarity = 0
+    for first_set in first_synset:
+        if not (first_definition == "" or first_definition == first_set.definition()):
+            continue
+        for second_set in second_synset:
+            similarity = first_set.wup_similarity(second_set)
+            if not (similarity is None):
+                best_similarity = max(best_similarity, similarity)
+
+    return best_similarity

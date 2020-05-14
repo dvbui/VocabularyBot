@@ -94,7 +94,11 @@ async def main_game():
                         listOfUsers[user]["score"] += 1
                     else:
                         if listOfUsers[user]["answer"] != "":
-                            await user.send("Wrong Answer")
+                            similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
+                            listOfUsers[user]["score"] += similarity
+                            m = "You get {} points for your answer. The correct answer is {}".format(similarity, answer)
+                            await user.send(m)
+
                 if status != 0:
                     status += 1
                 await asyncio.sleep(5)
