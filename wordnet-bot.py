@@ -147,7 +147,11 @@ async def main_game():
             await asyncio.sleep(25)
 
             if 1 <= status <= 5:
-                user_answers = messenger.show_user_answer(listOfUsers)
+                fake_list = {}
+                for user in listOfUsers:
+                    fake_list[user]["answer"] = listOfUsers[user]["answer"]
+
+                user_answers = messenger.show_user_answer(fake_list)
                 for user in listOfUsers:
                     await send_message(user, user_answers)
                 await channel.send(user_answers)
@@ -157,22 +161,22 @@ async def main_game():
                     if listOfUsers[user]["eliminate"]:
                         await send_message(user, "The correct answer is "+answer+".")
                         continue
-                    user_answer = listOfUsers[user]["answer"]
+                    user_answer = fake_list[user]["answer"]
                     if user_answer == "":
                         m = "We did not receive any answer. 0 points.\nThe correct answer is " + answer
                         await send_message(user, m)
                     else:
                         m = "Your final answer is {}.".format(user_answer)+"\n"
-                        if listOfUsers[user]["answer"] == answer:
+                        if user_answer == answer:
                             m += "And that is the correct answer. You get 1 point."
                             listOfUsers[user]["score"] += 1
                         else:
                             similarity = 0
-                            if len(listOfUsers[user]["answer"]) == len(answer):
+                            if len(user_answer) == len(answer):
                                 similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
 
                             listOfUsers[user]["score"] += similarity
-                            m += "You only get {} points for your answer.".format(similarity)
+                            m += "You get {} points for your answer.".format(similarity)
                             m += " The correct answer is {} ".format(answer)
 
                         await send_message(user, m)
