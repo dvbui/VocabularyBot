@@ -175,8 +175,8 @@ async def main_game():
                                 similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
 
                             listOfUsers[user]["score"] += similarity
-                            m += "You only get {} points for your answer."
-                            m += " The correct answer is {} ".format(similarity, answer)
+                            m += "You only get {} points for your answer.".format(similarity)
+                            m += " The correct answer is {} ".format(answer)
 
                         await send_message(user, m)
 
@@ -283,7 +283,7 @@ async def on_message(message):
                 global winner
                 winner = str(message.author)
                 mess = "Puzzle solved. Everyone is eliminated!\n"
-                mess += "You gained {} points for your keyword answer".format((5-status)*2)
+                mess += "You gain {} points for your keyword answer".format((5-status)*2)
                 status = 6
             else:
                 similarity = 0
