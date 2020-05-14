@@ -14,7 +14,7 @@ def question_message(question, index="", number_of_character=""):
     mess += "Clue {} ({} characters):\n".format(index, number_of_character)
     mess += question+"\n"
     mess += "\n"
-    mess += "You have 15 seconds to answer this clue.\n"
+    mess += "You have 25 seconds to answer this clue.\n"
     mess += "Type your best answer (and only your answer) to answer this clue.\n"
     mess += "To solve this block, type \"olym solve [answer]\"\n"
     mess += "\n"
@@ -24,8 +24,10 @@ def question_message(question, index="", number_of_character=""):
     return mess
 
 
-def block_end_message(word, long_definition):
+def block_end_message(word, long_definition, winner):
     mess = "```\n"
+    if winner != "":
+        mess += "{} solved this block!".format(winner)+"\n"
     mess += "The keyword is "+word+"\n"
     mess += "\n"
     mess += "From Vocabulary.com:\n"
@@ -46,5 +48,15 @@ def ranklist_message(user_list):
     mess += "Name \t\t Score\n"
     for user in user_list:
         mess += str(user)+" \t\t "+str(user_list[user]["score"])+"\n"
+    mess += "```\n"
+    return mess
+
+
+def show_user_answer(user_list):
+    mess = "```\n"
+    mess += "Name \t\t Answer\n"
+    for user in user_list:
+        if user_list[user]["answer"] != "":
+            mess += str(user)+" \t\t "+str(user_list[user]["answer"])+"\n"
     mess += "```\n"
     return mess

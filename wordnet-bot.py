@@ -20,6 +20,8 @@ keyWord = ""
 clues = {}
 listOfUsers = {}
 answers = {}
+wrong_keyWords = ""
+winner = ""
 # constant
 client = discord.Client()
 
@@ -95,28 +97,35 @@ def pick_keyword():
     return word, clue_list
 
 
+async def send_message(user, message):
+    if (user in listOfUsers) and listOfUsers[user]["receive_message"]:
+        await user.send(message)
+
+
 async def main_game():
     await client.wait_until_ready()
 
     global status
     global keyWord
     global clues
+    global wrong_keyWords
+    global winner
     while True:
         channel = client.get_channel(710081986466676757)
         if status == 0:  # Registering phase
             load_user_data()
             free_all_users()
+            wrong_keyWords = ""
+            winner = ""
             m = messenger.register_message()
             await channel.send(messenger.register_message())
             for user in listOfUsers:
-                if listOfUsers[user]["receive_message"]:
-                    await user.send(m)
+                await send_message(user, m)
             keyWord, clues = pick_keyword()
             await asyncio.sleep(30)
             await channel.send(messenger.keyword_message(len(keyWord)))
             for user in listOfUsers:
-                if listOfUsers[user]["receive_message"]:
-                    await user.send(messenger.keyword_message(len(keyWord)))
+                await send_message(user, messenger.keyword_message(len(keyWord)))
             status += 1
 
         if 1 <= status <= 5:  # During the game
@@ -132,27 +141,33 @@ async def main_game():
             await channel.send(message_to_send)
             for user in listOfUsers:
                 listOfUsers[user]["answer"] = ""
-                if not listOfUsers[user]["receive_message"]:
-                    continue
-                await user.send(message_to_send)
+                await send_message(user, message_to_send)
 
-            await asyncio.sleep(15)
+            #  time to answer clue
+            await asyncio.sleep(25)
 
             if 1 <= status <= 5:
+                user_answers = messenger.show_user_answer(listOfUsers)
                 for user in listOfUsers:
-                    if not listOfUsers[user]["receive_message"]:
-                        continue
+                    await send_message(user, user_answers)
+                await channel.send(user_answers)
+                if wrong_keyWords != "":
+                    for user in listOfUsers:
+                        await send_message(user, "Wrong keywords are "+wrong_keyWords)
+                await asyncio.sleep(5)
+
+                for user in listOfUsers:
                     if listOfUsers[user]["eliminate"]:
-                        await user.send("The correct answer is "+answer+".")
+                        await send_message(user, "The correct answer is "+answer+".")
                         continue
                     user_answer = listOfUsers[user]["answer"]
                     if user_answer == "":
                         m = "We did not receive any answer. 0 points.\nThe correct answer is " + answer
-                        await user.send(m)
+                        await send_message(user, m)
                     else:
-                        await user.send("Your final answer is {}.".format(user_answer))
+                        m = "Your final answer is {}.".format(user_answer)+"\n"
                         if listOfUsers[user]["answer"] == answer:
-                            await user.send("And that is the correct answer. You get 1 point.")
+                            m += "And that is the correct answer. You get 1 point."
                             listOfUsers[user]["score"] += 1
                         else:
                             similarity = 0
@@ -160,31 +175,31 @@ async def main_game():
                                 similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
 
                             listOfUsers[user]["score"] += similarity
-                            m = "You only get {} points for your answer. The correct answer is {} ".format(similarity, answer)
-                            await user.send(m)
-                if status != 0:
+                            m += "You only get {} points for your answer."
+                            m += " The correct answer is {} ".format(similarity, answer)
+
+                        await send_message(user, m)
+
+                if 1 <= status <= 5:
                     status += 1
                 await asyncio.sleep(5)
 
         if status == 6:  # Puzzle is solved
-            mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"])
+            mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
             await channel.send(mess)
             for user in listOfUsers:
-                if not listOfUsers[user]["receive_message"]:
-                    continue
-                await user.send(mess)
-                await user.send("```Your current score is "+str(listOfUsers[user]["score"])+"```")
-                await user.send(messenger.ranklist_message(listOfUsers))
-            save_user_data()
+                await send_message(user, mess)
+                await send_message(user, "```Your current score is "+str(listOfUsers[user]["score"])+"```")
+                await send_message(user, messenger.ranklist_message(listOfUsers))
             await channel.send(messenger.ranklist_message(listOfUsers))
             status = 0
+            save_user_data()
 
         if status < 0 or status > 6:
             status = 0
             await channel.send("Something is wrong! Restarting game.")
             for user in listOfUsers:
-                if listOfUsers[user]["receive_message"]:
-                    await user.send("Something is wrong! Restarting game.")
+                await send_message(user, "Something is wrong! Restarting game.")
 
 
 @client.event
@@ -266,6 +281,8 @@ async def on_message(message):
                 key_answer = key_answer[:-1]
                 if key_answer == keyWord.lower():
                     listOfUsers[message.author]["score"] += 8
+                    global winner
+                    winner = str(message.author)
                     mess = "Puzzle solved. Everyone is eliminated!\n"
                     mess += "You gained 8 points for your keyword answer"
                     status = 6

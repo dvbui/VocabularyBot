@@ -107,3 +107,4 @@ def get_similarity(first_word,first_definition,second_word):
                 best_similarity = max(best_similarity, similarity)
 
     return best_similarity
+
