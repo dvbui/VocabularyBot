@@ -23,9 +23,10 @@ def get_related(word, typ="hyponyms"):
     def_set = {}
 
     for s in synset:
-        lemma_s = s.lemmas()
         hyponym_sets = s.hyponyms()
         if typ == "synonyms":
+            if s == synset[0]:
+                continue
             hyponym_sets = [s]
         if typ == "hypernyms":
             hyponym_sets = s.hypernyms()
