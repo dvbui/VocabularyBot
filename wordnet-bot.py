@@ -281,17 +281,18 @@ async def on_message(message):
                 key_answer += args[i] + " "
             key_answer = key_answer[:-1].lower()
             if key_answer == keyWord.lower():
-                listOfUsers[message.author]["score"] += (5-status)*2
+                score = max(1, (5-status)*2)
+                listOfUsers[message.author]["score"] += score
                 global winner
                 winner = str(message.author)
                 mess = "Puzzle solved. Everyone is eliminated!\n"
-                mess += "You gain {} points for your keyword answer".format((5-status)*2)
+                mess += "You gain {} points for your keyword answer".format(score)
                 status = 6
             else:
                 similarity = 0
                 if len(key_answer) == len(keyWord):
                     similarity = wordDef.get_similarity(key_answer, "", keyWord)
-                score = (5-status)*2*similarity
+                score = max(1, (5-status)*2)*similarity
                 listOfUsers[message.author]["score"] += score
                 mess = "Puzzle is not solved.\n"
                 mess += "You get {} points for your answer.".format(score)+"\n"
