@@ -3,24 +3,24 @@ def register_message():
     mess += "Registration Phase\n"
     mess += "Generating a new block in 30 seconds\n"
     mess += "Type \"olym register\" to solve this block\n"
-    mess += "Note: You need to register once for each block.\n"
+    mess += "To stop receiving clues and unregister, type \"olym stop\".\n"
     mess += "```\n"
     return mess
 
 
-def question_message(question, index="", number_of_character=""):
+def question_message(question, index="", number_of_character="",final_clue=False):
     mess = "```\n"
     mess += "\n"
     mess += "Clue {} ({} characters):\n".format(index, number_of_character)
     mess += question+"\n"
     mess += "\n"
     mess += "You have 25 seconds to answer this clue.\n"
-    mess += "Type your best answer (and only your answer) to answer this clue.\n"
-    mess += "To solve this block, type \"olym solve [answer]\"\n"
-    mess += "\n"
-    mess += "If you haven't registered, type \"olym register\" to register.\n"
-    mess += "To stop receiving clues and unregister, type \"olym stop\".\n"
-    mess += "```\n"
+    if not final_clue:
+        mess += "Type your best answer (and only your answer) to answer this clue.\n"
+    else:
+        mess += "The answer for this clue is the keyword.\n"
+    mess += "To guess the keyword, type only your keyword or \"olym solve [keyword]\"\n"
+    mess += "```"
     return mess
 
 
