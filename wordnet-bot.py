@@ -28,6 +28,7 @@ def register_user(user):
     global listOfUsers
     if not (user in listOfUsers):
         listOfUsers[user] = {"answer": "", "score": 0, "receive_message": True, "eliminate": False}
+    listOfUsers[user]["receive_message"] = True
 
 
 def load_user_data():
@@ -37,13 +38,15 @@ def load_user_data():
         f = open("user_data.obj", "r")
         for line in f:
             line = line.strip().split(' ')
-            if len(line) != 2:
+            if len(line) != 3:
                 break
             print(line[0])
             print(line[1])
+            print(line[2] == "True")
             user = client.get_user(int(line[0]))
             register_user(user)
             listOfUsers[user]["score"] = float(line[1])
+            listOfUsers[user]["receive_message"] = line[2] == "True"
         f.close()
 
 
@@ -51,9 +54,16 @@ def save_user_data():
     global listOfUsers
     f = open("user_data.obj", "w")
     for user in listOfUsers:
-        print(str(user.id)+" "+str(listOfUsers[user]["score"])+"\n")
-        f.write(str(user.id)+" "+str(listOfUsers[user]["score"])+"\n")
+        output = str(user.id)+" "+str(listOfUsers[user]["score"])+" "+str(listOfUsers[user]["receive_message"])+"\n"
+        print(output)
+        f.write(output)
     f.close()
+
+
+def free_all_users():
+    global listOfUsers
+    for user in listOfUsers:
+        listOfUsers[user]["eliminate"] = False
 
 
 def stop_user(user):
@@ -95,15 +105,18 @@ async def main_game():
         channel = client.get_channel(710081986466676757)
         if status == 0:  # Registering phase
             load_user_data()
+            free_all_users()
             m = messenger.register_message()
             await channel.send(messenger.register_message())
             for user in listOfUsers:
-                await user.send(m)
+                if listOfUsers[user]["receive_message"]:
+                    await user.send(m)
             keyWord, clues = pick_keyword()
             await asyncio.sleep(10)
             await channel.send(messenger.keyword_message(len(keyWord)))
             for user in listOfUsers:
-                await user.send(messenger.keyword_message(len(keyWord)))
+                if listOfUsers[user]["receive_message"]:
+                    await user.send(messenger.keyword_message(len(keyWord)))
             status += 1
 
         if 1 <= status <= 5:  # During the game
@@ -119,12 +132,19 @@ async def main_game():
             await channel.send(message_to_send)
             for user in listOfUsers:
                 listOfUsers[user]["answer"] = ""
+                if not listOfUsers[user]["receive_message"]:
+                    continue
                 await user.send(message_to_send)
 
             await asyncio.sleep(15)
 
             if 1 <= status <= 5:
                 for user in listOfUsers:
+                    if not listOfUsers[user]["receive_message"]:
+                        continue
+                    if listOfUsers[user]["eliminate"]:
+                        await user.send("The correct answer is "+answer+".")
+                        continue
                     user_answer = listOfUsers[user]["answer"]
                     if user_answer == "":
                         m = "We did not receive any answer. 0 points.\nThe correct answer is " + answer
@@ -150,11 +170,13 @@ async def main_game():
             mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"])
             await channel.send(mess)
             for user in listOfUsers:
+                if not listOfUsers[user]["receive_message"]:
+                    continue
                 await user.send(mess)
                 await user.send("```You current have "+str(listOfUsers[user]["score"])+" points.```")
                 await user.send(messenger.ranklist_message(listOfUsers))
-            await channel.send(messenger.ranklist_message(listOfUsers))
             save_user_data()
+            await channel.send(messenger.ranklist_message(listOfUsers))
             status = 0
 
 
@@ -177,9 +199,12 @@ async def on_message(message):
 
     try:
         message.content = message.content.lower()
-        if (message.author in listOfUsers) and is_game_running() and not message.content.startswith("olym "):
-            listOfUsers[message.author]["answer"] = message.content
-            await message.author.send("Your current answer is " + message.content)
+        if (message.author in listOfUsers) and is_game_running() and (not message.content.startswith("olym ")):
+            if listOfUsers[message.author]["eliminate"]:
+                await message.author.send("You have been eliminated from the game.")
+            else:
+                listOfUsers[message.author]["answer"] = message.content
+                await message.author.send("Your current answer is " + message.content)
 
         args = message.content.split(' ')
         if args[0] != "olym":
@@ -225,20 +250,25 @@ async def on_message(message):
             stop_user(message.author)
 
         if len(args) >= 3 and args[1] == "solve" and 1 <= status <= 5 and message.author in listOfUsers:
-            key_answer = ""
-            for i in range(2, len(args)):
-                key_answer += args[i] + " "
-            key_answer = key_answer[:-1]
-            if key_answer == keyWord.lower():
-                listOfUsers[message.author]["score"] += 8
-                mess = "Puzzle solved\n"
-                status = 6
+            if listOfUsers[message.author]["eliminate"]:
+                mess = "You have been eliminated from this game."
             else:
-                similarity = wordDef.get_similarity(key_answer, "", keyWord)
-                score = 8*similarity
-                mess = "Puzzle is not solved.\n"
-                mess += "You get {} points for your answer.".format(score)
-            listOfUsers[message.author]["eliminate"] = True
+                key_answer = ""
+                for i in range(2, len(args)):
+                    key_answer += args[i] + " "
+                key_answer = key_answer[:-1]
+                if key_answer == keyWord.lower():
+                    listOfUsers[message.author]["score"] += 8
+                    mess = "Puzzle solved. Everyone is eliminated!\n"
+                    mess += "You gained 8 points for your keyword answer"
+                    status = 6
+                else:
+                    similarity = wordDef.get_similarity(key_answer, "", keyWord)
+                    score = 8*similarity
+                    mess = "Puzzle is not solved.\n"
+                    mess += "You get {} points for your answer.".format(score)+"\n"
+                    mess += "You have been eliminated from the game."
+                listOfUsers[message.author]["eliminate"] = True
 
         await message.author.send(mess)
     except:
