@@ -22,7 +22,12 @@ listOfUsers = {}
 answers = {}
 # constant
 client = discord.Client()
-bot_channel = client.get_channel(710081986466676757)
+
+
+def register_user(user):
+    global listOfUsers
+    if not (user in listOfUsers):
+        listOfUsers[user] = {"answer": "", "score": 0, "receive_message": True, "eliminate": False}
 
 
 def load_user_data():
@@ -30,21 +35,22 @@ def load_user_data():
     listOfUsers = {}
     if path.exists("user_data.obj"):
         f = open("user_data.obj", "r")
-        listOfUsers = pickle.load(f)
+        for line in f:
+            line = line.strip().split(' ')
+            if len(line) != 2:
+                break
+            user = client.get_user(line[0])
+            register_user(user)
+            listOfUsers[user]["score"] = line[1]
         f.close()
 
 
 def save_user_data():
     global listOfUsers
     f = open("user_data.obj", "w")
-    pickle.dump(listOfUsers, f)
+    for user in listOfUsers:
+        f.write(user.id+" "+listOfUsers["score"]+"\n")
     f.close()
-
-
-def register_user(user):
-    global listOfUsers
-    if not (user in listOfUsers):
-        listOfUsers[user] = {"answer": "", "score": 0, "receive_message": True, "eliminate": False}
 
 
 def stop_user(user):
@@ -82,10 +88,10 @@ async def main_game():
     global status
     global keyWord
     global clues
-    global bot_channel
     while True:
         channel = client.get_channel(710081986466676757)
         if status == 0:  # Registering phase
+            load_user_data()
             m = messenger.register_message()
             await channel.send(messenger.register_message())
             for user in listOfUsers:
@@ -105,7 +111,7 @@ async def main_game():
 
             print(answer)
             question = clues[status - 1][1]
-            message_to_send = messenger.question_message(question, status, len(answer))+"\n"
+            message_to_send = messenger.question_message(question, status, len(answer))
             message_to_send += messenger.keyword_message(len(keyWord))
             await channel.send(message_to_send)
             for user in listOfUsers:
@@ -151,6 +157,7 @@ async def main_game():
 @client.event
 async def on_ready():
     print("Bot is ready.")
+    load_user_data()
 
 
 @client.event
