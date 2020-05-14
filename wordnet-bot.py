@@ -47,6 +47,8 @@ def pickKeyWord():
 		print(details)
 		if (details == None):
 			continue	
+		else:
+			break
 	for k in details:
 		clues.append( (k,details[k]) )
 
