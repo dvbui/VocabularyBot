@@ -27,7 +27,7 @@ def question_message(question, index="", number_of_character=""):
 def block_end_message(word, long_definition, winner):
     mess = "```\n"
     if winner != "":
-        mess += "{} solved this block!".format(winner)+"\n"
+        mess += "{} solved this block!".format(winner)+"\n\n"
     mess += "The keyword is "+word+"\n"
     mess += "\n"
     mess += "From Vocabulary.com:\n"
