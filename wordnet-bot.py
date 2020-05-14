@@ -137,7 +137,7 @@ async def main_game():
             print(answer)
             question = clues[status - 1][1]
             message_to_send = messenger.question_message(question, status, len(answer))
-            message_to_send += messenger.keyword_message(len(keyWord))
+            message_to_send += messenger.keyword_message(len(keyWord), wrong_keyWords)
             await channel.send(message_to_send)
             for user in listOfUsers:
                 listOfUsers[user]["answer"] = ""
@@ -151,10 +151,6 @@ async def main_game():
                 for user in listOfUsers:
                     await send_message(user, user_answers)
                 await channel.send(user_answers)
-                if wrong_keyWords != "":
-                    for user in listOfUsers:
-                        await send_message(user, "Wrong keywords are "+wrong_keyWords)
-                    await channel.send("Wrong keywords are "+wrong_keyWords)
                 await asyncio.sleep(5)
 
                 for user in listOfUsers:
