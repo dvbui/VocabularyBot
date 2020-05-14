@@ -227,7 +227,7 @@ async def on_message(message):
             await message.author.send("You have been eliminated from the game.")
         else:
             listOfUsers[message.author]["answer"] = message.content
-            await message.author.send("Your current answer is " + message.content)
+            await message.author.send("Your current answer is " + message.content + "\n({} letters)".format(len(message.content)))
 
     args = message.content.split(' ')
     if args[0] != "olym":
