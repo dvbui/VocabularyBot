@@ -27,8 +27,6 @@ def getRelated(word,typ = "hyponyms"):
 			hyponymSets = [s]
 		if (typ=="hypernyms"):
 			hyponymSets = s.hypernyms()
-		if (typ=="antonyms"):
-			hyponymSets = s.antonyms()
 		for h in hyponymSets:
 			lemma = h.lemmas()
 			if (len(lemma)==0):
@@ -64,7 +62,7 @@ def merge(fi,se):
 
 def chooseQuestions(word,n=4):
 	s = getRelated(word,"hyponyms")
-	typ = ["synonyms","hypernyms","antonyms"]
+	typ = ["synonyms","hypernyms"]
 	for t in typ:
 		if (len(s)>=n):
 			break
