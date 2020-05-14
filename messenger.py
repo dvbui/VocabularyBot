@@ -45,6 +45,6 @@ def ranklist_message(user_list):
     mess = "```\n"
     mess += "Name \t\t Score\n"
     for user in user_list:
-        mess += str(user)+" \t\t "+user_list[user]["score"]+"\n"
+        mess += str(user)+" \t\t "+str(user_list[user]["score"])+"\n"
     mess += "```\n"
     return mess

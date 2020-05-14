@@ -39,9 +39,11 @@ def load_user_data():
             line = line.strip().split(' ')
             if len(line) != 2:
                 break
-            user = client.get_user(line[0])
+            print(line[0])
+            print(line[1])
+            user = client.get_user(int(line[0]))
             register_user(user)
-            listOfUsers[user]["score"] = line[1]
+            listOfUsers[user]["score"] = float(line[1])
         f.close()
 
 
@@ -49,7 +51,8 @@ def save_user_data():
     global listOfUsers
     f = open("user_data.obj", "w")
     for user in listOfUsers:
-        f.write(user.id+" "+listOfUsers["score"]+"\n")
+        print(str(user.id)+" "+str(listOfUsers[user]["score"])+"\n")
+        f.write(str(user.id)+" "+str(listOfUsers[user]["score"])+"\n")
     f.close()
 
 
@@ -97,7 +100,7 @@ async def main_game():
             for user in listOfUsers:
                 await user.send(m)
             keyWord, clues = pick_keyword()
-            await asyncio.sleep(30)
+            await asyncio.sleep(10)
             await channel.send(messenger.keyword_message(len(keyWord)))
             for user in listOfUsers:
                 await user.send(messenger.keyword_message(len(keyWord)))
@@ -144,13 +147,14 @@ async def main_game():
                 await asyncio.sleep(5)
 
         if status == 6:  # Puzzle is solved
-            save_user_data()
             mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"])
             await channel.send(mess)
             for user in listOfUsers:
                 await user.send(mess)
-                await user.send("```You current have "+str(listOfUsers[user]["score"])+"```")
+                await user.send("```You current have "+str(listOfUsers[user]["score"])+" points.```")
+                await user.send(messenger.ranklist_message(listOfUsers))
             await channel.send(messenger.ranklist_message(listOfUsers))
+            save_user_data()
             status = 0
 
 
@@ -158,6 +162,7 @@ async def main_game():
 async def on_ready():
     print("Bot is ready.")
     load_user_data()
+    client.loop.create_task(main_game())
 
 
 @client.event
@@ -225,9 +230,9 @@ async def on_message(message):
                 key_answer += args[i] + " "
             key_answer = key_answer[:-1]
             if key_answer == keyWord.lower():
-                status = 0
                 listOfUsers[message.author]["score"] += 8
-                mess = "Puzzle solved"
+                mess = "Puzzle solved\n"
+                status = 6
             else:
                 similarity = wordDef.get_similarity(key_answer, "", keyWord)
                 score = 8*similarity
@@ -242,6 +247,4 @@ async def on_message(message):
 
 token = os.environ['CLIENT_TOKEN']
 
-load_user_data()
-client.loop.create_task(main_game())
 client.run(token)
