@@ -90,17 +90,19 @@ async def main_game():
             if 1 <= status <= 5:
                 for user in listOfUsers:
                     if listOfUsers[user]["answer"] == answer:
-                        await user.send("Accepted")
+                        await user.send("Accepted. You get 1 point.")
                         listOfUsers[user]["score"] += 1
                     else:
                         if listOfUsers[user]["answer"] != "":
                             similarity = 0
-                            if len(listOfUsers[user]["answer"])==len(answer):
+                            if len(listOfUsers[user]["answer"]) == len(answer):
                                 similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
 
                             listOfUsers[user]["score"] += similarity
                             m = "You get {} points for your answer. The correct answer is {}".format(similarity, answer)
                             await user.send(m)
+                        else:
+                            await user.send("We did not receive any answer. 0 points")
 
                 if status != 0:
                     status += 1
