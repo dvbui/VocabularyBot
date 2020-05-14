@@ -79,11 +79,11 @@ async def main_game():
 
             print(answer)
             question = clues[status - 1][1]
-
-            await channel.send(question)
+            message_to_send = messenger.question_message(question, status, "", len(answer))
+            await channel.send(message_to_send)
             for user in listOfUsers:
                 listOfUsers[user]["answer"] = ""
-                await user.send(question)
+                await user.send(message_to_send)
 
             await asyncio.sleep(15)
 
