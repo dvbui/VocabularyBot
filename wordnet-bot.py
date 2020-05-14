@@ -179,6 +179,13 @@ async def main_game():
             await channel.send(messenger.ranklist_message(listOfUsers))
             status = 0
 
+        if status < 0 or status > 6:
+            status = 0
+            await channel.send("Something is wrong! Restarting game.")
+            for user in listOfUsers:
+                if listOfUsers[user]["receive_message"]:
+                    await user.send("Something is wrong! Restarting game.")
+
 
 @client.event
 async def on_ready():
