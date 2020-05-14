@@ -4,11 +4,7 @@ import discord
 import json
 import asyncio
 import random
-import nltk
-
-
-
-
+import messenger
 
 # load word database
 wordFile = open("wordDatabase.json", "r")
@@ -70,7 +66,7 @@ async def main_game():
     while True:
         channel = client.get_channel(710081986466676757)
         if status == 0:  # Registering phase
-            await channel.send("Registering phase")
+            await channel.send(messenger.register_message())
             keyWord, clues = pick_keyword()
             await asyncio.sleep(5)
             status += 1

@@ -8,4 +8,3 @@ def register_message():
     mess += "```\n"
     return mess
 
-def
