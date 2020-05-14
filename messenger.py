@@ -39,3 +39,12 @@ def keyword_message(length):
     mess += "The keyword has {}".format(length)+" characters.\n"
     mess += "```\n"
     return mess
+
+
+def ranklist_message(user_list):
+    mess = "```\n"
+    mess += "Name \t\t Score\n"
+    for user in user_list:
+        mess += str(user)+" \t\t "+user_list[user]["score"]+"\n"
+    mess += "```\n"
+    return mess

@@ -1,11 +1,13 @@
 import vocs
 import wordDef
 import os
+from os import path
 import discord
 import json
 import asyncio
 import random
 import messenger
+import pickle
 
 # load word database
 wordFile = open("wordDatabase.json", "r")
@@ -24,14 +26,32 @@ client = discord.Client()
 bot_channel = client.get_channel(710081986466676757)
 
 
+def load_user_data():
+    global listOfUsers
+    listOfUsers = {}
+    if path.exists("user_data.obj"):
+        f = open("user_data.obj", "r")
+        listOfUsers = pickle.load(f)
+        f.close()
+
+
+def save_user_data():
+    global listOfUsers
+    f = open("user_data.obj", "w")
+    pickle.dump(listOfUsers, f)
+    f.close()
+
+
 def register_user(user):
     global listOfUsers
-    listOfUsers[user] = {"answer": "", "score": 0}
+    if not (user in listOfUsers):
+        listOfUsers[user] = {"answer": "", "score": 0, "receive_message": True, "eliminate": False}
 
 
 def stop_user(user):
     global listOfUsers
-    listOfUsers.pop(user)
+    if user in listOfUsers:
+        listOfUsers[user]["receive_message"] = False
 
 
 def is_game_running():
@@ -101,9 +121,9 @@ async def main_game():
                         m = "We did not receive any answer. 0 points.\nThe correct answer is " + answer
                         await user.send(m)
                     else:
-                        await user.send("Your final answer is {}".format(user_answer))
+                        await user.send("Your final answer is {}.".format(user_answer))
                         if listOfUsers[user]["answer"] == answer:
-                            await user.send("Accepted. You get 1 point.")
+                            await user.send("And that is the correct answer. You get 1 point.")
                             listOfUsers[user]["score"] += 1
                         else:
                             similarity = 0
@@ -111,18 +131,20 @@ async def main_game():
                                 similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
 
                             listOfUsers[user]["score"] += similarity
-                            m = "You get {} points for your answer. The correct answer is {} ".format(similarity, answer)
+                            m = "You only get {} points for your answer. The correct answer is {} ".format(similarity, answer)
                             await user.send(m)
                 if status != 0:
                     status += 1
                 await asyncio.sleep(5)
 
         if status == 6:  # Puzzle is solved
+            save_user_data()
             mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"])
             await channel.send(mess)
             for user in listOfUsers:
                 await user.send(mess)
                 await user.send("```You current have "+str(listOfUsers[user]["score"])+"```")
+            await channel.send(messenger.ranklist_message(listOfUsers))
             status = 0
 
 
@@ -139,7 +161,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.author.bot:
-        return;
+        return
 
     try:
         message.content = message.content.lower()
@@ -201,5 +223,6 @@ async def on_message(message):
 
 token = os.environ['CLIENT_TOKEN']
 
+load_user_data()
 client.loop.create_task(main_game())
 client.run(token)
