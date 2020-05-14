@@ -222,6 +222,32 @@ async def on_ready():
     client.loop.create_task(main_game())
 
 
+async def guess_keyword(user, key_answer):
+    global status
+    if key_answer == keyWord.lower():
+        score = max(1, (5 - status) * 2)
+        listOfUsers[user]["score"] += score
+        global winner
+        winner = str(user)
+        mess = "Puzzle solved. Everyone is eliminated!\n"
+        mess += "You gain {} points for your keyword answer".format(score)
+        status = 6
+    else:
+        similarity = 0
+        if len(key_answer) == len(keyWord):
+            similarity = wordDef.get_similarity(key_answer, "", keyWord)
+        score = max(1, (5 - status) * 2) * similarity
+        listOfUsers[user]["score"] += score
+        mess = "Puzzle is not solved.\n"
+        mess += "You get {} points for your answer.".format(score) + "\n"
+        mess += "You have been eliminated from the game."
+        global wrong_keyWords
+        wrong_keyWords += " {}".format(key_answer)
+
+    listOfUsers[user]["eliminate"] = True
+    await user.send(mess)
+
+
 @client.event
 async def on_message(message):
     global status
@@ -238,16 +264,23 @@ async def on_message(message):
         if listOfUsers[message.author]["eliminate"]:
             await message.author.send("You have been eliminated from the game.")
         else:
-            if acceptingAnswers:
-                listOfUsers[message.author]["answer"] = message.content
-                await message.author.send("Your current answer is " + message.content + "\n({} letters)".format(len(message.content)))
+            if status <= 4:
+                if acceptingAnswers:
+                    listOfUsers[message.author]["answer"] = message.content
+                    await message.author.send("Your current answer is " + message.content + "\n({} letters)".format(len(message.content)))
+                else:
+                    await message.author.send("Answers for this clue are no longer accepted!")
             else:
-                await message.author.send("Answers for this clue are no longer accepted!")
+                if acceptingKeyword:
+                    await guess_keyword(message.author,message.content)
+                else:
+                    await message.author.send("We are not accepting keyword answers. Please wait a little bit and try again.")
+
     args = message.content.split(' ')
     if args[0] != "olym":
         return
 
-    mess = "Placeholder"
+    mess = ""
     if len(args) >= 2 and args[1] == "hello":
         mess = "Hello, I am a test bot."
 
@@ -286,41 +319,18 @@ async def on_message(message):
         mess = "You have been unregistered."
         stop_user(message.author)
 
-    if len(args) >= 3 and args[1] == "solve" and 1 <= status <= 5 and message.author in listOfUsers:
+    if len(args) == 3 and args[1] == "solve" and 1 <= status <= 5 and message.author in listOfUsers:
         if acceptingKeyword:
             if listOfUsers[message.author]["eliminate"]:
                 mess = "You have been eliminated from this game."
             else:
-                key_answer = ""
-                for i in range(2, len(args)):
-                    key_answer += args[i] + " "
-                key_answer = key_answer[:-1].lower()
-                if key_answer == keyWord.lower():
-                    score = max(1, (5-status)*2)
-                    listOfUsers[message.author]["score"] += score
-                    global winner
-                    winner = str(message.author)
-                    mess = "Puzzle solved. Everyone is eliminated!\n"
-                    mess += "You gain {} points for your keyword answer".format(score)
-                    status = 6
-                else:
-                    similarity = 0
-                    if len(key_answer) == len(keyWord):
-                        similarity = wordDef.get_similarity(key_answer, "", keyWord)
-                    score = max(1, (5-status)*2)*similarity
-                    listOfUsers[message.author]["score"] += score
-                    mess = "Puzzle is not solved.\n"
-                    mess += "You get {} points for your answer.".format(score)+"\n"
-                    mess += "You have been eliminated from the game."
-                    global wrong_keyWords
-                    wrong_keyWords += " {}".format(key_answer)
-
-                listOfUsers[message.author]["eliminate"] = True
+                key_answer = args[2]
+                await guess_keyword(message.author, key_answer)
         else:
             mess = "We are not accepting keyword answers. Please wait a little bit and try again."
 
-
-    await message.author.send(mess)
+    if mess != "":
+        await message.author.send(mess)
 
 
 token = os.environ['CLIENT_TOKEN']
