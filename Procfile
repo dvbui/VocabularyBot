@@ -1,1 +1,1 @@
-worker: python wordnet-bot.py
+worker: python3 wordnet-bot.py
