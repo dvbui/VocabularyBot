@@ -51,6 +51,7 @@ def pickKeyWord():
 			break
 	for k in details:
 		clues.append( (k,details[k]) )
+	clues.append((word,wordDef.getDefinition(word)))
 
 	return word, clues
 
