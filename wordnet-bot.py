@@ -99,9 +99,7 @@ async def main_game():
                 await asyncio.sleep(5)
 
         if status == 6:  # Puzzle is solved
-            mess = "Puzzle solved - "
-            mess += keyWord + "\n"
-            mess += wordDatabase[keyWord]["long"]
+            mess = messenger.block_end_message(keyWord,wordDatabase[keyWord]["long"])
             await channel.send(mess)
             status = 0
 
