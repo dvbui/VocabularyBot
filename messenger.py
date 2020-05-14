@@ -39,7 +39,8 @@ def block_end_message(word, long_definition, winner):
 def keyword_message(length, not_keywords=""):
     mess = "```\n"
     mess += "The keyword has {}".format(length)+" characters.\n"
-    mess += "The keyword is not{}".format(not_keywords)+"\n"
+    if not_keywords != "":
+        mess += "The keyword is not{}".format(not_keywords)+"\n"
     mess += "```\n"
     return mess
 
