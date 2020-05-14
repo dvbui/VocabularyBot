@@ -36,6 +36,6 @@ def block_end_message(word, long_definition):
 
 def keyword_message(length):
     mess = "```\n"
-    mess += "The keyword has {}".format(length)+"\n"
+    mess += "The keyword has {}".format(length)+" characters.\n"
     mess += "```\n"
     return mess

@@ -78,7 +78,7 @@ async def main_game():
                 await user.send(messenger.keyword_message(len(keyWord)))
             status += 1
 
-        if 1 <= status <= 5: # During the game
+        if 1 <= status <= 5:  # During the game
             if status <= 4:
                 answer = clues[status - 1][0]
             else:
@@ -98,7 +98,7 @@ async def main_game():
                 for user in listOfUsers:
                     user_answer = listOfUsers[user]["answer"]
                     if user_answer == "":
-                        m = "We did not receive any answer. 0 points.\n The correct answer is " + answer
+                        m = "We did not receive any answer. 0 points.\nThe correct answer is " + answer
                         await user.send(m)
                     else:
                         await user.send("Your final answer is {}".format(user_answer))
@@ -111,7 +111,7 @@ async def main_game():
                                 similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
 
                             listOfUsers[user]["score"] += similarity
-                            m = "You get {} points for your answer. The correct answer is {}".format(similarity, answer)
+                            m = "You get {} points for your answer. The correct answer is {} ".format(similarity, answer)
                             await user.send(m)
                 if status != 0:
                     status += 1
@@ -122,7 +122,7 @@ async def main_game():
             await channel.send(mess)
             for user in listOfUsers:
                 await user.send(mess)
-                await user.send("You current have "+listOfUsers[user]["score"])
+                await user.send("```You current have "+str(listOfUsers[user]["score"])+"```")
             status = 0
 
 
