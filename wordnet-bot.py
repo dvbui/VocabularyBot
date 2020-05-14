@@ -1,3 +1,4 @@
+import vocs
 import wordDef
 import os
 import discord
@@ -178,7 +179,10 @@ async def on_message(message):
                 listOfUsers[message.author]["score"] += 8
                 mess = "Puzzle solved"
             else:
-                mess = "Puzzle is not solved\n" + key_answer + " " + keyWord.lower()
+                similarity = wordDef.get_similarity(key_answer, "", keyWord)
+                score = 8*similarity
+                mess = "Puzzle is not solved.\n"
+                mess += "You get {} points for your answer.".format(score)
 
         await message.author.send(mess)
     except:
