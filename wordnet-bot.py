@@ -267,6 +267,7 @@ async def on_message(message):
                     if len(key_answer) == len(keyWord):
                         similarity = wordDef.get_similarity(key_answer, "", keyWord)
                     score = 8*similarity
+                    listOfUsers[message.author]["score"] += score
                     mess = "Puzzle is not solved.\n"
                     mess += "You get {} points for your answer.".format(score)+"\n"
                     mess += "You have been eliminated from the game."
