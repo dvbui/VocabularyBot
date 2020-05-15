@@ -1,3 +1,4 @@
+import requests
 import vocs
 import wordDef
 import os
@@ -47,9 +48,63 @@ def register_user(user):
     global listOfUsers
     if not (user in listOfUsers):
         listOfUsers[user] = {"answer": "", "score": 0, "receive_message": True, "eliminate": False}
+        listOfUsers[user] = {"activate": False}
     listOfUsers[user]["receive_message"] = True
 
 
+def load_user_data():
+    global listOfUsers
+    listOfUsers = {}
+    link = os.environ["SECRET_URL"]
+    post_obj = {"command": "print user"}
+    while True:
+        x = requests.post(link, post_obj)
+        if x.text[0] == '\n':
+            break
+
+    f = x.text.strip().split('\n')
+    for line in f:
+        line = line.strip().split(' ')
+        print(line[0])
+        print(line[1])
+        print(line[2] == "1")
+        user = client.get_user(int(line[0]))
+        register_user(user)
+        listOfUsers[user]["score"] = float(line[1])
+        listOfUsers[user]["receive_message"] = line[2] == "1"
+
+
+def save_user_data():
+    global listOfUsers
+    link = os.environ["SECRET_URL"]
+
+    for user in listOfUsers:
+        post_obj = {"user": str(user.id), "score": listOfUsers[user]["score"]}
+        if listOfUsers[user]["receive_message"]:
+            post_obj["receive_message"] = "1"
+        else:
+            post_obj["receive_message"] = "0"
+        while True:
+            x = requests.post(link, post_obj)
+            if x.text[0] == '\n':
+                break
+
+
+def save_block():
+    global listOfUsers
+    link = os.environ["SECRET_URL"]
+    for user in listOfUsers:
+        if listOfUsers[user]["activate"]:
+            post_obj = {"user": user.id, "block": ""}
+            for i in range(0,len(clues)):
+                post_obj["block"] += " "+clues[i][0]
+            post_obj["block"] = post_obj["block"].strip()
+            while True:
+                x = requests.post(link, post_obj)
+                if x.text[0] == '\n':
+                    break
+
+"""
 def load_user_data():
     global listOfUsers
     listOfUsers = {}
@@ -68,7 +123,6 @@ def load_user_data():
             listOfUsers[user]["receive_message"] = line[2] == "True"
         f.close()
 
-
 def save_user_data():
     global listOfUsers
     f = open("user_data.obj", "w")
@@ -77,12 +131,14 @@ def save_user_data():
         print(output)
         f.write(output)
     f.close()
+"""
 
 
 def free_all_users():
     global listOfUsers
     for user in listOfUsers:
         listOfUsers[user]["eliminate"] = False
+        listOfUsers[user]["activate"] = False
 
 
 def stop_user(user):
@@ -259,6 +315,7 @@ async def main_game():
             await channel.send(messenger.ranklist_message(listOfUsers))
             status = 0
             save_user_data()
+            save_block()
 
         if status < 0 or status > 6:
             status = 0
@@ -313,6 +370,7 @@ async def on_message(message):
     message.content = message.content.lower()
     if (message.author in listOfUsers) and is_game_running() and (not message.content.startswith("olym ")):
         global acceptingAnswers
+        listOfUsers[message.author]["activate"] = True
         if listOfUsers[message.author]["eliminate"]:
             await message.author.send("You have been eliminated from the game.")
         else:
@@ -374,6 +432,7 @@ async def on_message(message):
         stop_user(message.author)
 
     if len(args) == 3 and args[1] == "solve" and 1 <= status <= 5 and message.author in listOfUsers:
+        listOfUsers[message.author]["activate"] = True
         if acceptingKeyword:
             if listOfUsers[message.author]["eliminate"]:
                 mess = "You have been eliminated from this game."
