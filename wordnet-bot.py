@@ -442,6 +442,17 @@ async def on_message(message):
         else:
             mess = "We are not accepting keyword answers. Please wait a little bit and try again."
 
+    if len(args) >= 2 and args[1] == "export" and message.author in listOfUsers:
+        link = os.environ["SECRET_URL"]
+        post_obj = {"user": str(message.author.id), "command": "print block"}
+        while True:
+            x = requests.post(link, post_obj)
+            if x.text[0] == '\n':
+                break
+        mess = "```\n"
+        mess += x.text
+        mess += "```\n"
+
     if mess != "":
         await message.author.send(mess)
 
