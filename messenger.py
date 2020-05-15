@@ -8,6 +8,28 @@ def register_message():
     return mess
 
 
+def rule_message():
+    mess = "```\n"
+    mess += "Luật thi Vượt chướng ngại vật\n"
+    mess += "Các thí sinh cùng trả lời 4 câu hỏi.\n"
+    mess += "Nội dung và câu trả lời của mỗi câu hỏi là các gợi ý để tìm một từ chìa khóa (keyword).\n"
+    mess += "Các thí sinh trả lời 4 câu hỏi bằng cách gõ câu trả lời (không cần kèm theo tiền tố nào)\n"
+    mess += "Thời gian suy nghĩ của mỗi câu hỏi là 25 giây một câu.\n"
+    mess += "Trả lời đúng mỗi câu hỏi, thí sinh được 1 điểm.\n"
+    mess += "Thí sinh có thể trả lời từ chìa khóa bất cứ lúc nào bằng cách gõ olym solve [từ chìa khóa]\n"
+    mess += "(trừ lúc chờ câu hỏi xuất hiện và lúc chờ chấm điểm các đáp án)\n"
+    mess += "Trả lời đúng từ chìa khóa trong vòng 1 câu hỏi được 8 điểm, "
+    mess += "trong vòng 2 câu hỏi được 6 điểm, 3 câu hỏi được 4 điểm, 4 câu hỏi được 2 điểm\n"
+    mess += "Nếu trong vòng 4 câu hỏi không có thí sinh nào trả lời được từ chìa khóa, định nghĩa của từ chìa khóa "
+    mess += "sẽ xuất hiện. Thí sinh trả lời đúng từ chìa khóa sau khi định nghĩa xuất hiện được 1 điểm.\n"
+    mess += "Lưu ý: Thí sinh trả lời sai từ chìa khóa sẽ bị loại khỏi phần chơi này"
+    mess += "(Câu trả lời được coi là đúng nếu có số chữ cái bằng với số chữ cái được cho trước và đồng nghĩa với đáp án.)"
+    mess += "(Nếu câu trả lời cho từ chìa khóa của thí sinh không khớp với từ chìa khóa nhưng không đồng nghĩa "
+    mess += "thì thí sinh vẫn giành điểm nhưng trò chơi không kết thúc)\n"
+    mess += "```\n"
+    return mess
+
+
 def question_message(question, index="", number_of_character="",final_clue=False):
     mess = "```\n"
     mess += "\n"

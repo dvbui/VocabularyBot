@@ -174,7 +174,12 @@ async def main_game():
             for user in listOfUsers:
                 await send_message(user, m)
             keyWord, clues = pick_keyword()
-            await asyncio.sleep(30)
+            await asyncio.sleep(5)
+            m = messenger.rule_message()
+            await channel.send(m)
+            for user in listOfUsers:
+                await send_message(user, m)
+            await asyncio.sleep(25)
             await channel.send(messenger.keyword_message(len(keyWord)))
             for user in listOfUsers:
                 await send_message(user, messenger.keyword_message(len(keyWord)))
