@@ -7,7 +7,6 @@ import json
 import asyncio
 import random
 import messenger
-import pickle
 
 # load word database
 """
@@ -118,6 +117,7 @@ def pick_keyword():
 
 def pick_keyword():
     clue_list = []
+    global wordDatabase
     while True:
         word, info = random.choice(list(wordDatabase.items()))
 
@@ -126,13 +126,15 @@ def pick_keyword():
             continue
 
         if info["long"] == "":
-            page = vocs.getLongDefinition(word)
-            info["long"] = vocs.getLongDefinition(page)
+            info["long"] = vocs.getShortDefinitionWithWord(word)
             if info["long"] == "":
                 del wordDatabase[word]
                 continue
 
         details = wordDef.choose_questions(word)
+        print(word)
+        print(details)
+
         if details is None:
             continue
         else:
