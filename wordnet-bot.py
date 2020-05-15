@@ -335,7 +335,7 @@ async def on_ready():
 
 async def guess_keyword(user, key_answer):
     global status
-    if key_answer == keyWord.lower():
+    if key_answer.lower() == keyWord.lower():
         score = max(1, (5 - status) * 2)
         listOfUsers[user]["score"] += score
         global winner
@@ -353,7 +353,8 @@ async def guess_keyword(user, key_answer):
         mess += "You get {} points for your answer.".format(score) + "\n"
         mess += "You have been eliminated from the game."
         global wrong_keyWords
-        wrong_keyWords += " {}".format(key_answer)
+        if key_answer.isalpha():
+            wrong_keyWords += " {}".format(key_answer)
 
     listOfUsers[user]["eliminate"] = True
     await user.send(mess)
@@ -370,7 +371,7 @@ async def on_message(message):
         return
 
     message.content = message.content.lower()
-    if (message.author in listOfUsers) and is_game_running() and (not message.content.startswith("olym ")):
+    if (message.author in listOfUsers) and is_game_running() and message.content.isalpha():
         global acceptingAnswers
         listOfUsers[message.author]["activate"] = True
         if listOfUsers[message.author]["eliminate"]:
