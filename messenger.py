@@ -25,7 +25,8 @@ def rule_message():
     mess += "Lưu ý: Thí sinh trả lời sai từ chìa khóa sẽ bị loại khỏi phần chơi này\n"
     mess += "(Câu trả lời được coi là đúng nếu có số chữ cái bằng với số chữ cái được cho trước và đồng nghĩa với đáp án.)\n"
     mess += "(Nếu câu trả lời cho từ chìa khóa của thí sinh không khớp với từ chìa khóa nhưng đồng nghĩa "
-    mess += "thì thí sinh vẫn giành điểm nhưng trò chơi không kết thúc)\n"
+    mess += "và có đúng số chữ cái thì thí sinh vẫn giành một phần điểm. Tuy nhiên, phần thi sẽ tiếp tục và thí sinh đó "
+    mess += "vẫn bị loại khỏi phần chơi này.)\n"
     mess += "```\n"
     return mess
 
