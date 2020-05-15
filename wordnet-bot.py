@@ -10,9 +10,25 @@ import messenger
 import pickle
 
 # load word database
+"""
 wordFile = open("wordDatabase.json", "r")
 wordDatabase = json.load(wordFile)
 wordFile.close()
+"""
+
+# load new word list
+wordDatabase = {}
+
+
+def init_word_list():
+    global wordDatabase
+    new_word_file = open("newWordList.txt", "r")
+    for line in new_word_file:
+        wordDatabase[line.strip()] = {"long": ""}
+    new_word_file.close()
+
+
+init_word_list()
 
 # game information
 status = 0
@@ -80,7 +96,7 @@ def is_game_running():
     global status
     return 1 <= status <= 5
 
-
+"""
 def pick_keyword():
     clue_list = []
     while True:
@@ -88,6 +104,35 @@ def pick_keyword():
         details = wordDef.choose_questions(word)
         print(word)
         print(details)
+        if details is None:
+            continue
+        else:
+            break
+    for k in details:
+        clue_list.append((k, details[k]))
+    clue_list.append((word, wordDef.get_definition(word)))
+
+    return word, clue_list
+"""
+
+
+def pick_keyword():
+    clue_list = []
+    while True:
+        word, info = random.choice(list(wordDatabase.items()))
+
+        if wordDef.get_definition(word) == "":
+            del wordDatabase[word]
+            continue
+
+        if info["long"] == "":
+            page = vocs.getLongDefinition(word)
+            info["long"] = vocs.getLongDefinition(page)
+            if info["long"] == "":
+                del wordDatabase[word]
+                continue
+
+        details = wordDef.choose_questions(word)
         if details is None:
             continue
         else:
@@ -284,6 +329,7 @@ async def on_message(message):
     if len(args) >= 2 and args[1] == "hello":
         mess = "Hello, I am a test bot."
 
+    """
     if len(args) >= 3 and args[1] == "def":
         for i in range(2, min(len(args), 5)):
             word = args[i]
@@ -299,6 +345,7 @@ async def on_message(message):
                 mess += vocs.getShortDefinition(page) + "\n"
                 mess += vocs.getLongDefinition(page) + "\n"
             mess += "```"
+    """
 
     if len(args) >= 2 and args[1] == "register":
         mess = "You have been registered."
