@@ -48,7 +48,7 @@ def register_user(user):
     global listOfUsers
     if not (user in listOfUsers):
         listOfUsers[user] = {"answer": "", "score": 0, "receive_message": True, "eliminate": False}
-        listOfUsers[user] = {"activate": False}
+        listOfUsers[user]["activate"] = False
     listOfUsers[user]["receive_message"] = True
 
 
@@ -65,6 +65,8 @@ def load_user_data():
     f = x.text.strip().split('\n')
     for line in f:
         line = line.strip().split(' ')
+        if len(line) != 3:
+            break
         print(line[0])
         print(line[1])
         print(line[2] == "1")
@@ -382,7 +384,7 @@ async def on_message(message):
                     await message.author.send("Answers for this clue are no longer accepted!")
             else:
                 if acceptingKeyword:
-                    await guess_keyword(message.author,message.content)
+                    await guess_keyword(message.author, message.content)
                 else:
                     await message.author.send("We are not accepting keyword answers. Please wait a little bit and try again.")
 
@@ -450,7 +452,7 @@ async def on_message(message):
             if x.text[0] == '\n':
                 break
         mess = "```\n"
-        mess += x.text
+        mess += x.text.strip()
         mess += "```\n"
 
     if mess != "":
