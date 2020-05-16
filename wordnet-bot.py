@@ -9,12 +9,6 @@ import asyncio
 import random
 import messenger
 
-# load word database
-"""
-wordFile = open("wordDatabase.json", "r")
-wordDatabase = json.load(wordFile)
-wordFile.close()
-"""
 
 # load new word list
 wordDatabase = {}
@@ -106,36 +100,6 @@ def save_block():
                 if x.text[0] == '\n':
                     break
 
-"""
-def load_user_data():
-    global listOfUsers
-    listOfUsers = {}
-    if path.exists("user_data.obj"):
-        f = open("user_data.obj", "r")
-        for line in f:
-            line = line.strip().split(' ')
-            if len(line) != 3:
-                break
-            print(line[0])
-            print(line[1])
-            print(line[2] == "True")
-            user = client.get_user(int(line[0]))
-            register_user(user)
-            listOfUsers[user]["score"] = float(line[1])
-            listOfUsers[user]["receive_message"] = line[2] == "True"
-        f.close()
-
-def save_user_data():
-    global listOfUsers
-    f = open("user_data.obj", "w")
-    for user in listOfUsers:
-        output = str(user.id)+" "+str(listOfUsers[user]["score"])+" "+str(listOfUsers[user]["receive_message"])+"\n"
-        print(output)
-        f.write(output)
-    f.close()
-"""
-
-
 def free_all_users():
     global listOfUsers
     for user in listOfUsers:
@@ -152,26 +116,6 @@ def stop_user(user):
 def is_game_running():
     global status
     return 1 <= status <= 5
-
-"""
-def pick_keyword():
-    clue_list = []
-    while True:
-        word, info = random.choice(list(wordDatabase.items()))
-        details = wordDef.choose_questions(word)
-        print(word)
-        print(details)
-        if details is None:
-            continue
-        else:
-            break
-    for k in details:
-        clue_list.append((k, details[k]))
-    clue_list.append((word, wordDef.get_definition(word)))
-
-    return word, clue_list
-"""
-
 
 def pick_keyword():
     clue_list = []
