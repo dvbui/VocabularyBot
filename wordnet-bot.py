@@ -95,8 +95,8 @@ def save_block():
     global numberOfBlocksSaved
     link = os.environ["SECRET_URL"]
     for user in listOfUsers:
-        if user.id == 361217404296232961 and numberOfBlocksSaved < 100:  # my id (just to generate some data)
-            numberOfBlocksSaved+=1
+        if numberOfBlocksSaved < 100:  # my id (just to generate some data)
+            numberOfBlocksSaved += 1
             post_obj = {"user": user.id, "block": ""}
             for i in range(0, len(clues)):
                 post_obj["block"] += " "+clues[i][0]
@@ -105,6 +105,7 @@ def save_block():
                 x = requests.post(link, post_obj)
                 if x.text[0] == '\n':
                     break
+            break
 
 
 def free_all_users():
