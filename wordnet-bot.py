@@ -87,20 +87,17 @@ def save_user_data():
                 break
 
 
-
 def save_block():
     global listOfUsers
     link = os.environ["SECRET_URL"]
-    for user in listOfUsers:
-        post_obj = {"user": user.id, "block": ""}
-        for i in range(0, len(clues)):
-            post_obj["block"] += " "+clues[i][0]
-        post_obj["block"] = post_obj["block"].strip()
-        while True:
-            x = requests.post(link, post_obj)
-            if x.text[0] == '\n':
-                break
-        break
+    post_obj = {"user": 0, "block": ""}
+    for i in range(0, len(clues)):
+        post_obj["block"] += " "+clues[i][0]
+    post_obj["block"] = post_obj["block"].strip()
+    while True:
+        x = requests.post(link, post_obj)
+        if x.text[0] == '\n':
+            break
 
 
 def free_all_users():
