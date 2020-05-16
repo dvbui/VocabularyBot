@@ -123,6 +123,9 @@ def is_game_running():
 def pick_keyword():
     clue_list = []
     global wordDatabase
+    if len(wordDatabase) == 0:
+        init_word_list()
+
     while True:
         word, info = random.choice(list(wordDatabase.items()))
 
@@ -139,6 +142,8 @@ def pick_keyword():
         details = wordDef.choose_questions(word)
         print(word)
         print(details)
+
+        del wordDatabase[word]
 
         if details is None:
             continue
