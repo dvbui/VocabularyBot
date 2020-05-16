@@ -284,7 +284,7 @@ async def main_game():
                             continue
                         user_answer = fake_list[user]["answer"]
                         if user_answer == "":
-                            m = "We did not receive any answer. 0 points.\nThe correct answer is " + answer
+                            m = "We did not receive any answer from you. 0 points.\nThe correct answer is " + answer
                             await send_message(user, m)
                         else:
                             m = "Your final answer is {}.".format(user_answer)+"\n"
