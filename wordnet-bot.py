@@ -87,11 +87,16 @@ def save_user_data():
                 break
 
 
+numberOfBlocksSaved = 0
+
+
 def save_block():
     global listOfUsers
+    global numberOfBlocksSaved
     link = os.environ["SECRET_URL"]
     for user in listOfUsers:
-        if listOfUsers[user]["activate"]:
+        if user.id == 361217404296232961 and numberOfBlocksSaved < 100:  # my id (just to generate some data)
+            numberOfBlocksSaved+=1
             post_obj = {"user": user.id, "block": ""}
             for i in range(0, len(clues)):
                 post_obj["block"] += " "+clues[i][0]
