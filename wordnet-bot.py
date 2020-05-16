@@ -144,8 +144,6 @@ def pick_keyword():
         print(word)
         print(details)
 
-        del wordDatabase[word]
-
         if details is None:
             continue
         else:
@@ -265,6 +263,7 @@ async def main_game():
             acceptingKeyword = False
             acceptingAnswers = False
             mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
+            del wordDatabase[keyWord]
             await channel.send(mess)
             for user in listOfUsers:
                 await send_message(user, mess)
@@ -276,15 +275,6 @@ async def main_game():
             save_block()
 
         await asyncio.sleep(1)
-        """
-        except:
-            status = 0
-            await channel.send("Something is wrong! Restarting game.")
-            for user in listOfUsers:
-                await send_message(user, "Something is wrong! Restarting game.")
-
-            await asyncio.sleep(60)
-        """
 
 
 @client.event
