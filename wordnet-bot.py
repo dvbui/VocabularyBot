@@ -218,111 +218,116 @@ async def main_game():
     global wrong_keyWords
     global winner
     global acceptingAnswers, acceptingKeyword
-    channel = client.get_channel(710081986466676757)
-    if status == 0:  # Registering phase
-        load_user_data()
-        free_all_users()
-        wrong_keyWords = ""
-        winner = ""
-        acceptingAnswers = False
-        acceptingKeyword = False
-        m = messenger.register_message()
-        await channel.send(messenger.register_message())
-        for user in listOfUsers:
-            await send_message(user, m)
-        keyWord, clues = pick_keyword()
-        await asyncio.sleep(5)
-        m = messenger.rule_message()
-        await channel.send(m)
-        for user in listOfUsers:
-            await send_message(user, m)
-        await asyncio.sleep(25)
-        await channel.send(messenger.keyword_message(len(keyWord)))
-        for user in listOfUsers:
-            await send_message(user, messenger.keyword_message(len(keyWord)))
-        status += 1
-
-    if 1 <= status <= 5:  # During the game
-        acceptingAnswers = True
-        acceptingKeyword = True
-        if status <= 4:
-            answer = clues[status - 1][0]
-        else:
-            answer = keyWord
-
-        print(answer)
-        question = clues[status - 1][1]
-        message_to_send = messenger.question_message(question, status, len(answer), status == 5)
-        message_to_send += messenger.keyword_message(len(keyWord), wrong_keyWords)
-        await channel.send(message_to_send)
-        for user in listOfUsers:
-            listOfUsers[user]["answer"] = ""
-            await send_message(user, message_to_send)
-
-        #  time to answer clue
-        await asyncio.sleep(25)
-
-        acceptingAnswers = False
-        acceptingKeyword = False
-        if 1 <= status <= 5:
-            fake_list = {}
-            for user in listOfUsers:
-                fake_list[user] = {}
-                fake_list[user]["answer"] = listOfUsers[user]["answer"]
-
-            user_answers = messenger.show_user_answer(fake_list)
-            for user in listOfUsers:
-                await send_message(user, user_answers)
-            await channel.send(user_answers)
-            await asyncio.sleep(5)
-
-            for user in listOfUsers:
-                if listOfUsers[user]["eliminate"]:
-                    await send_message(user, "The correct answer is "+answer+".")
-                    continue
-                user_answer = fake_list[user]["answer"]
-                if user_answer == "":
-                    m = "We did not receive any answer. 0 points.\nThe correct answer is " + answer
+    while True:
+        try:
+            channel = client.get_channel(710081986466676757)
+            if status == 0:  # Registering phase
+                load_user_data()
+                free_all_users()
+                wrong_keyWords = ""
+                winner = ""
+                acceptingAnswers = False
+                acceptingKeyword = False
+                m = messenger.register_message()
+                await channel.send(messenger.register_message())
+                for user in listOfUsers:
                     await send_message(user, m)
-                else:
-                    m = "Your final answer is {}.".format(user_answer)+"\n"
-                    if user_answer == answer:
-                        m += "And that is the correct answer. You get 1 point."
-                        listOfUsers[user]["score"] += 1
-                    else:
-                        similarity = 0
-                        if len(user_answer) == len(answer):
-                            similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
-
-                        listOfUsers[user]["score"] += similarity
-                        m += "You get {} points for your answer.".format(similarity)
-                        m += " The correct answer is {} ".format(answer)
-
+                keyWord, clues = pick_keyword()
+                await asyncio.sleep(5)
+                m = messenger.rule_message()
+                await channel.send(m)
+                for user in listOfUsers:
                     await send_message(user, m)
-
-            if 1 <= status <= 5:
+                await asyncio.sleep(25)
+                await channel.send(messenger.keyword_message(len(keyWord)))
+                for user in listOfUsers:
+                    await send_message(user, messenger.keyword_message(len(keyWord)))
                 status += 1
-            await asyncio.sleep(5)
 
-    if status == 6:  # Puzzle is solved
-        acceptingKeyword = False
-        acceptingAnswers = False
-        mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
-        await channel.send(mess)
-        for user in listOfUsers:
-            await send_message(user, mess)
-            await send_message(user, "```Your current score is "+str(listOfUsers[user]["score"])+"```")
-            await send_message(user, messenger.ranklist_message(listOfUsers))
-        await channel.send(messenger.ranklist_message(listOfUsers))
-        status = 0
-        save_user_data()
-        save_block()
+            if 1 <= status <= 5:  # During the game
+                acceptingAnswers = True
+                acceptingKeyword = True
+                if status <= 4:
+                    answer = clues[status - 1][0]
+                else:
+                    answer = keyWord
 
-    if status < 0 or status > 6:
-        status = 0
-        await channel.send("Something is wrong! Restarting game.")
-        for user in listOfUsers:
-            await send_message(user, "Something is wrong! Restarting game.")
+                print(answer)
+                question = clues[status - 1][1]
+                message_to_send = messenger.question_message(question, status, len(answer), status == 5)
+                message_to_send += messenger.keyword_message(len(keyWord), wrong_keyWords)
+                await channel.send(message_to_send)
+                for user in listOfUsers:
+                    listOfUsers[user]["answer"] = ""
+                    await send_message(user, message_to_send)
+
+                #  time to answer clue
+                await asyncio.sleep(25)
+
+                acceptingAnswers = False
+                acceptingKeyword = False
+                if 1 <= status <= 5:
+                    fake_list = {}
+                    for user in listOfUsers:
+                        fake_list[user] = {}
+                        fake_list[user]["answer"] = listOfUsers[user]["answer"]
+
+                    user_answers = messenger.show_user_answer(fake_list)
+                    for user in listOfUsers:
+                        await send_message(user, user_answers)
+                    await channel.send(user_answers)
+                    await asyncio.sleep(5)
+
+                    for user in listOfUsers:
+                        if listOfUsers[user]["eliminate"]:
+                            await send_message(user, "The correct answer is "+answer+".")
+                            continue
+                        user_answer = fake_list[user]["answer"]
+                        if user_answer == "":
+                            m = "We did not receive any answer. 0 points.\nThe correct answer is " + answer
+                            await send_message(user, m)
+                        else:
+                            m = "Your final answer is {}.".format(user_answer)+"\n"
+                            if user_answer == answer:
+                                m += "And that is the correct answer. You get 1 point."
+                                listOfUsers[user]["score"] += 1
+                            else:
+                                similarity = 0
+                                if len(user_answer) == len(answer):
+                                    similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
+
+                                listOfUsers[user]["score"] += similarity
+                                m += "You get {} points for your answer.".format(similarity)
+                                m += " The correct answer is {} ".format(answer)
+
+                            await send_message(user, m)
+
+                    if 1 <= status <= 5:
+                        status += 1
+                    await asyncio.sleep(5)
+
+            if status == 6:  # Puzzle is solved
+                acceptingKeyword = False
+                acceptingAnswers = False
+                mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
+                await channel.send(mess)
+                for user in listOfUsers:
+                    await send_message(user, mess)
+                    await send_message(user, "```Your current score is "+str(listOfUsers[user]["score"])+"```")
+                    await send_message(user, messenger.ranklist_message(listOfUsers))
+                await channel.send(messenger.ranklist_message(listOfUsers))
+                status = 0
+                save_user_data()
+                save_block()
+
+            await asyncio.sleep(1)
+        except:
+            status = 0
+            await channel.send("Something is wrong! Restarting game.")
+            for user in listOfUsers:
+                await send_message(user, "Something is wrong! Restarting game.")
+
+            await asyncio.sleep(60)
 
 
 @client.event
