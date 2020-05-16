@@ -348,28 +348,10 @@ async def on_message(message):
         return
 
     mess = ""
-    if len(args) >= 2 and args[1] == "hello":
+    if len(args) == 2 and args[1] == "hello":
         mess = "Hello, I am a test bot."
 
-    """
-    if len(args) >= 3 and args[1] == "def":
-        for i in range(2, min(len(args), 5)):
-            word = args[i]
-            mess = "```\n"
-            if word in wordDatabase:
-                mess += word + "\n"
-                mess += wordDatabase[word]["short"] + "\n"
-                mess += wordDatabase[word]["long"] + "\n"
-                mess += "\n"
-            else:
-                page = vocs.getPage(word)
-                mess += word + "\n"
-                mess += vocs.getShortDefinition(page) + "\n"
-                mess += vocs.getLongDefinition(page) + "\n"
-            mess += "```"
-    """
-
-    if len(args) >= 2 and args[1] == "register":
+    if len(args) == 2 and args[1] == "register":
         mess = "You have been registered."
         register_user(message.author)
         if is_game_running():
@@ -381,10 +363,7 @@ async def on_message(message):
                 answer = clues[status-1][0]
             await message.author.send(messenger.question_message(question, status, len(answer)))
 
-    if len(args) >= 2 and args[1] == "help":
-        mess = "olym hello\nolym def <word>"
-
-    if len(args) >= 2 and args[1] == "stop":
+    if len(args) == 2 and args[1] == "stop":
         mess = "You have been unregistered."
         stop_user(message.author)
 
@@ -399,7 +378,7 @@ async def on_message(message):
         else:
             mess = "We are not accepting keyword answers. Please wait a little bit and try again."
 
-    if len(args) >= 2 and args[1] == "export" and message.author in listOfUsers:
+    if len(args) == 2 and args[1] == "export" and message.author in listOfUsers:
         link = os.environ["SECRET_URL"]
         post_obj = {"user": str(message.author.id), "command": "print block"}
         while True:
