@@ -65,9 +65,10 @@ def load_user_data():
         print(line[1])
         print(line[2] == "1")
         user = client.get_user(int(line[0]))
-        register_user(user)
-        listOfUsers[user]["score"] = float(line[1])
-        listOfUsers[user]["receive_message"] = line[2] == "1"
+        if not (user is None):
+            register_user(user)
+            listOfUsers[user]["score"] = float(line[1])
+            listOfUsers[user]["receive_message"] = line[2] == "1"
 
 
 def save_user_data():
@@ -92,13 +93,14 @@ def save_block():
     for user in listOfUsers:
         if listOfUsers[user]["activate"]:
             post_obj = {"user": user.id, "block": ""}
-            for i in range(0,len(clues)):
+            for i in range(0, len(clues)):
                 post_obj["block"] += " "+clues[i][0]
             post_obj["block"] = post_obj["block"].strip()
             while True:
                 x = requests.post(link, post_obj)
                 if x.text[0] == '\n':
                     break
+
 
 def free_all_users():
     global listOfUsers
@@ -116,6 +118,7 @@ def stop_user(user):
 def is_game_running():
     global status
     return 1 <= status <= 5
+
 
 def pick_keyword():
     clue_list = []
