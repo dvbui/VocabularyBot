@@ -153,7 +153,10 @@ def pick_keyword():
 
 async def send_message(user, message):
     if (user in listOfUsers) and listOfUsers[user]["receive_message"]:
-        await user.send(message)
+        try:
+            await user.send(message)
+        except:
+            print("Can't send message")
 
 
 async def main_game():
