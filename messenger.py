@@ -54,7 +54,7 @@ def block_end_message(word, long_definition, winner):
         mess += "{} solved this block!".format(winner)+"\n\n"
     mess += "The keyword is "+word+"\n"
     mess += "\n"
-    mess += long_definition + "\n"
+    mess += long_definition + "\n\n"
     mess += "This text is from Vocabulary.com (https://www.vocabulary.com). Copyright ©1998-2020 Thinkmap, Inc. All rights reserved.\n"
     mess += "```\n"
     return mess
