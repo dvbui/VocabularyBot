@@ -7,10 +7,9 @@ import inflect
 import asyncio
 import random
 import messenger
-
+inflect = inflect.engine()
 # load new word list
 wordDatabase = {}
-inflect = inflect.engine()
 
 
 def init_word_list():
@@ -20,8 +19,6 @@ def init_word_list():
         wordDatabase[line.strip()] = {"long": ""}
     new_word_file.close()
 
-
-init_word_list()
 
 # game information
 status = 0
@@ -172,7 +169,7 @@ async def main_game():
     global wrong_keyWords
     global winner
     global acceptingAnswers, acceptingKeyword
-    while True:
+    while not client.is_closed():
         channel = client.get_channel(710081986466676757)
         if status == 0:  # Registering phase
             load_user_data()
@@ -281,6 +278,7 @@ async def main_game():
 async def on_ready():
     print("Bot is ready.")
     load_user_data()
+    init_word_list()
     client.loop.create_task(main_game())
 
 
