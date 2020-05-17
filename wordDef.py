@@ -27,7 +27,7 @@ def get_related(word, typ="hyponyms", definition=""):
     for s in synset:
         hyponym_sets = s.hyponyms()
         if typ == "synonyms":
-            if s.defintion() == definition:
+            if s.definition() == definition:
                 continue
             hyponym_sets = [s]
         if typ == "hypernyms":
