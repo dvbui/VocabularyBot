@@ -2,17 +2,15 @@ import requests
 import vocs
 import wordDef
 import os
-from os import path
 import discord
-import json
+import inflect
 import asyncio
 import random
 import messenger
 
-
 # load new word list
 wordDatabase = {}
-
+inflect = inflect.engine()
 
 def init_word_list():
     global wordDatabase
@@ -126,6 +124,10 @@ def pick_keyword():
 
     while True:
         word, info = random.choice(list(wordDatabase.items()))
+
+        if not inflect.singular_noun(word):
+            del wordDatabase[word]
+            continue
 
         if wordDef.get_definition(word) == "":
             del wordDatabase[word]
