@@ -4,3 +4,4 @@ herokuPassword.txt
 *.project
 *.swp
 .idea
+__pycache__
