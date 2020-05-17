@@ -142,7 +142,7 @@ def pick_keyword():
                 continue
 
         word_definition = wordDef.get_definition(word)
-        details = wordDef.choose_questions(word, defintion=word_definition)
+        details = wordDef.choose_questions(word, definition=word_definition)
         print(word)
         print(details)
 
