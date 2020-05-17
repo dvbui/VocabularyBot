@@ -48,7 +48,10 @@ def load_user_data():
     link = os.environ["SECRET_URL"]
     post_obj = {"command": "print user"}
     while True:
-        x = requests.post(link, post_obj)
+        try:
+            x = requests.post(link, post_obj)
+        except:
+            continue
         if x.text[0] == '\n':
             break
 
