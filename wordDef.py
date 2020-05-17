@@ -11,7 +11,9 @@ def get_definition(word):
 
     if len(synset) == 0:
         return ""
-    return synset[0].definition()
+
+    id = random.randint(0, len(synset)-1)
+    return synset[id].definition()
 
 
 # Input: a string
