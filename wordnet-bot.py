@@ -91,7 +91,10 @@ def save_block():
         post_obj["block"] += " "+clues[i][0]
     post_obj["block"] = post_obj["block"].strip()
     while True:
-        x = requests.post(link, post_obj)
+        try:
+            x = requests.post(link, post_obj)
+        except:
+            break
         if x.text[0] == '\n':
             break
 
@@ -172,7 +175,7 @@ async def main_game():
     while not client.is_closed():
         channel = client.get_channel(710081986466676757)
         if status == 0:  # Registering phase
-            load_user_data()
+            #  load_user_data()
             free_all_users()
             wrong_keyWords = ""
             winner = ""
