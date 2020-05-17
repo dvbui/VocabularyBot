@@ -16,7 +16,7 @@ wordDatabase = {}
 
 def init_word_list():
     global wordDatabase
-    new_word_file = open("newWordList.txt", "r")
+    new_word_file = open("list7000.txt", "r")
     for line in new_word_file:
         wordDatabase[line.strip()] = {"long": ""}
     new_word_file.close()

@@ -2,4 +2,5 @@ secret.txt
 herokuPassword.txt
 *.php
 *.project
+*.swp
 .idea
