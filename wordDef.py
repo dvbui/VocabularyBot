@@ -19,7 +19,7 @@ def get_definition(word):
 # Input: a string
 # Output: a set with format { "string" : definition }
 # Each word / definition only appears once
-def get_related(word, typ="hyponyms"):
+def get_related(word, typ="hyponyms", definition=""):
     synset = wordnet.synsets(word)
     res = {}
     def_set = {}
@@ -27,7 +27,7 @@ def get_related(word, typ="hyponyms"):
     for s in synset:
         hyponym_sets = s.hyponyms()
         if typ == "synonyms":
-            if s == synset[0]:
+            if s.defintion() == definition:
                 continue
             hyponym_sets = [s]
         if typ == "hypernyms":
@@ -66,13 +66,13 @@ def merge(fi, se):
     return fi
 
 
-def choose_questions(word, n=4):
-    s = get_related(word, "hyponyms")
+def choose_questions(word, n=4, definition=""):
+    s = get_related(word, "hyponyms", definition)
     typ = ["synonyms", "hypernyms"]
     for t in typ:
         if len(s) >= n:
             break
-        s = merge(s, get_related(word, t))
+        s = merge(s, get_related(word, t, definition))
 
     if len(s) < n:
         return None
@@ -96,7 +96,7 @@ def choose_questions(word, n=4):
     return res
 
 
-def get_similarity(first_word,first_definition,second_word):
+def get_similarity(first_word, first_definition, second_word):
     first_synset = wordnet.synsets(first_word)
     second_synset = wordnet.synsets(second_word)
     best_similarity = 0

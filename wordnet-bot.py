@@ -123,6 +123,7 @@ def pick_keyword():
     if len(wordDatabase) == 0:
         init_word_list()
 
+    word_definition = ""
     while True:
         word, info = random.choice(list(wordDatabase.items()))
 
@@ -140,7 +141,8 @@ def pick_keyword():
                 del wordDatabase[word]
                 continue
 
-        details = wordDef.choose_questions(word)
+        word_definition = wordDef.get_definition(word)
+        details = wordDef.choose_questions(word, defintion=word_definition)
         print(word)
         print(details)
 
@@ -148,9 +150,10 @@ def pick_keyword():
             continue
         else:
             break
+
     for k in details:
         clue_list.append((k, details[k]))
-    clue_list.append((word, wordDef.get_definition(word)))
+    clue_list.append((word, word_definition))
 
     return word, clue_list
 
