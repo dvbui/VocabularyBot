@@ -126,7 +126,7 @@ def pick_keyword():
     while True:
         word, info = random.choice(list(wordDatabase.items()))
 
-        if not inflect.singular_noun(word):
+        if inflect.singular_noun(word):
             del wordDatabase[word]
             continue
 
