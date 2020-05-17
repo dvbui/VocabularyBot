@@ -12,6 +12,7 @@ import messenger
 wordDatabase = {}
 inflect = inflect.engine()
 
+
 def init_word_list():
     global wordDatabase
     new_word_file = open("list7000.txt", "r")
