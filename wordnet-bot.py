@@ -86,8 +86,8 @@ def save_user_data():
             try:
                 x = requests.post(link, post_obj)
             except:
-                sleep(5)
-                continue
+                os.system("bash ./restart.sh")
+                break
             if x.text[0] == '\n':
                 break
 
@@ -103,6 +103,7 @@ def save_block():
         try:
             x = requests.post(link, post_obj)
         except:
+            os.system("bash ./restart.sh")
             break
         if x.text[0] == '\n':
             break
@@ -267,7 +268,6 @@ async def main_game():
                             m += " The correct answer is {} ".format(answer)
 
                         await send_message(user, m)
-                await asyncio.sleep(5)
 
                 if 1 <= status <= 5:
                     status += 1
@@ -393,9 +393,12 @@ async def on_message(message):
         link = os.environ["SECRET_URL"]
         post_obj = {"user": str(message.author.id), "command": "print block"}
         while True:
-            x = requests.post(link, post_obj)
+            try:
+                x = requests.post(link, post_obj)
+            except:
+                os.system("bash ./restart.sh")
             if x.text[0] == '\n':
-                break
+                continue
         mess = "```\n"
         mess += x.text.strip()
         mess += "```\n"
