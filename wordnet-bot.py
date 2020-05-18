@@ -399,6 +399,7 @@ async def on_message(message):
                 print("failure in exporting words\n")
                 os.system("bash ./restart.sh")
             if x.text[0] == '\n':
+                print("failure in exporting words\n")
                 continue
         mess = "```\n"
         mess += x.text.strip()
