@@ -7,7 +7,9 @@ import inflect
 import asyncio
 import random
 import messenger
+import sys
 from time import sleep
+sys.setrecursionlimit(10**6)
 inflect = inflect.engine()
 # load new word list
 wordDatabase = {}
