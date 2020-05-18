@@ -208,6 +208,7 @@ async def main_game():
             for user in listOfUsers:
                 await send_message(user, messenger.keyword_message(len(keyWord)))
             status += 1
+            await asyncio.sleep(5)
 
         if 1 <= status <= 5:  # During the game
             acceptingAnswers = True
@@ -266,6 +267,7 @@ async def main_game():
                             m += " The correct answer is {} ".format(answer)
 
                         await send_message(user, m)
+                await asyncio.sleep(5)
 
                 if 1 <= status <= 5:
                     status += 1
@@ -285,8 +287,7 @@ async def main_game():
             status = 0
             save_user_data()
             save_block()
-
-        await asyncio.sleep(1)
+            await asyncio.sleep(10)
 
 
 @client.event
