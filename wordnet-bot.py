@@ -295,7 +295,7 @@ async def on_ready():
     print("Bot is ready.")
     load_user_data()
     init_word_list()
-    client.loop.create_task(main_game())
+    client.run(main_game())
 
 
 async def guess_keyword(user, key_answer):
