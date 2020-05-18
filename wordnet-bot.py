@@ -170,15 +170,12 @@ def pick_keyword():
     return word, clue_list
 
 
-async def send_message(user, message, special = False):
+async def send_message(user, message, special=False):
     if special or ((user in listOfUsers) and listOfUsers[user]["receive_message"]):
-        cnt = 0
-        while cnt < 10:
-            try:
-                await user.send(message)
-            except:
-                print("Can't send message")
-                cnt += 1
+        try:
+            await user.send(message)
+        except:
+            print("Can't send message")
 
 
 async def main_game():
