@@ -295,7 +295,7 @@ async def on_ready():
     print("Bot is ready.")
     load_user_data()
     init_word_list()
-    client.run(main_game())
+    await asyncio.run(main_game())
 
 
 async def guess_keyword(user, key_answer):
