@@ -191,8 +191,10 @@ async def main_game():
     global winner
     global acceptingAnswers, acceptingKeyword
     channel = client.get_channel(710081986466676757)
+
     if client.is_closed():
         return
+
     if status == 0:  # Registering phase
         #  load_user_data()
         free_all_users()
@@ -300,6 +302,7 @@ async def on_ready():
     print("Bot is ready.")
     load_user_data()
     init_word_list()
+    print("I'm here")
     await main_game()
 
 
