@@ -185,8 +185,8 @@ async def main_game():
     global wrong_keyWords
     global winner
     global acceptingAnswers, acceptingKeyword
+    channel = client.get_channel(710081986466676757)
     while not client.is_closed():
-        channel = client.get_channel(710081986466676757)
         if status == 0:  # Registering phase
             #  load_user_data()
             free_all_users()
@@ -209,7 +209,7 @@ async def main_game():
             for user in listOfUsers:
                 await send_message(user, messenger.keyword_message(len(keyWord)))
             status += 1
-            await asyncio.sleep(5)
+            await asyncio.sleep(10)
 
         if 1 <= status <= 5:  # During the game
             acceptingAnswers = True
@@ -271,7 +271,7 @@ async def main_game():
 
                 if 1 <= status <= 5:
                     status += 1
-                await asyncio.sleep(5)
+            await asyncio.sleep(5)
 
         if status == 6:  # Puzzle is solved
             acceptingKeyword = False
