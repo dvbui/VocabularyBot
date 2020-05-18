@@ -7,6 +7,7 @@ import inflect
 import asyncio
 import random
 import messenger
+from time import sleep
 inflect = inflect.engine()
 # load new word list
 wordDatabase = {}
@@ -51,6 +52,7 @@ def load_user_data():
         try:
             x = requests.post(link, post_obj)
         except:
+            sleep(5)
             continue
         if x.text[0] == '\n':
             break
@@ -81,7 +83,11 @@ def save_user_data():
         else:
             post_obj["receive_message"] = "0"
         while True:
-            x = requests.post(link, post_obj)
+            try:
+                x = requests.post(link, post_obj)
+            except:
+                sleep(5)
+                continue
             if x.text[0] == '\n':
                 break
 
