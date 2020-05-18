@@ -17,7 +17,7 @@ def get_definition(word):
 # Input: a string
 # Output: a set with format { "string" : definition }
 # Each word / definition only appears once
-def get_related(word, typ="hyponyms", definition=""):
+def get_related(word, typ="hyponyms", word_definition=""):
     synset = wordnet.synsets(word)
     res = {}
     def_set = {}
@@ -25,8 +25,6 @@ def get_related(word, typ="hyponyms", definition=""):
     for s in synset:
         hyponym_sets = s.hyponyms()
         if typ == "synonyms":
-            if s.definition() == definition:
-                continue
             hyponym_sets = [s]
         if typ == "hypernyms":
             hyponym_sets = s.hypernyms()
@@ -43,7 +41,7 @@ def get_related(word, typ="hyponyms", definition=""):
 
             if w.isalpha():
                 definition = h.definition()
-                if definition in def_set:
+                if (definition in def_set) or (definition == word_definition):
                     continue
                 res[w] = definition
                 def_set[definition] = ""
