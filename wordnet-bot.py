@@ -170,8 +170,8 @@ def pick_keyword():
     return word, clue_list
 
 
-async def send_message(user, message):
-    if (user in listOfUsers) and listOfUsers[user]["receive_message"]:
+async def send_message(user, message, special = False):
+    if special or ((user in listOfUsers) and listOfUsers[user]["receive_message"]):
         cnt = 0
         while cnt < 10:
             try:
@@ -203,17 +203,17 @@ async def main_game():
         acceptingAnswers = False
         acceptingKeyword = False
         m = messenger.register_message()
-        await send_message(channel, messenger.register_message())
+        await send_message(channel, messenger.register_message(), True)
         for user in listOfUsers:
             await send_message(user, m)
         keyWord, clues = pick_keyword()
         await asyncio.sleep(5)
         m = messenger.rule_message()
-        await send_message(channel, m)
+        await send_message(channel, m, True)
         for user in listOfUsers:
             await send_message(user, m)
         await asyncio.sleep(25)
-        await send_message(channel, messenger.keyword_message(len(keyWord)))
+        await send_message(channel, messenger.keyword_message(len(keyWord)), True)
         for user in listOfUsers:
             await send_message(user, messenger.keyword_message(len(keyWord)))
         status += 1
@@ -230,7 +230,7 @@ async def main_game():
         question = clues[status - 1][1]
         message_to_send = messenger.question_message(question, status, len(answer), status == 5)
         message_to_send += messenger.keyword_message(len(keyWord), wrong_keyWords)
-        await send_message(channel, message_to_send)
+        await send_message(channel, message_to_send, True)
         for user in listOfUsers:
             listOfUsers[user]["answer"] = ""
             await send_message(user, message_to_send)
@@ -249,7 +249,7 @@ async def main_game():
             user_answers = messenger.show_user_answer(fake_list)
             for user in listOfUsers:
                 await send_message(user, user_answers)
-            await send_message(channel, user_answers)
+            await send_message(channel, user_answers, True)
             await asyncio.sleep(5)
 
             for user in listOfUsers:
@@ -284,12 +284,12 @@ async def main_game():
         acceptingAnswers = False
         mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
         del wordDatabase[keyWord]
-        await send_message(channel, mess)
+        await send_message(channel, mess, True)
         for user in listOfUsers:
             await send_message(user, mess)
             await send_message(user, "```Your current score is "+str(listOfUsers[user]["score"])+"```")
             await send_message(user, messenger.ranklist_message(listOfUsers))
-        await send_message(channel, messenger.ranklist_message(listOfUsers))
+        await send_message(channel, messenger.ranklist_message(listOfUsers), True)
         status = 0
         save_user_data()
         save_block()
