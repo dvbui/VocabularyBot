@@ -400,10 +400,7 @@ async def on_message(message):
                 print("failure in exporting words\n")
                 os.system("bash ./restart.sh")
             if x.text[0] == '\n':
-                retry += 1
-                if retry == 10:
-                    break
-                continue
+                break
         mess = "```\n"
         if retry < 10:
             mess += x.text.strip()
