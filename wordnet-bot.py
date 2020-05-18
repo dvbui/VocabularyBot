@@ -171,12 +171,12 @@ def pick_keyword():
 async def send_message(user, message):
     if (user in listOfUsers) and listOfUsers[user]["receive_message"]:
         cnt = 0
-        while cnt<10:
+        while cnt < 10:
             try:
                 await user.send(message)
             except:
                 print("Can't send message")
-                cnt+=1
+                cnt += 1
 
 
 async def main_game():
