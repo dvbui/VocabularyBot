@@ -34,9 +34,9 @@ def get_related(word, typ="hyponyms", definition=""):
             lemma = h.lemmas()
             if len(lemma) == 0:
                 continue
-            w = lemma[0].name()
+            w = lemma[0].name().lower()
 
-            if w == word:
+            if w == word.lower():
                 continue
             if w in res:
                 continue
