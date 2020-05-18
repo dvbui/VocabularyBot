@@ -396,6 +396,7 @@ async def on_message(message):
             try:
                 x = requests.post(link, post_obj)
             except:
+                print("failure in exporting words\n")
                 os.system("bash ./restart.sh")
             if x.text[0] == '\n':
                 continue
