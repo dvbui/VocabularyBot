@@ -392,6 +392,7 @@ async def on_message(message):
     if len(args) == 2 and args[1] == "export" and message.author in listOfUsers:
         link = os.environ["SECRET_URL"]
         post_obj = {"user": str(message.author.id), "command": "print block"}
+        retry = 0
         while True:
             try:
                 x = requests.post(link, post_obj)
@@ -399,10 +400,15 @@ async def on_message(message):
                 print("failure in exporting words\n")
                 os.system("bash ./restart.sh")
             if x.text[0] == '\n':
-                print("failure in exporting words\n")
+                retry += 1
+                if retry == 10:
+                    break
                 continue
         mess = "```\n"
-        mess += x.text.strip()
+        if retry < 10:
+            mess += x.text.strip()
+        else:
+            mess += "Exporting words failed. Please try again later."
         mess += "```\n"
 
     if mess != "":
