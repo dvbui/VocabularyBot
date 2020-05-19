@@ -50,7 +50,9 @@ def init_word_list():
         line = line.strip()
         if line in wordDatabase:
             del wordDatabase[line]
-
+    if len(wordDatabase) == 0:
+        get_data(os.environ["SECRET_URL"], {"command": "reset word"}, False)
+        init_word_list()
 
 # game information
 status = 0
@@ -143,7 +145,7 @@ def pick_keyword():
         init_word_list()
 
     word_definition = ""
-    while len(wordDatabase)>0:
+    while len(wordDatabase) > 0:
         word, info = random.choice(list(wordDatabase.items()))
 
         if inflect.singular_noun(word):
@@ -169,6 +171,10 @@ def pick_keyword():
             continue
         else:
             break
+
+    if len(wordDatabase) == 0:
+        init_word_list()
+        return pick_keyword()
 
     for k in details:
         clue_list.append((k, details[k]))
@@ -288,6 +294,9 @@ async def main_game():
         acceptingAnswers = False
         mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
         del wordDatabase[keyWord]
+        url = os.environ["SECRET_URL"]
+        obj = {"word": keyWord, "picked": 1}
+        get_data(url, obj, False)
         await send_message(channel, mess, True)
         for user in listOfUsers:
             await send_message(user, mess)

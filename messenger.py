@@ -1,26 +1,36 @@
 import requests
 import json
 import os
+from time import sleep
 
 messages = {}
 
 
-def init_message():
+def get_data(url, obj, important=False, retry=10):
+    cnt = 0
     while True:
         try:
-            url = os.environ["SECRET_URL"]
-            obj = {"command": "init message"}
             x = requests.post(url, data=obj)
         except:
-            continue
+            if important:
+                sleep(5)
+                continue
+            else:
+                cnt += 1
+                if cnt == retry:
+                    return ""
 
-        if x.text[0] != '\n':
-            continue
+        if x.text[0] == '\n':  # success
+            break
 
-        print(x.text)
-        global messages
-        messages = json.loads(x.text.strip())
-        break
+    return x.text.strip()
+
+
+def init_message():
+    url = os.environ["SECRET_URL"]
+    obj = {"command": "init message"}
+    global messages
+    messages = json.loads(get_data(url, obj))
 
 
 def register_message():
