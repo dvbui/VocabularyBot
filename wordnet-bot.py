@@ -299,6 +299,7 @@ async def on_ready():
     print("Bot is ready.")
     load_user_data()
     init_word_list()
+    messenger.init_message()
     print("I'm here")
     await main_game()
 
@@ -396,7 +397,7 @@ async def on_message(message):
 
     if len(args) == 2 and args[1] == "export" and message.author in listOfUsers:
         link = os.environ["SECRET_URL"]
-        post_obj = {"user": str(message.author.id), "command": "print block"}
+        post_obj = {"user": "", "command": "print block"}
         retry = 0
         while True:
             try:
@@ -413,8 +414,11 @@ async def on_message(message):
             mess += "Exporting words failed. Please try again later."
         mess += "```\n"
 
+    if len(args) == 2 and args[1] == "help":
+        mess = messenger.help_message()
+
     if mess != "":
-        await message.author.send(mess)
+        await send_message(message.author, mess, True)
 
 
 token = os.environ['CLIENT_TOKEN']

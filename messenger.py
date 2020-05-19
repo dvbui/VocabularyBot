@@ -1,37 +1,47 @@
+import requests
+import json
+import os
+
+messages = {}
+
+
+def init_message():
+    while True:
+        try:
+            url = os.environ["SECRET_URL"]
+            obj = {"command": "init message"}
+            x = requests.post(url, data=obj)
+        except:
+            continue
+
+        global messages
+        messages = json.loads(x.text)
+        break
+
+
 def register_message():
+    global messages
     mess = "```\n"
-    mess += "Registration Phase\n"
-    mess += "Generating a new block in 30 seconds\n"
-    mess += "Type \"olym register\" to solve this block\n"
-    mess += "Type \"olym stop\" to stop receiving clues\n"
+    mess += messages["register_message"]
     mess += "```\n"
     return mess
 
 
 def rule_message():
     mess = "```\n"
-    mess += "Blockbuster\n"
-    mess += "In this game, contestants answer four questions together.\n"
-    mess += "The content and the answer to these questions are clues for a keyword.\n"
-    mess += "Contestants answer these questions by typing only their answers (the prefix olym is not needed)\n"
-    mess += "The time to answer each question is 25 seconds.\n"
-    mess += "Each correct answer is 1 point.\n"
-    mess += "Contestants can answer the keyword anytime.\n"
-    mess += "(except when waiting for the next clue and when grading the answers)\n"
-    mess += "If a contestant gets the keyword on clue 1, they will be awarded 8 points, "
-    mess += "clue 2 - 6 points, clue 3 - 4 points, clue 4 - 2 points.\n"
-    mess += "Once all four clues are exhausted, the definition of the keyword "
-    mess += "will appear. If a contestant gets the keyword using the definition, they will be awarded 1 point.\n"
-    mess += "Whenever a contestant gives the correct keyword, the game will stop immediately.\n"
-    mess += "Note: If a contestant answers the keyword incorrectly, they will be eliminated from this game.\n"
-    mess += "(An answer is considered correct if it has the required number of characters and is a synonym for the answer.)\n"
-    mess += "(If the answer for the keyword is not matched with the keyword but has the required number of characters, "
-    mess += "the answerer might receive partial points. The game will continue.)\n"
+    mess += messages["rule_message"]
     mess += "```\n"
     return mess
 
 
-def question_message(question, index="", number_of_character="",final_clue=False):
+def help_message():
+    mess = "```\n"
+    mess += messages["help_message"]
+    mess += "```\n"
+    return mess
+
+
+def question_message(question, index="", number_of_character="", final_clue=False):
     mess = "```\n"
     mess += "\n"
     mess += "Clue {} ({} characters):\n".format(index, number_of_character)
@@ -39,7 +49,7 @@ def question_message(question, index="", number_of_character="",final_clue=False
     mess += "\n"
     mess += "You have 25 seconds to answer this clue.\n"
     if not final_clue:
-        mess += "Type your best answer (and only your answer) to answer this clue.\n"
+        mess += "Type your best answer (and only your answer) for this clue.\n"
         mess += "To guess the keyword, type \"olym solve [keyword]\"\n"
     else:
         mess += "The answer for this clue is the keyword.\n"
