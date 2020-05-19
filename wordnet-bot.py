@@ -17,12 +17,39 @@ ADMIN_ID = 361217404296232961
 wordDatabase = {}
 
 
+def get_data(url, obj, important=False, retry=10):
+    cnt = 0
+    while True:
+        try:
+            x = requests.post(url, data = obj)
+        except:
+            if important:
+                sleep(5)
+                continue
+            else:
+                cnt += 1
+                if cnt == retry:
+                    return ""
+
+        if x.text[0] == '\n':  # success
+            break
+
+    return x.text.strip()
+
+
 def init_word_list():
     global wordDatabase
     new_word_file = open("list8000.txt", "r")
     for line in new_word_file:
         wordDatabase[line.strip()] = {"long": ""}
     new_word_file.close()
+    url = os.environ["SECRET_URL"]
+    obj = {"command": "print picked words"}
+    f = get_data(url, obj, True).split('\n')
+    for line in f:
+        line = line.strip()
+        if line in wordDatabase:
+            del wordDatabase[line]
 
 
 # game information
@@ -52,16 +79,8 @@ def load_user_data():
     listOfUsers = {}
     link = os.environ["SECRET_URL"]
     post_obj = {"command": "print user"}
-    while True:
-        try:
-            x = requests.post(link, post_obj)
-        except:
-            sleep(5)
-            continue
-        if x.text[0] == '\n':
-            break
 
-    f = x.text.strip().split('\n')
+    f = get_data(link,post_obj, True).split('\n')
     for line in f:
         line = line.strip().split(' ')
         if len(line) != 3:
@@ -86,14 +105,7 @@ def save_user_data():
             post_obj["receive_message"] = "1"
         else:
             post_obj["receive_message"] = "0"
-        while True:
-            try:
-                x = requests.post(link, post_obj)
-            except:
-                os.system("bash ./restart.sh")
-                break
-            if x.text[0] == '\n':
-                break
+        get_data(link, post_obj, False)
 
 
 def save_block():
@@ -103,14 +115,7 @@ def save_block():
     for i in range(0, len(clues)):
         post_obj["block"] += " "+clues[i][0]
     post_obj["block"] = post_obj["block"].strip()
-    while True:
-        try:
-            x = requests.post(link, post_obj)
-        except:
-            os.system("bash ./restart.sh")
-            break
-        if x.text[0] == '\n':
-            break
+    get_data(link, post_obj, False)
 
 
 def free_all_users():
@@ -138,7 +143,7 @@ def pick_keyword():
         init_word_list()
 
     word_definition = ""
-    while True:
+    while len(wordDatabase)>0:
         word, info = random.choice(list(wordDatabase.items()))
 
         if inflect.singular_noun(word):
@@ -400,21 +405,11 @@ async def on_message(message):
     if len(args) == 2 and args[1] == "export" and message.author in listOfUsers:
         link = os.environ["SECRET_URL"]
         post_obj = {"user": "", "command": "print block"}
-        retry = 0
-        while True:
-            try:
-                x = requests.post(link, post_obj)
-            except:
-                print("failure in exporting words\n")
-                os.system("bash ./restart.sh")
-            if x.text[0] == '\n':
-                break
-        mess = "```\n"
-        if retry < 10:
-            mess += x.text.strip()
+        mess = get_data(link, post_obj, False)
+        if mess:
+            mess = "```\n"+mess+"```"
         else:
-            mess += "Exporting words failed. Please try again later."
-        mess += "```\n"
+            mess = "Exporting words failed. Please try again later."
 
     if len(args) == 2 and args[1] == "help":
         mess = messenger.help_message()
