@@ -14,6 +14,9 @@ def init_message():
         except:
             continue
 
+        if x.text[0] == '\n':
+            continue
+
         global messages
         messages = json.loads(x.text)
         break
