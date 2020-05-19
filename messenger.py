@@ -14,11 +14,12 @@ def init_message():
         except:
             continue
 
-        if x.text[0] == '\n':
+        if x.text[0] != '\n':
             continue
 
+        print(x.text)
         global messages
-        messages = json.loads(x.text)
+        messages = json.loads(x.text.strip())
         break
 
 
