@@ -11,6 +11,8 @@ import sys
 from time import sleep
 sys.setrecursionlimit(10**6)
 inflect = inflect.engine()
+
+ADMIN_ID = 361217404296232961
 # load new word list
 wordDatabase = {}
 
@@ -416,6 +418,9 @@ async def on_message(message):
 
     if len(args) == 2 and args[1] == "help":
         mess = messenger.help_message()
+
+    if len(args) == 2 and args[1] == "restart" and message.author.id == ADMIN_ID:
+        os.system("bash ./restart.sh")
 
     if mess != "":
         await send_message(message.author, mess, True)
