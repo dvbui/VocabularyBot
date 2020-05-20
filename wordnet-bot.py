@@ -188,6 +188,7 @@ def pick_keyword():
 async def send_message(user, message, special=False):
     if special or ((user in listOfUsers) and listOfUsers[user]["receive_message"]):
         try:
+            print(str(user) + " " + str(message))
             await user.send(message)
         except:
             print("Can't send message")
