@@ -158,7 +158,7 @@ def pick_keyword():
             del wordDatabase[word]
             continue
 
-        if info["long"] == "":
+        if info["long"] == "" or info["long"].count("\t") >= 6:
             info["long"] = vocs.getShortDefinitionWithWord(word)
             if info["long"] == "":
                 del wordDatabase[word]

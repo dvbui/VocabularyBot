@@ -6,6 +6,7 @@ def getLink(word):
 	link = "https://www.vocabulary.com/dictionary/"+word
 	return link
 
+
 # Input: a string
 # Output: a webpage in string
 def getPage(word):
