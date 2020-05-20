@@ -21,7 +21,9 @@ def get_data(url, obj, important=False, retry=10):
     cnt = 0
     while True:
         try:
-            x = requests.post(url, data = obj)
+            x = requests.post(url, data=obj)
+            if x.text[0] == '\n':  # success
+                break
         except:
             if important:
                 sleep(5)
@@ -30,9 +32,6 @@ def get_data(url, obj, important=False, retry=10):
                 cnt += 1
                 if cnt == retry:
                     return ""
-
-        if x.text[0] == '\n':  # success
-            break
 
     return x.text.strip()
 
