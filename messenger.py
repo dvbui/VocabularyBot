@@ -125,8 +125,12 @@ def print_table(table, deliminator = " | ", max_length_string = 1992):
 def ranklist_message(user_list):
     mess = "```\n"
     table = [["Name", "Score"]]
+    user_list_items = []
     for user in user_list:
-        table.append([str(user), "{:.2f}".format(user_list[user]["score"])])
+        user_list_items.append([user, user_list[user]["score"]])
+    user_list_items.sort(key=lambda u: -u[1])
+    for user in user_list_items:
+        table.append([str(user[0]), "{:.2f}".format(user[1])])
     mess += print_table(table, max_length_string=500)
     mess += "```\n"
     return mess
