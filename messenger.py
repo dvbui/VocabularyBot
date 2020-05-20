@@ -93,11 +93,41 @@ def keyword_message(length, not_keywords=""):
     return mess
 
 
+def fitting(s, length):
+    return s + " " * max(0, (length - len(s)))
+
+
+def print_table(table, deliminator = " | ", max_length_string = 1992):
+    n = len(table)
+    if n == 0:
+        return ""
+    m = len(table[0])
+    max_length = [0] * m
+    for i in range(n):
+        for j in range(m):
+            max_length[j] = max(max_length[j], len(str(table[i][j])))
+    header = ""
+    for j in range(m):
+        header += fitting(str(table[0][j]), max_length[j])
+        if j+1 != m:
+            header += deliminator
+    barrier = "-"*len(header)
+    res = header+"\n"+barrier+"\n"
+    for i in range(1, n):
+        for j in range(m):
+            res += fitting(str(table[i][j]), max_length[j])
+            if j+1 != m:
+                res += deliminator
+        res += "\n"
+    return res[0:min(max_length_string, len(res))]
+
+
 def ranklist_message(user_list):
     mess = "```\n"
-    mess += "Name \t\t Score\n"
+    table = [["Name", "Score"]]
     for user in user_list:
-        mess += str(user)+" \t\t "+str(user_list[user]["score"])+"\n"
+        table.append([str(user), "{:.2f}".format(user_list[user]["score"])])
+    mess += print_table(table, max_length_string=500)
     mess += "```\n"
     return mess
 
