@@ -54,6 +54,7 @@ def init_word_list():
         get_data(os.environ["SECRET_URL"], {"command": "reset word"}, False)
         init_word_list()
 
+
 # game information
 status = 0
 keyWord = ""
@@ -64,6 +65,7 @@ wrong_keyWords = ""
 winner = ""
 acceptingAnswers = False
 acceptingKeyword = False
+game_finished = 0
 # constant
 client = discord.Client()
 
@@ -290,6 +292,8 @@ async def main_game():
                 status += 1
 
     if status == 6:  # Puzzle is solved
+        global game_finished
+        game_finished += 1
         acceptingKeyword = False
         acceptingAnswers = False
         mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
@@ -306,6 +310,8 @@ async def main_game():
         status = 0
         save_user_data()
         save_block()
+        if game_finished == 10:
+            os.system("bash ./restart.sh")
 
     await main_game()
 
