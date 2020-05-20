@@ -365,22 +365,23 @@ async def on_message(message):
         return
 
     message.content = message.content.lower()
-    if (message.author in listOfUsers) and listOfUsers[message.author]["activate"] and is_game_running() and message.content.isalpha():
-        global acceptingAnswers
-        if listOfUsers[message.author]["eliminate"]:
-            await message.author.send("You have been eliminated from the game.")
-        else:
-            if status <= 4:
-                if acceptingAnswers:
-                    listOfUsers[message.author]["answer"] = message.content
-                    await message.author.send("Your current answer is " + message.content + "\n({} characters)".format(len(message.content)))
-                else:
-                    await message.author.send("Answers for this clue are no longer accepted!")
+    if (message.author in listOfUsers) and is_game_running() and message.content.isalpha():
+        if listOfUsers[message.author]["activate"]:
+            global acceptingAnswers
+            if listOfUsers[message.author]["eliminate"]:
+                await message.author.send("You have been eliminated from the game.")
             else:
-                if acceptingKeyword:
-                    await guess_keyword(message.author, message.content)
+                if status <= 4:
+                    if acceptingAnswers:
+                        listOfUsers[message.author]["answer"] = message.content
+                        await message.author.send("Your current answer is " + message.content + "\n({} characters)".format(len(message.content)))
+                    else:
+                        await message.author.send("Answers for this clue are no longer accepted!")
                 else:
-                    await message.author.send("We are not accepting keyword answers. Please wait a little bit and try again.")
+                    if acceptingKeyword:
+                        await guess_keyword(message.author, message.content)
+                    else:
+                        await message.author.send("We are not accepting keyword answers. Please wait a little bit and try again.")
 
     args = message.content.split(' ')
     if args[0] != "olym":
