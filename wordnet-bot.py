@@ -264,7 +264,7 @@ async def main_game():
             await send_message(channel, user_answers, True)
             await asyncio.sleep(5)
 
-            for user in listOfUsers:
+            for user in fake_list:
                 if listOfUsers[user]["eliminate"]:
                     await send_message(user, "The correct answer is "+answer+".")
                     continue
