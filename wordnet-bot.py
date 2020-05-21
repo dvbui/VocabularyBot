@@ -394,8 +394,11 @@ async def on_message(message):
             else:
                 if status <= 4:
                     if acceptingAnswers:
-                        listOfUsers[message.author]["answer"] = message.content
-                        await message.author.send("Your current answer is " + message.content + "\n({} characters)".format(len(message.content)))
+                        listOfUsers[message.author]["answer"] = message.content[0:min(len(message.content), len(clues[status-1][1]))]
+                        mess = "Your current answer is " + message.content + "\n({} characters)".format(len(message.content))
+                        global clock
+                        mess += "\nYou have {} seconds left.".format(clock)
+                        await message.author.send(mess)
                     else:
                         await message.author.send("Answers for this clue are no longer accepted!")
                 else:
