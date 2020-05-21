@@ -318,6 +318,7 @@ async def main_game():
         save_block()
         if game_finished == 10:
             os.system("bash ./restart.sh")
+            return
 
     await main_game()
 
