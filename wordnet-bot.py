@@ -451,9 +451,13 @@ async def on_message(message):
 
     if len(args) == 3 and args[1] == "def" and args[2].isalpha():
         mess = "```\n"
-        mess += vocs.getShortDefinitionWithWord(args[2])+"\n"
-        mess += "This text is from Vocabulary.com (https://www.vocabulary.com). Copyright ©1998-2020 Thinkmap, Inc. All rights reserved.\n"
-        mess += "\n"
+        definition = vocs.getShortDefinitionWithWord(args[2])
+        if definition != "":
+            mess += +"\n"
+            mess += "This text is from Vocabulary.com (https://www.vocabulary.com). Copyright ©1998-2020 Thinkmap, Inc. All rights reserved.\n"
+            mess += "\n"
+        else:
+            mess += "{} is not in the database.".format(args[2])
         mess += "```\n"
 
     if len(args) == 2 and args[1] == "restart" and message.author.id == ADMIN_ID:
