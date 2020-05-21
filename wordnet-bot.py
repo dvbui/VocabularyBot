@@ -150,7 +150,7 @@ def pick_keyword():
     word_definition = ""
     while len(wordDatabase) > 0:
         word, info = random.choice(list(wordDatabase.items()))
-        print(word+"\n"+info+"\n"+str(len(wordDatabase))+"\n")
+        print(word+"\n"+str(info)+"\n"+str(len(wordDatabase))+"\n")
 
         if inflect.singular_noun(word):
             del wordDatabase[word]
