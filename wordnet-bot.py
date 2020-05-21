@@ -444,6 +444,18 @@ async def on_message(message):
     if len(args) == 2 and args[1] == "help":
         mess = messenger.help_message()
 
+    if len(args) == 2 and args[1] == "recent":
+        obj = {"command": "print recent block"}
+        url = os.environ["SECRET_URL"]
+        mess = "```\n"+get_data(url, obj, False)+"```\n"
+
+    if len(args) == 3 and args[1] == "def" and args[2].isalpha():
+        mess = "```\n"
+        mess += vocs.getShortDefinitionWithWord(args[2])+"\n"
+        mess += "This text is from Vocabulary.com (https://www.vocabulary.com). Copyright ©1998-2020 Thinkmap, Inc. All rights reserved.\n"
+        mess += "\n"
+        mess += "```\n"
+
     if len(args) == 2 and args[1] == "restart" and message.author.id == ADMIN_ID:
         os.system("bash ./restart.sh")
 

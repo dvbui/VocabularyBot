@@ -32,15 +32,13 @@ def getDefinition(content,defType):
 	
 def getShortDefinitionWithWord(content):
 	link = "https://vocabulary.now.sh/word/"+content
-	page = requests.get(link)
 	try:
+		page = requests.get(link)
 		json_object = json.loads(page.text)
+		if json_object["success"]:
+			return json_object["data"]
 	except:
 		return ""
-
-	if json_object["success"]:
-		return json_object["data"]
-	return ""
 
 
 def getShortDefinition(content):

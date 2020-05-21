@@ -138,9 +138,10 @@ def ranklist_message(user_list):
 
 def show_user_answer(user_list):
     mess = "```\n"
-    mess += "Name \t\t Answer\n"
+    table = [["Name", "Answer"]]
     for user in user_list:
         if user_list[user]["answer"] != "":
-            mess += str(user)+" \t\t "+str(user_list[user]["answer"])+"\n"
+            table.append([str(user), str(user_list[user]["answer"])])
+    mess += print_table(table, max_length_string=500)
     mess += "```\n"
     return mess
