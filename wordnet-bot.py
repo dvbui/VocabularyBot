@@ -331,6 +331,7 @@ async def on_member_join(member):
     except:
         return
 
+
 @client.event
 async def on_ready():
     print("Bot is ready.")
