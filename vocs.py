@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import json
+import time
 
 def getLink(word):
 	link = "https://www.vocabulary.com/dictionary/"+word
@@ -30,13 +31,15 @@ def getDefinition(content,defType):
 	return shortDefDiv.get_text()
 
 	
-def getShortDefinitionWithWord(content):
+def getShortDefinitionWithWord(content, slow=False):
 	link = "https://vocabulary.now.sh/word/"+content
 	try:
 		page = requests.get(link)
 		json_object = json.loads(page.text)
 		if json_object["success"]:
 			return json_object["data"]
+		if slow:
+			time.sleep(1)
 	except:
 		return ""
 
