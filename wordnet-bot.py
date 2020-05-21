@@ -249,6 +249,7 @@ async def main_game():
             await send_message(user, message_to_send)
 
         #  time to answer clue
+        global clock
         clock = 25
         while clock > 0:
             clock -= 1
