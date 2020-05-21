@@ -3,7 +3,7 @@ import vocs
 from nltk.corpus import wordnet
 
 # question data
-WORD_LIST = ["originalEasyList.txt", "list7000.txt", "list8000.txt"]
+WORD_LIST = ["VocabularyWorkshopEasy.txt", "VocabularyWorkshopMedium.txt", "VocabularyWorkshopHard.txt"]
 master_word_data = [{}, {}, {}]
 
 
