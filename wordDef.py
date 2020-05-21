@@ -1,5 +1,10 @@
 import random
+import vocs
 from nltk.corpus import wordnet
+
+# question data
+WORD_LIST = ["easyList.txt", "list7000.txt", "list8000.txt"]
+master_word_data = [{}, {}, {}]
 
 
 # Input: a string
@@ -10,8 +15,8 @@ def get_definition(word):
     if len(synset) == 0:
         return ""
 
-    id = random.randint(0, len(synset)-1)
-    return synset[id].definition()
+    random_id = random.randint(0, len(synset)-1)
+    return synset[random_id].definition()
 
 
 # Input: a string
@@ -105,4 +110,51 @@ def get_similarity(first_word, first_definition, second_word):
                 best_similarity = max(best_similarity, similarity)
 
     return best_similarity
+
+
+def get_antonyms(word):
+    antonyms = {}
+    for syn in wordnet.synsets(word):
+        for lem in syn.lemmas():
+            for i in range(len(lem.antonyms())):
+                antonyms[lem.antonyms()[i].name()] = ""
+    return list(antonyms.keys())
+
+
+def init_word_list(word_list_index=0):
+    new_word_file = open(WORD_LIST[word_list_index], "r")
+    for line in new_word_file:
+        master_word_data[word_list_index][line.strip()] = {"long": ""}
+    new_word_file.close()
+    pass
+
+
+def generate_custom_question(difficulty=1, chosen_word=""):
+    if len(master_word_data[difficulty-1]) == 0:
+        init_word_list(difficulty-1)
+
+    if chosen_word == "":
+        word, info = random.choice(list(master_word_data[difficulty-1].items()))
+    else:
+        word = chosen_word
+    info = vocs.getShortDefinitionWithWord(word)
+    synonyms = list(get_related(word, "synonyms").keys())
+    antonyms = get_antonyms(word)
+    if len(synonyms) < 3 or len(antonyms) < 1 or info == "" or info.count("\t") >= 6:
+        if chosen_word == "":
+            del master_word_data[difficulty-1][word]
+            return generate_custom_question(difficulty)
+        else:
+            return None
+
+    synonyms = random.sample(synonyms, 3)
+    question = "Which of the following words is an antonym for {}?\n".format(word)
+    answer = random.randint(1, 4)
+    for i in range(0, answer-1):
+        question += "{}. {}\n".format(i+1, synonyms[i])
+    question += "{}. {}\n".format(answer, random.choice(antonyms))
+    for i in range(answer, 4):
+        question += "{}. {}\n".format(i+1, synonyms[i-1])
+
+    return question, answer, info
 

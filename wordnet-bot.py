@@ -9,7 +9,8 @@ import random
 import messenger
 import sys
 from time import sleep
-sys.setrecursionlimit(10**6)
+
+sys.setrecursionlimit(10 ** 6)
 inflect = inflect.engine()
 
 ADMIN_ID = 361217404296232961
@@ -84,7 +85,7 @@ def load_user_data():
     link = os.environ["SECRET_URL"]
     post_obj = {"command": "print user"}
 
-    f = get_data(link,post_obj, True).split('\n')
+    f = get_data(link, post_obj, True).split('\n')
     for line in f:
         line = line.strip().split(' ')
         if len(line) != 3:
@@ -117,7 +118,7 @@ def save_block():
     link = os.environ["SECRET_URL"]
     post_obj = {"user": 0, "block": ""}
     for i in range(0, len(clues)):
-        post_obj["block"] += " "+clues[i][0]
+        post_obj["block"] += " " + clues[i][0]
     post_obj["block"] = post_obj["block"].strip()
     get_data(link, post_obj, False)
 
@@ -272,14 +273,14 @@ async def main_game():
 
             for user in fake_list:
                 if listOfUsers[user]["eliminate"]:
-                    await send_message(user, "The correct answer is "+answer+".")
+                    await send_message(user, "The correct answer is " + answer + ".")
                     continue
                 user_answer = fake_list[user]["answer"]
                 if user_answer == "":
                     m = "We did not receive any answer from you. 0 points.\nThe correct answer is " + answer
                     await send_message(user, m)
                 else:
-                    m = "Your final answer is {}.".format(user_answer)+"\n"
+                    m = "Your final answer is {}.".format(user_answer) + "\n"
                     if user_answer == answer:
                         m += "And that is the correct answer. You get 1 point."
                         listOfUsers[user]["score"] += 1
@@ -300,7 +301,7 @@ async def main_game():
     if status == 6:  # Puzzle is solved
         global game_finished
         game_finished += 1
-        acceptingKeyword = False
+        acceptingKeywordy = False
         acceptingAnswers = False
         mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
         del wordDatabase[keyWord]
@@ -310,7 +311,7 @@ async def main_game():
         await send_message(channel, mess, True)
         for user in listOfUsers:
             await send_message(user, mess)
-            await send_message(user, "```Your current score is "+str(listOfUsers[user]["score"])+"```")
+            await send_message(user, "```Your current score is " + str(listOfUsers[user]["score"]) + "```")
             await send_message(user, messenger.ranklist_message(listOfUsers))
         await send_message(channel, messenger.ranklist_message(listOfUsers), True)
         status = 0
@@ -329,6 +330,10 @@ async def on_member_join(member):
     obj = {"server": str(member.guild.id), "purpose": "welcome_message"}
     link = os.environ["SECRET_URL"]
     welcome_message = get_data(link, obj)
+
+    if welcome_message == "":
+        return
+
     welcome_message = welcome_message.replace("{user}", str(member))
     obj["purpose"] = "welcome_channel"
     try:
@@ -397,8 +402,10 @@ async def on_message(message):
             else:
                 if status <= 4:
                     if acceptingAnswers:
-                        listOfUsers[message.author]["answer"] = message.content[0:min(len(message.content), len(clues[status-1][1]))]
-                        mess = "Your current answer is " + message.content + "\n({} characters)".format(len(message.content))
+                        listOfUsers[message.author]["answer"] = message.content[
+                                                                0:min(len(message.content), len(clues[status - 1][1]))]
+                        mess = "Your current answer is " + message.content + "\n({} characters)".format(
+                            len(message.content))
                         global clock
                         mess += "\nYou have {} seconds left.".format(clock)
                         await send_message(message.author, mess)
@@ -408,7 +415,8 @@ async def on_message(message):
                     if acceptingKeyword:
                         await guess_keyword(message.author, message.content)
                     else:
-                        await send_message(message.author, "We are not accepting keyword answers. Please wait a little bit and try again.")
+                        await send_message(message.author,
+                                           "We are not accepting keyword answers. Please wait a little bit and try again.")
 
     args = message.content.split(' ')
     if args[0] != "olym":
@@ -423,12 +431,12 @@ async def on_message(message):
         register_user(message.author)
         if is_game_running():
             await message.author.send(messenger.keyword_message(len(keyWord)))
-            question = clues[status-1][1]
+            question = clues[status - 1][1]
             if status == 5:
                 answer = keyWord
             else:
-                answer = clues[status-1][0]
-            await message.author.send(messenger.question_message(question, clues, status, len(answer), status==5))
+                answer = clues[status - 1][0]
+            await message.author.send(messenger.question_message(question, clues, status, len(answer), status == 5))
 
     if len(args) == 2 and args[1] == "stop":
         mess = "You have been unregistered."
@@ -450,7 +458,7 @@ async def on_message(message):
         post_obj = {"user": "", "command": "print block"}
         mess = get_data(link, post_obj, False)
         if mess:
-            mess = "```\n"+mess+"```"
+            mess = "```\n" + mess + "```"
         else:
             mess = "Exporting words failed. Please try again later."
 
@@ -460,14 +468,14 @@ async def on_message(message):
     if len(args) == 2 and args[1] == "recent":
         obj = {"command": "print recent block"}
         url = os.environ["SECRET_URL"]
-        mess = "```\n"+get_data(url, obj, False)+"```\n"
+        mess = "```\n" + get_data(url, obj, False) + "```\n"
 
     if len(args) == 3 and args[1] == "def" and args[2].isalpha():
         mess = "```\n"
         definition = vocs.getShortDefinitionWithWord(args[2])
         if definition != "":
             mess += "\n"
-            mess += definition+"\n"
+            mess += definition + "\n"
             mess += "This text is from Vocabulary.com (https://www.vocabulary.com). Copyright ©1998-2020 Thinkmap, Inc. All rights reserved.\n"
             mess += "\n"
         else:
