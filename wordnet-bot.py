@@ -365,7 +365,7 @@ async def on_message(message):
 
     message.content = message.content.lower()
     if (message.author in listOfUsers) and is_game_running() and message.content.isalpha():
-        if listOfUsers[message.author]["activate"]:
+        if listOfUsers[message.author]["receive_message"]:
             global acceptingAnswers
             if listOfUsers[message.author]["eliminate"]:
                 await message.author.send("You have been eliminated from the game.")
