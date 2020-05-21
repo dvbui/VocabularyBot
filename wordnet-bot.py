@@ -317,6 +317,21 @@ async def main_game():
 
 
 @client.event
+async def on_member_join(member):
+    obj = {"server": str(member.server.id), "purpose": "welcome_message"}
+    link = os.environ["SECRET_URL"]
+    welcome_message = get_data(obj, link)
+    welcome_message = welcome_message.replace("{user}", str(member))
+    obj["purpose"] = "welcome_channel"
+    try:
+        welcome_channel_id = int(get_data(obj, link))
+        global client
+        channel = client.get_channel(welcome_channel_id)
+        await send_message(channel, welcome_message, True)
+    except:
+        return
+
+@client.event
 async def on_ready():
     print("Bot is ready.")
     load_user_data()
