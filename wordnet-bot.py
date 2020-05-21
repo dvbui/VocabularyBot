@@ -325,17 +325,19 @@ async def main_game():
 
 @client.event
 async def on_member_join(member):
+    print("I'm here")
     obj = {"server": str(member.guild.id), "purpose": "welcome_message"}
     link = os.environ["SECRET_URL"]
-    welcome_message = get_data(obj, link)
+    welcome_message = get_data(link, obj)
     welcome_message = welcome_message.replace("{user}", str(member))
     obj["purpose"] = "welcome_channel"
     try:
-        welcome_channel_id = int(get_data(obj, link))
+        welcome_channel_id = int(get_data(link, obj))
         global client
         channel = client.get_channel(welcome_channel_id)
         await send_message(channel, welcome_message, True)
     except:
+        print("Can't send message")
         return
 
 
