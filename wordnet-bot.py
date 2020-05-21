@@ -325,7 +325,7 @@ async def main_game():
 
 @client.event
 async def on_member_join(member):
-    obj = {"server": str(member.server.id), "purpose": "welcome_message"}
+    obj = {"server": str(member.guild.id), "purpose": "welcome_message"}
     link = os.environ["SECRET_URL"]
     welcome_message = get_data(obj, link)
     welcome_message = welcome_message.replace("{user}", str(member))
