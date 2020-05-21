@@ -153,25 +153,16 @@ def pick_keyword():
         print(word+"\n"+str(info)+"\n"+str(len(wordDatabase))+"\n")
 
         if inflect.singular_noun(word):
-            url = os.environ["SECRET_URL"]
-            obj = {"word": word, "picked": 1}
-            get_data(url, obj, False)
             del wordDatabase[word]
             continue
 
         if wordDef.get_definition(word) == "":
-            url = os.environ["SECRET_URL"]
-            obj = {"word": word, "picked": 1}
-            get_data(url, obj, False)
             del wordDatabase[word]
             continue
 
         if info["long"] == "" or info["long"].count("\t") >= 6:
             info["long"] = vocs.getShortDefinitionWithWord(word)
             if info["long"] == "":
-                url = os.environ["SECRET_URL"]
-                obj = {"word": word, "picked": 1}
-                get_data(url, obj, False)
                 del wordDatabase[word]
                 continue
 
@@ -311,7 +302,7 @@ async def main_game():
     if status == 6:  # Puzzle is solved
         global game_finished
         game_finished += 1
-        acceptingKeyword = False
+        acceptingKeywordy = False
         acceptingAnswers = False
         mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
         del wordDatabase[keyWord]
