@@ -2,139 +2,109 @@ from bs4 import BeautifulSoup
 import requests
 import json
 import time
-import asyncio
-
-
-def requests_post(s):
-	if s["obj"] is None:
-		return requests.post(s["url"])
-
-	return requests.post(s["url"], data=s["obj"])
-
-
-async def get_data(url, obj=None, important=False, retry=10):
-	cnt = 0
-	while True:
-		try:
-			loop = asyncio.get_event_loop()
-			future = loop.run_in_executor(None, requests_post, {"url": url, "obj": obj})
-			x = await future
-			if x.text[0] == '\n':  # success
-				return x.text.strip()
-		except:
-			if important:
-				await asyncio.sleep(5)
-				continue
-			else:
-				cnt += 1
-				if cnt == retry:
-					return ""
-	return ""
-
 
 def getLink(word):
-	link = "https://www.vocabulary.com/dictionary/" + word
+	link = "https://www.vocabulary.com/dictionary/"+word
 	return link
 
 
 # Input: a string
 # Output: a webpage in string
-async def getPage(word):
+def getPage(word):
 	link = getLink(word)
-	page = await get_data(link)
+	page = requests.get(link)
 	return page.text
-
-
-# Input:
+	
+		
+# Input: 
 #	content - webpage in string
 # Output:
 #	definition in string if it exists
 #	otherwise, empty string
-def getDefinition(content, defType):
+def getDefinition(content,defType):
 	soup = BeautifulSoup(content)
 	shortDefDiv = soup.findAll("p", {"class": defType})
-	if (len(shortDefDiv) == 0):
+	if (len(shortDefDiv)==0):
 		return ""
-	assert len(shortDefDiv) == 1
+	assert len(shortDefDiv)==1
 	shortDefDiv = shortDefDiv[0]
 	return shortDefDiv.get_text()
 
-
-async def getShortDefinitionWithWord(content, slow=False):
-	link = "https://vocabulary.now.sh/word/" + content
+	
+def getShortDefinitionWithWord(content, slow=False):
+	link = "https://vocabulary.now.sh/word/"+content
 	try:
-		page = await get_data(link)
+		page = requests.get(link)
 		json_object = json.loads(page.text)
 		if json_object["success"]:
 			return json_object["data"]
+		if slow:
+			time.sleep(1)
 	except:
 		return ""
 
 
 def getShortDefinition(content):
-	return getDefinition(content, "short")
+	return getDefinition(content,"short")
 
 
 def getLongDefinition(content):
-	return getDefinition(content, "long")
+	return getDefinition(content,"long")
 
 
-def getInstance(content, insType):
+def getInstance(content,insType):
 	soup = BeautifulSoup(content)
 	instanceDiv = soup.findAll("dl", {"class": "instances"})
-	if (insType == "synonym"):
+	if (insType=="synonym"):
 		matchType = "Synonyms:"
-	if (insType == "antonym"):
+	if (insType=="antonym"):
 		matchType = "Antonyms:"
-	if (insType == "typeof"):
+	if (insType=="typeof"):
 		matchType = "Type of:"
 	currentType = "Synonyms:"
 	res = {}
 	for instance in instanceDiv:
 		dtDiv = instance.findAll("dt")
-		assert (len(dtDiv) == 1)
+		assert(len(dtDiv)==1)
 		dtDiv = dtDiv[0]
-		if (dtDiv.get_text() != ""):
+		if (dtDiv.get_text()!=""):
 			currentType = dtDiv.get_text()
-		if (currentType == matchType):
-			aDiv = instance.findAll("a", {"class": "word"})
+		if (currentType==matchType):
+			aDiv = instance.findAll("a",{"class": "word"})
 			for wordDiv in aDiv:
 				word = wordDiv.get_text()
 				res[word] = ""
-
+	
 	ret = []
 	for key in res:
 		ret.append(key)
-
+	
 	return ret
-
-
+	
 def getSynonym(content):
-	return getInstance(content, "synonym")
-
+	return getInstance(content,"synonym")
 
 def getTypeOf(content):
-	return getInstance(content, "typeof")
-
+	return getInstance(content,"typeof")
 
 def getAntonym(content):
-	return getInstance(content, "antonym")
+	return getInstance(content,"antonym")
 
+def getJSON(word):
 
-async def getJSON(word):
 	json_dict = {}
 
-	page = await getPage(word)
+	page = getPage(word)
 	shortDef = getShortDefinition(page)
 	longDef = getLongDefinition(page)
 	synonym = getSynonym(page)
 	typeOf = getTypeOf(page)
 	antonym = getAntonym(page)
-
+	
 	json_dict["short"] = shortDef
 	json_dict["long"] = longDef
 	json_dict["synonym"] = synonym
 	json_dict["antonym"] = antonym
 	json_dict["typeof"] = typeOf
-
-	return json.dumps(json_dict, indent=4)
+	
+	return json.dumps(json_dict, indent = 4)
