@@ -65,6 +65,7 @@ winner = ""
 acceptingAnswers = False
 acceptingKeyword = False
 game_finished = 0
+clock = 0
 # constant
 client = discord.Client()
 
@@ -248,7 +249,11 @@ async def main_game():
             await send_message(user, message_to_send)
 
         #  time to answer clue
-        await asyncio.sleep(25)
+        clock = 25
+        while clock > 0:
+            clock -= 1
+            print(clock)
+            await asyncio.sleep(1)
 
         acceptingAnswers = False
         acceptingKeyword = False
