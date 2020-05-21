@@ -240,7 +240,7 @@ async def main_game():
 
         print(answer)
         question = clues[status - 1][1]
-        message_to_send = messenger.question_message(question, status, len(answer), status == 5)
+        message_to_send = messenger.question_message(question, clues, status, len(answer), status == 5)
         message_to_send += messenger.keyword_message(len(keyWord), wrong_keyWords)
         await send_message(channel, message_to_send, True)
         for user in listOfUsers:
@@ -416,7 +416,7 @@ async def on_message(message):
                 answer = keyWord
             else:
                 answer = clues[status-1][0]
-            await message.author.send(messenger.question_message(question, status, len(answer)))
+            await message.author.send(messenger.question_message(question, clues, status, len(answer), status==5))
 
     if len(args) == 2 and args[1] == "stop":
         mess = "You have been unregistered."

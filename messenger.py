@@ -55,9 +55,11 @@ def help_message():
     return mess
 
 
-def question_message(question, index="", number_of_character="", final_clue=False):
+def question_message(question, clues, index=1, number_of_character="", final_clue=False):
     mess = "```\n"
     mess += "\n"
+    for i in range(0, index-1):
+        mess += "Clue {}: {}".format(i+1, clues[i][0])+"\n"
     mess += "Clue {} ({} characters):\n".format(index, number_of_character)
     mess += question+"\n"
     mess += "\n"
@@ -97,7 +99,7 @@ def fitting(s, length):
     return s + " " * max(0, (length - len(s)))
 
 
-def print_table(table, deliminator = " | ", max_length_string = 1992):
+def print_table(table, deliminator=" | ", max_length_string=1992):
     n = len(table)
     if n == 0:
         return ""
