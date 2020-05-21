@@ -453,7 +453,7 @@ async def on_message(message):
         mess = "```\n"
         definition = vocs.getShortDefinitionWithWord(args[2])
         if definition != "":
-            mess += +"\n"
+            mess += "\n"
             mess += "This text is from Vocabulary.com (https://www.vocabulary.com). Copyright ©1998-2020 Thinkmap, Inc. All rights reserved.\n"
             mess += "\n"
         else:
