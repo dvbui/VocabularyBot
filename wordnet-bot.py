@@ -310,7 +310,7 @@ async def main_game():
         status = 0
         save_user_data()
         save_block()
-        if game_finished == 10:
+        if game_finished == 1:
             os.system("bash ./restart.sh")
 
     await main_game()
@@ -366,7 +366,7 @@ async def guess_keyword(user, key_answer):
             wrong_keyWords += " {}".format(key_answer)
 
     listOfUsers[user]["eliminate"] = True
-    await user.send(mess)
+    await send_message(user, mess)
 
 
 @client.event
