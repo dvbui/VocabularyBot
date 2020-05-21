@@ -316,7 +316,7 @@ async def main_game():
         status = 0
         save_user_data()
         save_block()
-        if game_finished == 1:
+        if game_finished == 10:
             os.system("bash ./restart.sh")
 
     await main_game()
@@ -390,7 +390,7 @@ async def on_message(message):
         if listOfUsers[message.author]["receive_message"]:
             global acceptingAnswers
             if listOfUsers[message.author]["eliminate"]:
-                await message.author.send("You have been eliminated from the game.")
+                await send_message(message.author, "You have been eliminated from the game.")
             else:
                 if status <= 4:
                     if acceptingAnswers:
@@ -398,14 +398,14 @@ async def on_message(message):
                         mess = "Your current answer is " + message.content + "\n({} characters)".format(len(message.content))
                         global clock
                         mess += "\nYou have {} seconds left.".format(clock)
-                        await message.author.send(mess)
+                        await send_message(message.author, mess)
                     else:
-                        await message.author.send("Answers for this clue are no longer accepted!")
+                        await send_message(message.author, "Answers for this clue are no longer accepted!")
                 else:
                     if acceptingKeyword:
                         await guess_keyword(message.author, message.content)
                     else:
-                        await message.author.send("We are not accepting keyword answers. Please wait a little bit and try again.")
+                        await send_message(message.author, "We are not accepting keyword answers. Please wait a little bit and try again.")
 
     args = message.content.split(' ')
     if args[0] != "olym":
