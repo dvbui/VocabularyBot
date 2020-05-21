@@ -8,6 +8,8 @@ import asyncio
 import random
 import messenger
 import sys
+import tracemalloc
+tracemalloc.start()
 from time import sleep
 
 sys.setrecursionlimit(10 ** 6)
@@ -18,26 +20,31 @@ ADMIN_ID = 361217404296232961
 wordDatabase = {}
 
 
-def get_data(url, obj, important=False, retry=10):
+def requests_post(s):
+    return requests.post(s["url"], data=s["obj"])
+
+
+async def get_data(url, obj, important=False, retry=10):
     cnt = 0
     while True:
         try:
-            x = requests.post(url, data=obj)
+            loop = asyncio.get_event_loop()
+            future = loop.run_in_executor(None, requests_post, {"url": url, "obj": obj})
+            x = await future
             if x.text[0] == '\n':  # success
-                break
+                return x.text.strip()
         except:
             if important:
-                sleep(5)
+                await asyncio.sleep(5)
                 continue
             else:
                 cnt += 1
                 if cnt == retry:
                     return ""
+    return ""
 
-    return x.text.strip()
 
-
-def init_word_list():
+async def init_word_list():
     global wordDatabase
     new_word_file = open("list8000.txt", "r")
     for line in new_word_file:
@@ -45,14 +52,14 @@ def init_word_list():
     new_word_file.close()
     url = os.environ["SECRET_URL"]
     obj = {"command": "print picked words"}
-    f = get_data(url, obj, True).split('\n')
+    f = (await get_data(url, obj, True)).split('\n')
     for line in f:
         line = line.strip()
         if line in wordDatabase:
             del wordDatabase[line]
     if len(wordDatabase) == 0:
-        get_data(os.environ["SECRET_URL"], {"command": "reset word"}, False)
-        init_word_list()
+        await get_data(os.environ["SECRET_URL"], {"command": "reset word"}, False)
+        await init_word_list()
 
 
 # game information
@@ -79,13 +86,13 @@ def register_user(user):
     listOfUsers[user]["receive_message"] = True
 
 
-def load_user_data():
+async def load_user_data():
     global listOfUsers
     listOfUsers = {}
     link = os.environ["SECRET_URL"]
     post_obj = {"command": "print user"}
 
-    f = get_data(link, post_obj, True).split('\n')
+    f = (await get_data(link, post_obj, True)).split('\n')
     for line in f:
         line = line.strip().split(' ')
         if len(line) != 3:
@@ -100,7 +107,7 @@ def load_user_data():
             listOfUsers[user]["receive_message"] = line[2] == "1"
 
 
-def save_user_data():
+async def save_user_data():
     global listOfUsers
     link = os.environ["SECRET_URL"]
 
@@ -110,17 +117,17 @@ def save_user_data():
             post_obj["receive_message"] = "1"
         else:
             post_obj["receive_message"] = "0"
-        get_data(link, post_obj, False)
+        await get_data(link, post_obj, False)
 
 
-def save_block():
+async def save_block():
     global listOfUsers
     link = os.environ["SECRET_URL"]
     post_obj = {"user": 0, "block": ""}
     for i in range(0, len(clues)):
         post_obj["block"] += " " + clues[i][0]
     post_obj["block"] = post_obj["block"].strip()
-    get_data(link, post_obj, False)
+    await get_data(link, post_obj, False)
 
 
 def free_all_users():
@@ -141,11 +148,11 @@ def is_game_running():
     return 1 <= status <= 5
 
 
-def pick_keyword():
+async def pick_keyword():
     clue_list = []
     global wordDatabase
     if len(wordDatabase) == 0:
-        init_word_list()
+        await init_word_list()
 
     word_definition = ""
     while len(wordDatabase) > 0:
@@ -155,23 +162,23 @@ def pick_keyword():
         if inflect.singular_noun(word):
             url = os.environ["SECRET_URL"]
             obj = {"word": word, "picked": 1}
-            get_data(url, obj, False)
+            await get_data(url, obj, False)
             del wordDatabase[word]
             continue
 
         if wordDef.get_definition(word) == "":
             url = os.environ["SECRET_URL"]
             obj = {"word": word, "picked": 1}
-            get_data(url, obj, False)
+            await get_data(url, obj, False)
             del wordDatabase[word]
             continue
 
         if info["long"] == "" or info["long"].count("\t") >= 6:
-            info["long"] = vocs.getShortDefinitionWithWord(word)
+            info["long"] = await vocs.getShortDefinitionWithWord(word)
             if info["long"] == "":
                 url = os.environ["SECRET_URL"]
                 obj = {"word": word, "picked": 1}
-                get_data(url, obj, False)
+                await get_data(url, obj, False)
                 del wordDatabase[word]
                 continue
 
@@ -186,8 +193,8 @@ def pick_keyword():
             break
 
     if len(wordDatabase) == 0:
-        init_word_list()
-        return pick_keyword()
+        await init_word_list()
+        return await pick_keyword()
 
     for k in details:
         clue_list.append((k, details[k]))
@@ -230,7 +237,7 @@ async def main_game():
         await send_message(channel, messenger.register_message(), True)
         for user in listOfUsers:
             await send_message(user, m)
-        keyWord, clues = pick_keyword()
+        keyWord, clues = await pick_keyword()
         await asyncio.sleep(5)
         m = messenger.rule_message()
         await send_message(channel, m, True)
@@ -317,7 +324,7 @@ async def main_game():
         del wordDatabase[keyWord]
         url = os.environ["SECRET_URL"]
         obj = {"word": keyWord, "picked": 1}
-        get_data(url, obj, False)
+        await get_data(url, obj, False)
         await send_message(channel, mess, True)
         for user in listOfUsers:
             await send_message(user, mess)
@@ -325,8 +332,8 @@ async def main_game():
             await send_message(user, messenger.ranklist_message(listOfUsers))
         await send_message(channel, messenger.ranklist_message(listOfUsers), True)
         status = 0
-        save_user_data()
-        save_block()
+        await save_user_data()
+        await save_block()
         if game_finished == 10:
             os.system("bash ./restart.sh")
             return
@@ -339,7 +346,7 @@ async def on_member_join(member):
     print("I'm here")
     obj = {"server": str(member.guild.id), "purpose": "welcome_message"}
     link = os.environ["SECRET_URL"]
-    welcome_message = get_data(link, obj)
+    welcome_message = await get_data(link, obj)
 
     if welcome_message == "":
         return
@@ -347,7 +354,7 @@ async def on_member_join(member):
     welcome_message = welcome_message.replace("{user}", str(member))
     obj["purpose"] = "welcome_channel"
     try:
-        welcome_channel_id = int(get_data(link, obj))
+        welcome_channel_id = int(await get_data(link, obj))
         global client
         channel = client.get_channel(welcome_channel_id)
         await send_message(channel, welcome_message, True)
@@ -359,8 +366,8 @@ async def on_member_join(member):
 @client.event
 async def on_ready():
     print("Bot is ready.")
-    load_user_data()
-    init_word_list()
+    await load_user_data()
+    await init_word_list()
     messenger.init_message()
     print("I'm here")
     await main_game()
@@ -466,7 +473,7 @@ async def on_message(message):
     if len(args) == 2 and args[1] == "export" and message.author in listOfUsers:
         link = os.environ["SECRET_URL"]
         post_obj = {"user": "", "command": "print block"}
-        mess = get_data(link, post_obj, False)
+        mess = await get_data(link, post_obj, False)
         if mess:
             mess = "```\n" + mess + "```"
         else:
@@ -478,7 +485,7 @@ async def on_message(message):
     if len(args) == 2 and args[1] == "recent":
         obj = {"command": "print recent block"}
         url = os.environ["SECRET_URL"]
-        mess = "```\n" + get_data(url, obj, False) + "```\n"
+        mess = "```\n" + await get_data(url, obj, False) + "```\n"
 
     if len(args) == 3 and args[1] == "def" and args[2].isalpha():
         mess = "```\n"
