@@ -288,10 +288,6 @@ async def main_game():
         mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
         del wordDatabase[keyWord]
 
-        global db
-        doc_ref = db.collection("words").document(keyWord)
-        doc_ref.set({"picked": True})
-
         await send_message(channel, mess, True)
         for user in listOfUsers:
             await send_message(user, mess)
