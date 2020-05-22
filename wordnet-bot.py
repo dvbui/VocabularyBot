@@ -462,7 +462,7 @@ async def on_message(message):
         mess = "Exporting words failed. Please try again later."
 
     if len(args) == 3 and args[1] == "mega" and args[2] in ["1", "2", "3"]:
-        await sub_game(message.author, message.channel, int(args[3]))
+        await sub_game(message.author, message.channel, int(args[2]))
         return
 
     if len(args) == 3 and args[1] == "answer" and args[2] in ["1", "2", "3", "4"]:
