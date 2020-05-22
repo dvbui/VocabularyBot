@@ -1,4 +1,3 @@
-import requests
 import vocs
 import wordDef
 import os
@@ -11,7 +10,6 @@ import sys
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from time import sleep
 sys.setrecursionlimit(10 ** 6)
 inflect = inflect.engine()
 
@@ -57,12 +55,19 @@ clock = 0
 client = discord.Client()
 
 
-def register_user(user):
+def register_user(user, receive_message=True):
     global listOfUsers
     if not (user in listOfUsers):
-        listOfUsers[user] = {"answer": "", "score": 0, "receive_message": True, "eliminate": False}
+        listOfUsers[user] = {
+            "answer": "",
+            "score": 0,
+            "receive_message": True,
+            "eliminate": False,
+            "subgame_answer": "",
+            "subgame_playing": False
+        }
         listOfUsers[user]["activate"] = False
-    listOfUsers[user]["receive_message"] = True
+    listOfUsers[user]["receive_message"] = receive_message
 
 
 def load_user_data():
@@ -192,12 +197,12 @@ async def main_game():
         for user in listOfUsers:
             await send_message(user, m)
         keyWord, clues = pick_keyword()
-        await asyncio.sleep(5)
+        await asyncio.sleep(30)
         m = messenger.rule_message()
         await send_message(channel, m, True)
         for user in listOfUsers:
             await send_message(user, m)
-        await asyncio.sleep(25)
+        await asyncio.sleep(60)
         await send_message(channel, messenger.keyword_message(len(keyWord)), True)
         for user in listOfUsers:
             await send_message(user, messenger.keyword_message(len(keyWord)))
@@ -337,6 +342,43 @@ async def guess_keyword(user, key_answer):
     await send_message(user, mess)
 
 
+async def sub_game(author, channel, difficulty):
+    global listOfUsers
+    if not (author in listOfUsers):
+        register_user(author, False)
+
+    listOfUsers[author]["subgame_playing"] = True
+    thinking_time = 0
+    if difficulty == 1:
+        thinking_time = 10
+    if difficulty == 2:
+        thinking_time = 15
+    if difficulty == 3:
+        thinking_time = 20
+    question, answer, word = wordDef.generate_custom_question(difficulty)
+    await send_message(channel, question, True)
+    await send_message(channel, "Type olym answer [number] to answer this question")
+    await send_message(channel, "You have {} seconds.".format(thinking_time))
+    await asyncio.sleep(thinking_time)
+
+    listOfUsers[author]["subgame_playing"] = False
+
+    if listOfUsers[author]["subgame_answer"] != "":
+        await send_message(channel, "Your final answer is {}".format(listOfUsers[author]["subgame_answer"]))
+    else:
+        await send_message(channel, "We did not receive any answer from you. 0 points.")
+        return
+
+    await asyncio.sleep(1)
+    if listOfUsers[author]["subgame_answer"] == str(answer):
+        listOfUsers[author]["score"] += difficulty
+        await send_message(channel, "And that is the correct answer! You are awarded {} points.".format(difficulty))
+    else:
+        await send_message(channel, "That is not the correct answer. The correct answer is {}.".format(answer))
+
+    await send_message(channel, vocs.getLink(word))
+
+
 @client.event
 async def on_message(message):
     global status
@@ -418,6 +460,15 @@ async def on_message(message):
 
     if len(args) == 3 and args[1] == "def" and args[2].isalpha():
         mess = "Exporting words failed. Please try again later."
+
+    if len(args) == 3 and args[1] == "mega" and args[2] in ["1", "2", "3"]:
+        await sub_game(message.author, message.channel, int(args[3]))
+        return
+
+    if len(args) == 3 and args[1] == "answer" and args[2] in ["1", "2", "3", "4"]:
+        if message.author in listOfUsers and listOfUsers[message.author]["subgame_playing"]:
+            listOfUsers[message.author]["subgame_answer"] = args[2]
+            await send_message(message.channel, "Your current answer is {}".format(args[2]), True)
 
     if len(args) == 2 and args[1] == "restart" and message.author.id == ADMIN_ID:
         os.system("bash ./restart.sh")

@@ -137,7 +137,7 @@ def generate_custom_question(difficulty=1, chosen_word=""):
         word, info = random.choice(list(master_word_data[difficulty-1].items()))
     else:
         word = chosen_word
-    info = vocs.getShortDefinitionWithWord(word, slow=True)
+    info = get_definition(word)
     synonyms = list(get_related(word, "synonyms").keys())
     antonyms = get_antonyms(word)
     if len(synonyms) < 3 or len(antonyms) < 1 or info == "" or info.count("\t") >= 6:
@@ -156,5 +156,5 @@ def generate_custom_question(difficulty=1, chosen_word=""):
     for i in range(answer, 4):
         question += "{}. {}\n".format(i+1, synonyms[i-1])
 
-    return question, answer, info
+    return question, answer, word
 
