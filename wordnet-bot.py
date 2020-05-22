@@ -301,12 +301,9 @@ async def on_ready():
     print("Bot is ready.")
     initialize_firebase()
     load_user_data()
-    for user in listOfUsers:
-        listOfUsers[user]["score"] += 1
     init_word_list()
     global db
     messenger.init_message(db)
-    print("I'm here")
     await main_game()
 
 
