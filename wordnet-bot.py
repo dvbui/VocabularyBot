@@ -357,26 +357,26 @@ async def sub_game(author, channel, difficulty):
         thinking_time = 20
     question, answer, word = wordDef.generate_custom_question(difficulty)
     await send_message(channel, question, True)
-    await send_message(channel, "Type olym answer [number] to answer this question")
-    await send_message(channel, "You have {} seconds.".format(thinking_time))
+    await send_message(channel, "Type olym answer [number] to answer this question", True)
+    await send_message(channel, "You have {} seconds.".format(thinking_time), True)
     await asyncio.sleep(thinking_time)
 
     listOfUsers[author]["subgame_playing"] = False
 
     if listOfUsers[author]["subgame_answer"] != "":
-        await send_message(channel, "Your final answer is {}".format(listOfUsers[author]["subgame_answer"]))
+        await send_message(channel, "Your final answer is {}".format(listOfUsers[author]["subgame_answer"]), True)
     else:
-        await send_message(channel, "We did not receive any answer from you. 0 points.")
+        await send_message(channel, "We did not receive any answer from you. 0 points.", True)
         return
 
     await asyncio.sleep(1)
     if listOfUsers[author]["subgame_answer"] == str(answer):
         listOfUsers[author]["score"] += difficulty
-        await send_message(channel, "And that is the correct answer! You are awarded {} points.".format(difficulty))
+        await send_message(channel, "And that is the correct answer! You are awarded {} points.".format(difficulty), True)
     else:
-        await send_message(channel, "That is not the correct answer. The correct answer is {}.".format(answer))
+        await send_message(channel, "That is not the correct answer. The correct answer is {}.".format(answer), True)
 
-    await send_message(channel, vocs.getLink(word))
+    await send_message(channel, vocs.getLink(word), True)
 
 
 @client.event
@@ -462,11 +462,14 @@ async def on_message(message):
         mess = "Exporting words failed. Please try again later."
 
     if len(args) == 3 and args[1] == "mega" and args[2] in ["1", "2", "3"]:
+        if message.author in listOfUsers and listOfUsers[message.author]["subgame_playing"]:
+            return
         await sub_game(message.author, message.channel, int(args[2]))
         return
 
     if len(args) == 3 and args[1] == "answer" and args[2] in ["1", "2", "3", "4"]:
         if message.author in listOfUsers and listOfUsers[message.author]["subgame_playing"]:
+            print("I'm here")
             listOfUsers[message.author]["subgame_answer"] = args[2]
             await send_message(message.channel, "Your current answer is {}".format(args[2]), True)
 
