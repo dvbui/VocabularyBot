@@ -156,17 +156,12 @@ def pick_keyword():
             del wordDatabase[word]
             continue
 
-        if wordDef.get_definition(word) == "":
+        word_definition = wordDef.get_definition(word)
+        info["long"] = word_definition
+        if word_definition == "":
             del wordDatabase[word]
             continue
 
-        if info["long"] == "" or info["long"].count("\t") >= 6:
-            info["long"] = vocs.getShortDefinitionWithWord(word)
-            if info["long"] == "":
-                del wordDatabase[word]
-                continue
-
-        word_definition = wordDef.get_definition(word)
         details = wordDef.choose_questions(word, definition=word_definition)
         print(word)
         print(details)
@@ -302,7 +297,7 @@ async def main_game():
     if status == 6:  # Puzzle is solved
         global game_finished
         game_finished += 1
-        acceptingKeywordy = False
+        acceptingKeyword = False
         acceptingAnswers = False
         mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
         del wordDatabase[keyWord]
@@ -364,6 +359,8 @@ async def guess_keyword(user, key_answer):
         listOfUsers[user]["score"] += score
         global winner
         winner = str(user)
+        global acceptingKeyword
+        acceptingKeyword = False
         mess = "Puzzle solved. Everyone is eliminated!\n"
         mess += "You gain {} points for your keyword answer".format(score)
         status = 6
