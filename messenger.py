@@ -1,38 +1,29 @@
 import requests
 import json
 import os
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 from time import sleep
 
 import vocs
 
+OLYMPIA_MAIN_SERVER = 709919416456052897
+
 messages = {}
 
 
-def get_data(url, obj, important=False, retry=10):
-    cnt = 0
-    while True:
-        try:
-            x = requests.post(url, data=obj)
-        except:
-            if important:
-                sleep(5)
-                continue
-            else:
-                cnt += 1
-                if cnt == retry:
-                    return ""
-
-        if x.text[0] == '\n':  # success
-            break
-
-    return x.text.strip()
-
-
-def init_message():
-    url = os.environ["SECRET_URL"]
-    obj = {"command": "init message"}
-    global messages
-    messages = json.loads(get_data(url, obj))
+def init_message(db):
+    doc_ref = db.collection(u'messages').document(str(OLYMPIA_MAIN_SERVER))
+    doc = doc_ref.get()
+    if doc.exists:
+        info = doc.to_dict()
+        messages["register_message"] = info["register_message"].replace("\\n", "\n")
+        messages["rule_message"] = info["rule_message"].replace("\\n", "\n")
+        messages["help_message"] = info["help_message"].replace("\\n", "\n")
+        print(messages["register_message"])
+    else:
+        print("Cannot find messages")
 
 
 def register_message():

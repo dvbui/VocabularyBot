@@ -8,33 +8,28 @@ import asyncio
 import random
 import messenger
 import sys
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 from time import sleep
-
 sys.setrecursionlimit(10 ** 6)
 inflect = inflect.engine()
 
 ADMIN_ID = 361217404296232961
+
 # load new word list
 wordDatabase = {}
 
+db = None
 
-def get_data(url, obj, important=False, retry=10):
-    cnt = 0
-    while True:
-        try:
-            x = requests.post(url, data=obj)
-            if x.text[0] == '\n':  # success
-                break
-        except:
-            if important:
-                sleep(5)
-                continue
-            else:
-                cnt += 1
-                if cnt == retry:
-                    return ""
 
-    return x.text.strip()
+def initialize_firebase():
+    secret_url = os.environ["SECRET_URL"]
+    os.system("curl {} --output serviceAccountKey.json".format(secret_url))
+    cred = credentials.Certificate("serviceAccountKey.json")
+    firebase_admin.initialize_app(cred)
+    global db
+    db = firestore.client()
 
 
 def init_word_list():
@@ -43,16 +38,6 @@ def init_word_list():
     for line in new_word_file:
         wordDatabase[line.strip()] = {"long": ""}
     new_word_file.close()
-    url = os.environ["SECRET_URL"]
-    obj = {"command": "print picked words"}
-    f = get_data(url, obj, True).split('\n')
-    for line in f:
-        line = line.strip()
-        if line in wordDatabase:
-            del wordDatabase[line]
-    if len(wordDatabase) == 0:
-        get_data(os.environ["SECRET_URL"], {"command": "reset word"}, False)
-        init_word_list()
 
 
 # game information
@@ -82,45 +67,34 @@ def register_user(user):
 def load_user_data():
     global listOfUsers
     listOfUsers = {}
-    link = os.environ["SECRET_URL"]
-    post_obj = {"command": "print user"}
+    users_ref = db.collection(u'users')
+    docs = users_ref.stream()
 
-    f = get_data(link, post_obj, True).split('\n')
-    for line in f:
-        line = line.strip().split(' ')
-        if len(line) != 3:
-            break
-        print(line[0])
-        print(line[1])
-        print(line[2] == "1")
-        user = client.get_user(int(line[0]))
+    for doc in docs:
+        user = client.get_user(int(doc.id))
         if not (user is None):
             register_user(user)
-            listOfUsers[user]["score"] = float(line[1])
-            listOfUsers[user]["receive_message"] = line[2] == "1"
+            user_info = doc.to_dict()
+            listOfUsers[user]["score"] = user_info["score"]
+            listOfUsers[user]["receive_message"] = user_info["receive_message"]
 
 
 def save_user_data():
-    global listOfUsers
-    link = os.environ["SECRET_URL"]
-
+    global db
     for user in listOfUsers:
-        post_obj = {"user": str(user.id), "score": listOfUsers[user]["score"]}
-        if listOfUsers[user]["receive_message"]:
-            post_obj["receive_message"] = "1"
-        else:
-            post_obj["receive_message"] = "0"
-        get_data(link, post_obj, False)
+        doc_ref = db.collection(u'users').document(str(user.id))
+        doc_ref.set({
+            u'score': listOfUsers[user]["score"],
+            u'receive_message': listOfUsers[user]["receive_message"]
+        })
 
 
 def save_block():
     global listOfUsers
-    link = os.environ["SECRET_URL"]
-    post_obj = {"user": 0, "block": ""}
-    for i in range(0, len(clues)):
-        post_obj["block"] += " " + clues[i][0]
-    post_obj["block"] = post_obj["block"].strip()
-    get_data(link, post_obj, False)
+    global db
+    global game_finished
+    doc_ref = db.collection(u'blocks').document(str(game_finished))
+    doc_ref.set({u'content': str(clues)})
 
 
 def free_all_users():
@@ -301,9 +275,11 @@ async def main_game():
         acceptingAnswers = False
         mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
         del wordDatabase[keyWord]
-        url = os.environ["SECRET_URL"]
-        obj = {"word": keyWord, "picked": 1}
-        get_data(url, obj, False)
+
+        global db
+        doc_ref = db.collection("words").document(keyWord)
+        doc_ref.set({"picked": True})
+
         await send_message(channel, mess, True)
         for user in listOfUsers:
             await send_message(user, mess)
@@ -321,33 +297,15 @@ async def main_game():
 
 
 @client.event
-async def on_member_join(member):
-    print("I'm here")
-    obj = {"server": str(member.guild.id), "purpose": "welcome_message"}
-    link = os.environ["SECRET_URL"]
-    welcome_message = get_data(link, obj)
-
-    if welcome_message == "":
-        return
-
-    welcome_message = welcome_message.replace("{user}", str(member))
-    obj["purpose"] = "welcome_channel"
-    try:
-        welcome_channel_id = int(get_data(link, obj))
-        global client
-        channel = client.get_channel(welcome_channel_id)
-        await send_message(channel, welcome_message, True)
-    except:
-        print("Can't send message")
-        return
-
-
-@client.event
 async def on_ready():
     print("Bot is ready.")
+    initialize_firebase()
     load_user_data()
+    for user in listOfUsers:
+        listOfUsers[user]["score"] += 1
     init_word_list()
-    messenger.init_message()
+    global db
+    messenger.init_message(db)
     print("I'm here")
     await main_game()
 
@@ -452,33 +410,16 @@ async def on_message(message):
             mess = "We are not accepting keyword answers. Please wait a little bit and try again."
 
     if len(args) == 2 and args[1] == "export" and message.author in listOfUsers:
-        link = os.environ["SECRET_URL"]
-        post_obj = {"user": "", "command": "print block"}
-        mess = get_data(link, post_obj, False)
-        if mess:
-            mess = "```\n" + mess + "```"
-        else:
-            mess = "Exporting words failed. Please try again later."
+        mess = "Exporting words failed. Please try again later."
 
     if len(args) == 2 and args[1] == "help":
         mess = messenger.help_message()
 
     if len(args) == 2 and args[1] == "recent":
-        obj = {"command": "print recent block"}
-        url = os.environ["SECRET_URL"]
-        mess = "```\n" + get_data(url, obj, False) + "```\n"
+        mess = "Exporting words failed. Please try again later."
 
     if len(args) == 3 and args[1] == "def" and args[2].isalpha():
-        mess = "```\n"
-        definition = vocs.getShortDefinitionWithWord(args[2])
-        if definition != "":
-            mess += "\n"
-            mess += definition + "\n"
-            mess += "This text is from Vocabulary.com (https://www.vocabulary.com). Copyright ©1998-2020 Thinkmap, Inc. All rights reserved.\n"
-            mess += "\n"
-        else:
-            mess += "{} is not in the database.".format(args[2])
-        mess += "```\n"
+        mess = "Exporting words failed. Please try again later."
 
     if len(args) == 2 and args[1] == "restart" and message.author.id == ADMIN_ID:
         os.system("bash ./restart.sh")

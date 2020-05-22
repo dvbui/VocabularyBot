@@ -3,5 +3,7 @@ herokuPassword.txt
 *.php
 *.project
 *.swp
+*.js
+serviceAccountKey.json
 .idea
 __pycache__
