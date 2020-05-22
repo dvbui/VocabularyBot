@@ -375,7 +375,7 @@ async def sub_game(author, channel, difficulty):
         await send_message(channel, "And that is the correct answer! You are awarded {} points.".format(difficulty), True)
     else:
         await send_message(channel, "That is not the correct answer. The correct answer is {}.".format(answer), True)
-
+    listOfUsers[author]["subgame_answer"] = ""
     await send_message(channel, vocs.getLink(word), True)
 
 
