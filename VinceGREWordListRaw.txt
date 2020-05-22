@@ -1,1229 +1,2793 @@
-anachronistic	anathema	alienate	astonishment	ardor	admonished	androgynous	asperity
-analogous	anemic	alleviate	audacious	arrogate	adorned	anesthetic	aspersion
-animus	animosity	aloof	austere	ascertain	adroit	animosity	assay
-anoint	anodyne	amalgamate	avarice	ascetic	adulation	anomalous	asseverate
-anomalous	anomalous	ambiguous	aver	assail	adulterate	anomaly	assiduous
-antedate	anomaly	ambivalent	banal	assiduous	adversary	antecedent	astringent
-antipathy	antedated	ameliorate	belie	assuage	advocate	anthology	attenuate
-antithesis	antic	amortize	benign	attenuate	aegis	antipathy	attrition
-apathy	antipathy	anachronism	biased	audacious	aesthetic	antithesis	augury
-apologist	antiquated	analgesia	bolster	augment	affable	apprise	august
-appease	antithetical	analogous	bombastic	augury	affectation	approbation	auspice
-approbation	apathetic	anarchy	brazen	august	affiliated	arbitrary	auspicious
-apropos	apathy	annul	bucolic	auspicious	affront	arcane	avarice
-apt	apex	anodyne	burgeon	austere	aggrandized	archaic	axiomatic
-arbitrary	aphorism	anoint	cacophony	autonomy	aghast	archetype	baleful
-arcane	aphoristic	anomaly	calumny	avarice	alacrity	ardent	banal
-archaic	aplomb	antagonize	candid	avuncular	algorithm	ardor	bane
-arduous	apocryphal	antedate	canon	axiom	alleviate	arduous	beatify
-arresting	apogee	antithetical	capacity	banal	allusion	arrest	bedizen
-artless	apostate	apathy	capricious	belfry	altruistic	articulate	beget
-ascertain	apothegm	apocryphal	castigate	benevolent	amalgamate	assimilate	bent
-ascetic	apotheosis	apostate	catalyst	bevy	ambiguity	assuage	bilge
-ascribe	appease	apostle	caustic	bifurcate	ambivalence	astute	blandish
-assail	appreciable	apposite	censure	bilk	ameliorated	audacious	blithe
-assertive	apprehension	apprise	chauvinist	blight	amenable	augment	brook
-assuage	approbatory	approbation	chicanery	blithe	amicable	austere	byzantine
-astringent	appropriate	appropriate	chronological	bombast	amortize	authoritarian	cabal
-astute	appurtenant	arbiter	coalesce	bonhomie	ample	aver	cachinnate
-attenuate	arbitrary	arcane	cogent	boor	anachronism	aversion	cacophony
-audacious	arcane	archaic	commensurate	bromide	analogue	avid	cadge
-augment	arch	ardent	compelling	bucolic	anathema	avow	cajole
-austere	archaic	arduous	comprehensive	burgeon	anile	bedlam	calumniate
-avaricious	arduous	arrogate	condone	burnish	animosity	belabor	calumny
-aversion	arrant	articulate	confound	byzantine	annotation	beleaguer	canard
-banal	arriviste	artifact	connoisseur	cabal	annul	belie	canon
-banish	arrogate	artless	consequential	cacophony	anodyne	bellicose	canonical
-baroque	artful	ascertain	construe	cajole	anomaly	belligerent	caparison
-base	artifice	ascetic	consumption	callous	antedate	beneficent	capitulate
-befuddled	artless	ascribe	contend	calumny	antediluvian	benign	captious
-belie	artlessness	aseptic	contentious	canard	antipode	bent	caret
-belligerent	ascendancy	asperity	contrite	canonical	antithesis	bereave	caterwauling
-beneficent	ascetic	aspersions	convoluted	cantankerous	apace	boisterous	cavil
-benevolent	ascribe	assail	copious	capricious	apartheid	bolster	celerity
-benign	askance	assiduous	cosmopolitan	cartographer	aplomb	bombast	chagrin
-berate	asperity	assuage	covet	castigate	apocryphal	brevity	chasten
-betray	assail	attenuate	craft	cataclysm	apoplectic	broach	chicanery
-blithe	assiduously	attuned	craven	cathartic	apostle	buff	chide
-bogus	assuage	audacious	credence	catholic	apothegm	burgeon	chimera
-boisterous	atavism	augment	credulous	caustic	apotheosis	burnish	choleric
-bolster	attenuate	augury	decorum	cavalier	appease	buttress	churlish
-boorish	audacious	august	deference	censure	apportion	candor	cleave
-brazen	audacity	austere	deflect	charlatan	apposite	capricious	coda
-bridle	augment	autonomous	deftness	chary	approbation	cardinal	coeval
-brook	auspicious	avarice	delineate	chicanery	apropos	castigation	collusion
-bucolic	austere	aver	demur	churlish	arbitrary	catalyst	comely
-buoyant	autocratic	avid	denigrate	circumlocution	arcane	caustic	conflate
-burgeon	autonomously	axiom	deride	circumscribed	arch	cavalier	consonant
-buttress	avarice	balk	derivative	circumspect	archaic	censure	consummate
-byzantine	avaricious	balloon	desiccate	clandestine	arduous	centrifuge	contemn
-cacophonous	avert	banal	desultory	cloying	arid	chauvinist	contumacious
-calumny	avid	bane	detachment	coalesce	arrogate	circumspect	coterie
-candid	badger	base	determinant	coffer	articulate	coalesce	coterminous
-canny	baleful	baying	diatribe	cogent	artifice	coercive	countenance
-canonize	balk	belie	didactic	collusion	artless	cogent	cozen
-capricious	banal	beneficent	diffident	conciliate	ascendancy	cognizant	craven
-castigate	banality	benign	dilettante	concomitant	ascetic	color	cupidity
-cataclysmic	banish	bent	dirge	conflagration	ashen	commensurate	decorous
-caustic	base	besiege	disabuse	conspicuous	askew	complaisance	defalcate
-cavalier	bastardization	bevy	discern	consummate	asperity	complement	demagogue
-censure	beatific	bifurcate	discrepancy	contrite	aspersion	compliant	demur
-cerebral	becoming	bilk	disinterested	contumacious	aspiration	conciliatory	denouement
-chastise	beg	blight	disparage	convoluted	assail	condemn	deposition
-chauvinistic	begrudge	blithe	disparate	corpulent	assiduous	condolence	deprecate
-cherish	behooves	bogus	dispassionate	corroborate	assuage	condone	depredate
-chicanery	belie	bolster	disregard	cosset	astray	connoisseur	descant
-chivalrous	belittle	bombastic	dissemble	coterie	astute	conspicuous	descry
-churlish	bellicose	bonhomie	disseminate	craven	attenuate	conspire	desiccate
-circumscribe	belligerent	boor	dissonance	crescendo	audacious	consternation	desuetude
-circumspect	bemoan	brandish	diverge	culpable	augment	contemptuous	desultory
-clamorous	benighted	brook	dogma	cumbersome	august	contentious	diaphanous
-clandestine	benign	bucolic	dupe	cupidity	auspicious	contiguous	didactic
-clangor	bereft	buffer	ebullient	curmudgeon	austere	contrite	diffident
-cloak	besiege	bureaucracy	eccentric	cynical	authoritative	convention	dilatory
-coalesce	besmirch	burgeon	eclectic	dalliance	automaton	converge	dirge
-coercion	besotted	burnish	efficacy	daunt	autonomous	conversion	disaffect
-cogent	betray	buttress	elegy	dearth	avaricious	copious	discomfit
-coin	bilious	bygone	elicit	debunk	aver	corroborate	discursive
-collaborate	blatant	cacophony	eloquence	debutante	aversion	corrosion	distention
-comity	bleak	calumny	eminent	declivity	avuncular	covert	distrait
-commence	blinkered	canard	empirical	decorous	badger	covet	doggerel
-commensurate	bolster	candid	emulate	deject	baleful	cower	dogmatic
-compelling	boon	canonical	enervate	deleterious	banal	credulous	dolorous
-competent	boorish	capricious	engender	delineate	base	culpable	dross
-complacent	bowdlerize	cardinal	enhance	demagogue	battery	cultured	dulcet
-complementary	brazen	cartography	entitlement	demarcate	bauble	cunning	ebullience
-comply	bridle	castigate	ephemeral	demur	baying	curmudgeon	edacious
-compromise	bristle	catalyst	equable	denigrate	beatific	cursory	edifying
-conciliatory	broadside	catholic	equivocate	derelict	beatify	cynical	effluvia
-condone	bromide	caustic	erroneous	deride	becalm	damp	effrontery
-confound	brook	censure	erudite	derivative	bedlam	daunt	effusive
-congenial	browbeat	chauvinism	eschew	desiccate	beguile	dearth	egregious
-conjectural	brusquely	chicanery	esoteric	despoiler	behemoth	debacle	egress
-connoisseur	buck	chronological	estimable	despot	beleaguered	debased	elegy
-consensus	bucolic	circumscribe	eulogy	destitute	belied	debauchery	emollient
-conspicuous	bumbling	circumspect	exacerbate	desultory	belittle	decibel	encomium
-construe	burgeon	clamber	exacting	diaphanous	bellicose	decimate	endemic
-contempt	buttress	clamor	exculpate	diatribe	bemoan	defer	enormity
-contend	byzantine	clinch	exigent	dictum	beneficence	deference	epicure
-contentious	cadaverous	cloying	exonerate	didactic	benign	deign	epithet
-contravene	callow	coagulate	expatiate	diffident	bereft	deleterious	eponymous
-contrite	calumny	coalesce	explicate	dilatory	beseech	demure	equanimity
-convalescent	canard	coda	exposition	dilettante	bifurcated	denigrate	equipoise
-conventional	candid	coffer	extraneous	dirge	bilious	denounce	erudite
-convivial	candidness	cogent	extrapolate	disabuse	blasé	deride	eschew
-convoluted	capitulate	collude	facetious	discern	blithe	derision	esoteric
-copious	capricious	commensurate	facilitate	disdain	bloviated	derivative	essay
-cordial	cardinal	compendium	fallacious	disenfranchise	bludgeon	detraction	euphony
-correlate	carping	complacent	fastidious	disillusion	bonhomie	deviance	evince
-corroborate	castigate	complaisant	fluctuate	disingenuous	boon	deviation	exact
-cosmopolitan	cataclysm	complementary	foment	disparage	boor	diabolic	excoriate
-countenance	catalyst	compliant	forestall	disparate	bootless	diatribe	exegesis
-covert	catholic	concede	fortuitous	dissembler	bowdlerize	dichotomy	exhort
-covet	cavalier	conciliatory	fortuitous	disseminate	bravado	diffuse	expatiate
-craven	cede	concur	gainsay	dissonance	brazen	digress	expiate
-credible	celerity	condone	galvanize	distaff	brevity	dilapidated	exposition
-crestfallen	censor	confer	garrulous	dither	bromide	din	expostulate
-cumbersome	censure	confound	gauche	diurnal	brusque	disabuse	expound
-cumbersome	cerebral	connoisseur	germane	divert	bucolic	discomfit	expurgate
-cunning	chagrin	connote	glib	divine	bugbear	discordant	exscind
-curb	champion	console	gregarious	doctrinaire	bulwark	discourse	extant
-cursory	charlatan	consolidate	guile	dogmatic	bumptious	discreet	extirpate
-curtail	chary	constrict	hackneyed	draconian	bungle	discrepancy	extol
-daunting	chastise	construe	harangue	droll	buoyant	discrete	facile
-dawdle	chauvinism	contentious	hedonism	dubious	burdensome	discretion	fallow
-dearth	chauvinist	contextualize	hierarchical	dupe	burgeoning	disingenuous	fatuous
-debilitating	check	contraries	homogenous	dyspeptic	buttress	disinterest	feckless
-debunk	checkered	contrite	hyperbole	earnest	bygone	disparage	felicitious
-decadent	chimera	contumacious	iconoclast	ebullient	byzantine	disparate	fetid
-decorum	chivalrous	conundrum	ideological	eclectic	cache	dispersed	filigree
-decry	choleric	converge	imminent	edify	cacophony	dissemble	florid
-deference	chortle	conversant	immutable	efficacious	cadge	dissolution	foment
-deflect	churlish	conversely	impair	effigy	cajole	distill	ford
-deft	circumscribe	convoke	impediment	effrontery	calamitous	distraught	fracas
-deify	circumvent	convoluted	imperturbable	effusive	callous	divest	fractious
-deleterious	clemency	copious	implacable	egalitarian	callow	divulge	frieze
-deliberate	coalesce	corroborate	implicit	egregious	calumnious	dogma	froward
-demur	cogent	cosmopolitan	imprudence	elegy	camaraderie	dynamo	fulminate
-denounce	cohesive	cosset	impudent	elicit	canard	eccentric	fulsome
-deride	collusion	coterie	inadvertent	eloquent	canny	eclectic	gainsay
-derivative	colossal	countenance	Inchoate	elucidate	canonize	eloquent	gambit
-desiccate	commendable	counterintuitive	inconclusive	embroil	capacious	elucidate	gambol
-despotic	commensurate	counterpoint	indebted	eminent	capitulate	empirical	garrulous
-desultory	complacent	counterproductive	indefatigable	emissary	capricious	emulate	gauche
-deviate	complaisant	covert	indolent	emollient	captious	enervate	gauntlet
-diatribe	complementary	crafty	infer	empirical	cardinal	engender	gawkishness
-dichotomy	complicit	craven	ingenuous	emulate	caricatured	enigmatic	germane
-dictate	compound	credibility	inimical	encomium	castigate	enumerate	gnostic
-didactic	concede	credulous	Innocuous	endemic	caterwaul	ephemeral	gossamer
-diffident	conciliate	crescendo	inscrutable	enervated	causal	episodic	grandiloquence
-diffuse	concomitant	culminate	insipid	engender	celerity	epitome	gratuitous
-digression	conducive	cupidity	insular	enigma	censure	equivocal	gravitas
-dilatory	conflagration	curmudgeon	intensive	ennui	cerebral	equivocate	gregarious
-diminutive	conflate	cynical	intermediary	enumerate	chagrin	eradicate	grouse
-discernible	confound	daunt	intimate	ephemeral	champion	espouse	guile
-discomfit	conniving	debase	intractable	epicure	chary	estimable	guy
-discount	consecrate	debunk	intransigent	epistolary	chicanery	ethereal	hackneyed
-discreet	conspicuous	declaim	intrepid	equanimity	choleric	eulogy	hallow
-discrepancy	constituent	declivity	inveterate	equivocal	chronological	euphemism	harangue
-disingenuous	constraint	decorous	invulnerable	ersatz	churlish	evanescent	harrow
-disinterested	construe	deem	irascible	erudition	cinematic	exacerbate	hectoring
-disparate	consummate	deface	irresolute	eschew	circuitous	exculpate	hedonism
-dissemble	contemptuous	default	laconic	esoteric	circumscribed	exemplar	hermetic
-disseminate	contentious	deference	laud	espouse	circumspect	exonerate	heterodox
-dissent	contingent	deflect	laudable	ethos	circumvents	expel	hirsute
-dissident	contrite	deleterious	litigation	eulogy	clairvoyant	extemporaneous	homiletics
-distill	contrition	delimit	loquacious	euphemism	clandestine	extend	homily
-distort	contrive	delineate	lucid	euphony	clangorous	extraneous	hubris
-distressed	conundrum	demagogue	luminous	evanescent	clemency	facetious	iconoclastic
-divergent	convivial	demur	magnanimity	exacerbate	climatic	facilitate	idyll
-divorced	convoluted	denigrate	maladroit	exasperate	climax	fallacy	ignoble
-divulge	copious	denote	malign	exculpate	cloying	fancy	ignominious
-documentary	cornucopia	deride	malleable	exegesis	coalesce	fawn	imbroglio
-dogged	corollary	derivative	maverick	exigent	cocksure	fervent	immutable
-dogmatic	corroborate	desiccate	mendacity	exonerate	coddle	fidelity	imperious
-droll	cosmopolitan	desultory	mercurial	exorbitant	coerced	filibuster	impiety
-dubious	cosseted	detached	meticulous	expatriate	coeval	flag	importune
-dupe	coterminous	deterrent	misanthrope	explicator	cognizant	flamboyant	imprimatur
-duplicitous	countermand	diaphanous	mitigate	explicit	coherence	flip	impugn
-duress	cow	diatribe	modest	exponent	cohesive	flounder	impute
-dwindling	craven	dichotomy	mollify	expurgate	cohort	flout	incandescent
-ebullient	credence	dictum	monotony	extemporaneous	coin	flush	inchoate
-eccentric	creditable	didactic	mundane	extol	collusion	forbearance	ineffable
-eclipse	credulity	diffident	munificent	extraneous	commensurate	forestall	ineluctable
-economy	crestfallen	diffuse	naïve	exuberant	commiserate	forswear	ingenuous
-edify	cryptic	digress	nascent	facetious	companionable	forte	inimical
-efficacious	crystallize	dilate	neglect	fallacy	complicit	fortuitous	inimitable
-egregious	culminate	dilatory	nonplussed	fallible	composure	founder	iniquity
-elated	culpability	dilettante	notoriety	fallow	compunction	fraud	innervate
-elementary	cumbersome	din	nuance	fastidious	concession	frugality	inscrutable
-elicit	cupidity	dirge	obdurate	fatuous	concoct	furtive	insensible
-elitist	curmudgeon	disabuse	obscure	fawn	concomitant	garner	insouciant
-elucidate	dearth	discerning	obsequious	fecund	concord	genial	interdict
-embellish	debase	discomfiting	obstinate	felicity	concupiscence	glib	invective
-empirical	debonair	discordant	obviate	fervid	condign	goad	inveigh
-emulate	debunk	discredit	occlude	fetid	condones	gratis	inveterate
-enchant	decimation	discrepancy	occult	flippant	conferred	gratitude	involute
-encyclopedic	decorous	discrete	offset	flotsam	confiscate	hankering	jejune
-enervate	decorum	discriminating	olfactory	foible	conflagration	hegemony	jocose
-engender	decry	disingenuous	omniscience	fomentation	conflate	heretical	labile
-enigmatic	deferential	disinterested	onerous	foppish	confound	hyperbole	lachrymose
-entitled	defray	disjointed	opaque	ford	conglomerate	idiosyncrasy	laconic
-entrenched	degrade	dismiss	opportunism	formidable	conniving	idolatrous	lambaste
-ephemeral	deign	disparage	opprobrium	fortuitous	connoisseur	illusory	languorous
-equitable	delegate	disparate	oscillate	foster	conscientious	imminent	largess
-equivocate	deleterious	dispassionate	ostentatious	fractious	conspicuous	impassive	lascivious
-erratic	deliberate	dispatch	outstrip	frenetic	consternation	impediment	lassitude
-erudite	delineate	disperse	overshadow	frivolous	contumacious	impenetrable	laud
-escalate	demean	disposition	painstaking	frugal	conundrum	imperturbable	levee
-eschew	demonstrative	disquieting	partial	fulminate	conversant	impetuous	levity
-esoteric	demur	dissemble	partisan	furtive	copious	implacable	libertine
-estranged	demure	disseminate	patent	gambol	cordial	improbable	limn
-euphoric	denigrate	dissent	paucity	garner	cordon	impudent	limpid
-evade	denote	dissolution	pedantic	garrulous	corroborate	impunity	list
-evanescent	denouement	dissonance	pedestrian	genial	cosmopolitan	incipient	loquacious
-evasive	derelict	distaff	perfidy	germane	covert	incorrigible	lubricious
-evoke	deride	distend	perfunctory	glib	cowed	incubation	luculent
-exacerbate	derisive	distill	peripheral	glower	craven	incumbent	lugubrious
-exacting	derivative	dither	permeate	gradation	credence	indefatigable	lumber
-exasperated	derive	diurnal	perseverance	gratuitous	credulous	indifferent	luminary
-exculpate	derogative	diverge	peruse	gregarious	crepuscular	indignation	macerate
-exhaustive	desecrate	divest	pervasive	grievous	demotic	indolent	maculate
-exhilarating	desiccated	divine	phenomena	grovel	demur	indomitable	magnanimity
-exonerate	desideratum	doctrinaire	phlegmatic	guile	denigrate	inept	malinger
-exorcise	despot	document	pith	gustatory	denizen	inerrancy	maunder
-exotic	destitute	doff	placate	hackneyed	denuded	inert	maxim
-expedient	deter	dogma	plastic	halcyon	depiction	ingenuity	mellifluous
-expedite	detrimental	dormant	platitude	hapless	deplete	inherent	mendacity
-explicable	devolve	dovetail	plausible	harangue	deplore	innocuous	mendicant
-exploitative	diabolical	droll	plethora	hedonist	depredate	inopportune	mercurial
-extraneous	diatribe	dubious	plummet	hegemony	deride	inquisitive	meretricious
-extrapolate	dictatorial	dupe	polarize	heretical	derivative	insipid	mettle
-extravagant	didactic	duplicity	polemical	hermetic	descry	insular	militate
-fabricate	differentiate	dyspeptic	pragmatic	histrionic	desecrate	intemperance	minatory
-facetious	diffident	e.g.	precarious	hoary	desiccated	intimate	mince
-fallacious	dilapidated	ebullient	preceded	hubris	despoiled	intransigent	misogynist
-fallible	dilatory	eccentric	precipitate	husband	despot	intrepid	mordant
-falter	dilettante	echelon	precursor	iconoclast	desuetude	introspection	moribund
-fanciful	diligent	eclectic	prescient	idiosyncrasy	deteriorate	inundate	multifarious
-fastidious	diminutive	eclipse	presumptuous	idolatrous	devoid	inured	munificence
-fawn	disabuse	edify	prevail	ignoble	devolve	irascible	nadir
-feasible	disaffected	efficacy	prevaricate	ignominious	devout	irony	nascent
-feckless	discord	effigy	pristine	illusory	dexterity	itinerant	natty
-fecund	discreet	effrontery	probity	imbue	diabolical	itinerate	nebulous
-feeble	discrete	egalitarian	prodigal	immutable	diaphanous	judicious	neologism
-feign	discriminate	egregious	prodigious	impasse	diatribe	lackluster	neophyte
-felicitous	discursive	egress	profligate	impecunious	dichotomy	lament	nexus
-fervent	disenfranchise	elated	proliferate	imperturbable	didactic	latent	nice
-fervid	disheartened	elegy	propitiate	impervious	diffident	lethargic	noisome
-fervor	disingenuous	elevate	propriety	impetuous	digression	lucid	nostrum
-fester	disinterested	elicit	prospective	impious	dilatory	luminous	noxious
-finicky	disparate	eloquent	qualification	implacable	dilettante	magnate	nugatory
-flamboyant	dispassionate	emaciate	quotidian	implicit	dilute	makeshift	obloquy
-florid	dispatch	embellish	rationalize	imprecation	dint	malevolent	obstreperous
-flout	dispensation	eminent	reconcile	impugn	dire	malleable	occult
-flummoxed	dissemble	empirical	recondite	impute	discomfit	manifest	officious
-foil	disseminate	emulate	refute	incarnadine	disconcert	marginal	opprobrium
-foment	dissipate	encomium	relentless	inchoate	discreet	martial	oscillation
-foolhardy	dissolution	endemic	relevant	incipient	discrepancy	maverick	ossified
-forbear	docile	enervate	reproach	incontrovertible	discrete	membrane	ostensible
-foreseeable	dog	engender	repudiate	incorrigible	discriminate	metamorphose	overweening
-forestall	dogmatic	enhance	rescind	incredulous	disgruntled	meticulous	paean
-forsake	doleful	enigma	respectively	inculcate	dismantle	milk	palliate
-fractious	dolorous	entitlement	reticent	indigenous	dismissive	misanthrope	panacea
-fret	doughty	enumerate	reverent	indignant	disparage	misappropriate	panache
-frivolous	dovetail	ephemeral	rhetoric	indolent	disparate	misconstrue	pandemic
-fruitful	dupe	epicure	salubrious	ineffable	dispassionate	miscreant	panegyric
-fungible	duplicity	equanimity	sanction	inexorable	dispatch	miserly	pariah
-furtive	duress	equitable	satiate	ingenious	displacing	mitigate	parry
-futile	ebullient	equivocate	secular	ingenue	disputatious	mollify	parsimonious
-gaffe	eccentric	erratic	sediment	ingrate	dissemble	monotonous	paucity
-gainsay	eclectic	erroneous	sedulous	ingratiate	disseminated	morose	peccadillo
-galvanize	economical	ersatz	simultaneous	inherent	distension	multifaceted	pedestrian
-garrulous	edifying	erstwhile	solicitous	inimical	dither	myriad	pellucid
-gawky	effervescent	erudite	soporific	iniquity	diurnal	nominal	peregrination
-glib	efficacious	eschew	sparse	innocuous	divergent	nonplussed	peremptory
-glum	effrontery	esoteric	specious	insidious	divisive	novel	perfidy
-gratify	egotist	estimable	sporadic	insipid	docile	obdurate	perfunctory
-hackneyed	egregious	ethos	spurious	insolence	doctrinaire	oblique	perigee
-hamper	eke	eulogy	stolid	insular	doggedness	obsequious	peripatetic
-haphazard	elaborate	euphemism	subjective	insurrection	doggerel	obstinate	pernicious
-harbinger	elegiac	euphony	substantiate	inter	dogmatic	obtuse	peroration
-headstrong	elicit	exacerbate	subversive	interlocutor	dolorous	obviate	petrous
-heed	elucidate	exacting	sufficient	interregnum	dormant	odious	philistine
-heterodox	elude	exculpate	superbly	intractable	dour	ominous	phlegmatic
-heterogeneous	elusive	exhaustive	supine	intransigent	draconian	onerous	picaresque
-hinder	embellish	exigent	supplant	inundate	droll	opaque	pied
-histrionic	embroiled	exonerate	sycophant	inure	dubious	ornery	pillory
-hodgepodge	embryonic	expedient	synthesize	invective	dudgeon	ostentatious	piquant
-homogeneous	eminent	explicit	tacit	inveigle	dupe	ostracism	pique
-humdrum	empathetic	exponent	taciturn	investiture	duplicitous	paradigm	pithy
-hyperbole	empiricism	expurgate	temperance	invidious	dwindle	paradox	plaintive
-iconoclastic	emulate	extemporaneous	tenuous	invoke	dyspeptic	parody	plangent
-illusory	enamor	extraneous	timorous	irascible	ebullient	partisan	platonic
-immure	encumber	extrapolate	tirade	itinerant	eclectic	patent	pliant
-immutable	endemic	facetious	torpor	jettison	effaced	pedagogy	plumb
-impair	enervate	facilitate	tortuous	jingoism	effete	pedantic	polemical
-impede	engender	faction	tractable	jocular	efficacious	penchant	portentious
-imperious	enjoin	fallacious	transient	juncture	efflorescence	penultimate	poseur
-impertinent	enmity	fallow	ubiquitous	juxtapose	effluvium	penury	prate
-impetuous	enormity	fanatical	unadorned	keen	effrontery	perennial	prattle
-implicit	enthrall	fanciful	undermine	kindle	effusive	peripheral	precept
-improvise	entice	fastidious	underscore	kinetic	egalitarian	perjury	precis
-impugn	entrenched	fathom	untenable	knell	egregious	personable	predilection
-inborn	enumerate	fatuous	vacillate	lachrymose	eldritch	pertinent	preen
-incendiary	ephemeral	fawn	venality	laconic	emancipate	peruse	prevaricate
-incessant	epigram	feasible	venerate	lament	embellish	pervasive	privation
-inclined	epiphany	fecund	veracity	lampoon	embroiled	petulant	prize
-incongruous	eponym	felicitous	verbose	languid	embryonic	pine	probity
-incredulous	equitable	fervid	vexation	lapidary	eminent	pious	prodigious
-indefatigable	equivocal	fetid	volatile	largess	emollient	placate	profligate
-indiscriminate	equivocate	fidelity	whimsical	lassitude	emphatic	placebo	prolific
-indispensable	eradicate	figurative	zeal	latent	empirical	plasticity	prolix
-indolent	err	finesse		laud	encomium	platitude	propinquity
-industrious	errant	flag		lavish	encompass	plethora	propitiate
-inform	erratic	fledgling		legerdemain	encroaching	plod	prosaic
-ingenuous	ersatz	fleeting		levity	enervating	plummet	proscribe
-inhibit	erudite	florid		lexicography	enigmatic	poignant	provident
-inimical	eschew	flout		liberate	enmity	pompous	puerile
-innocuous	esoteric	fluke		libertine	ennui	porous	pugnacious
-inscrutable	espouse	foment		licentious	ensorcelled	pragmatic	puissance
-insipid	estimable	forage		limpid	entitled	precarious	pulchritude
-insular	ethereal	ford		lissome	entreat	precipitate	pullulation
-interchangeable	euphoria	foreshadow		listless	ephemeral	precursor	punctilious
-intermittent	evanescent	forestall		loquacious	epitome	preempt	pundit
-intertwined	evasive	forfeit		lucid	equivocal	presumption	pusillanimous
-intimate	evenhanded	fortify		lugubrious	eradicate	presumptuous	putrefy
-intransigent	exacerbate	fortuitous		luminous	ersatz	prime	quaff
-intrepid	exacting	fracas		machination	erstwhile	pristine	quail
-intrinsic	exalt	fractious		maelstrom	erudite	proclivity	quay
-inundate	exasperate	frenetic		magnanimous	eschew	prodigal	querulous
-invasive	excoriate	fringe		magnate	esoteric	profuse	quiescence
-inveigle	excruciating	frugal		malediction	espouse	proliferate	quixotic
-inveterate	execrate	fulminate		malevolent	espy	prone	quotidian
-invidious	exegesis	furtive		malice	estimable	propagate	raffish
-invigorate	exemplar	futile		malinger	estranged	propensity	rail
-inviolate	exemplify	gainsay		malleable	ethereal	provincial	ramify
-irascible	exhort	gambol		malodorous	etiolated	prudent	rampart
-ire	exiguity	garner		mar	euphemism	prune	rancorous
-irksome	exonerate	garrulous		martial	eurytopic	pursuant	rapacious
-ironclad	exorbitant	gauche		martinet	evanescent	qualify	rebus
-irresolute	expansive	gawky		matriarch	evinced	qualm	recant
-irreverent	expound	germane		maudlin	exacerbated	query	recidivism
-jeopardize	expunge	gestation		maverick	exact	queue	recondite
-jettison	expurgate	gist		melange	exacting	quintessential	reconnoiter
-judicious	extant	glacial		mendacious	exaggerate	rarefy	recreant
-laconic	extenuating	glib		mendicant	excise	raucous	rectitude
-lament	extrapolate	glower		mercurial	excoriated	recalcitrant	recumbent
-languid	facetious	goad		meretricious	exculpated	recluse	redolent
-largesse	facile	goosebumps		meritocracy	execrable	reconciliation	redoubtable
-laudable	factious	gouge		meticulous	exigent	reconnaissance	refractory
-lax	factitious	gradation		militate	exodus	rectify	regale
-lethargic	fallacious	graft		mirth	exorbitant	refute	rent
-liability	fastidious	grandiloquent		misanthrope	expatiate	relegate	repine
-libertine	fawn	grandstand		miscreant	expatriate	relish	replete
-limpid	feckless	grating		miser	expedient	remedial	reprobate
-lionize	fecund	gregarious		missive	explicate	remonstrate	reprove
-loathe	fell	grievous		mitigate	exponent	remuneration	ribald
-loquacious	ferret	grouse		mollify	expunge	renaissance	rubicund
-lucid	fete	grovel		molt	expurgate	renege	runic
-lucrative	fickle	guile		monastic	extant	reproach	sagacious
-lull	finagle	hackneyed		morass	extemporaneous	repudiate	salacious
-magisterial	firebrand	halcyon		moratorium	extenuating	rescind	salubrious
-malfeasance	flag	hallmark		mores	extirpate	resolute	sanatorium
-malign	fledgling	handwringing		morose	extol	respite	sanctimony
-malleable	fleece	hapless		multifarious	extraneous	restitution	sanguine
-manacle	flippant	harangue		mundane	extrapolate	resurrect	sartorial
-manifest	flounder	hardy		munificent	exult	retard	satiate
-marginalize	flummox	harrow		myopic	fabricate	reticent	saturnine
-mawkish	flush	haven		nadir	facetious	reverent	scurrilous
-mendacity	flux	hearken		naïve	fallible	rhetoric	scurvy
-mercenary	foible	hedge		narcissist	fanatic	rubric	sedulous
-mercurial	foment	hedonist		nascent	farce	rue	seine
-metaphorical	foolhardy	hegemony		nebulous	fastidious	salient	seminal
-meticulous	forlorn	hermetic		nefarious	fatuous	salutary	sententious
-mettlesome	forthcoming	heterogeneous		neologism	fawning	salve	sepulchral
-mimic	forthright	hew		neophyte	feckless	sanction	sidereal
-minute	fortuitous	hierarchy		nettle	fecund	sanction	simper
-misanthropic	fractious	hoary		nihilism	feign	sap	sinecure
-miserly	frivolous	hodgepodge		noisome	felicity	satire	sinuous
-misnomer	frugal	homage		nominal	ferret	saturate	slake
-mitigate	frustrate	homogeneous		noxious	fervor	savor	sodden
-modest	futile	hoodwink		nuance	festoon	schism	solder
-modish	gaffe	hotly		numismatic	fetid	secrete	solicitous
-mollify	gainsay	husband		obdurate	fiasco	sedative	sophistry
-momentary	gall	hyberbole		obfuscate	filial	serenity	sophomoric
-monotonous	galvanize	iconoclast		oblique	fillip	sever	soporific
-mordant	gambit	idiosyncrasy		obscure	finagled	shard	soubriquet
-mundane	garrulous	idolatry		obsequious	finicky	singular	splenetic
-munificent	gauche	idyllic		obstinate	fitful	slight	stanch
-myopic	genial	ignoble		obstreperous	flagrant	slothful	steep
-naive	genteel	illiberality		obstreperous	fleeting	soliloquy	stentorian
-nascent	germane	imbue		obstructionist	flippant	solvent	stoic
-negligent	gerrymander	imminent		obtuse	florid	somber	striated
-neophyte	glean	immutable		obviate	flotilla	sordid	strident
-nettlesome	glib	impair		occlude	flotsam	sparing	strut
-neutralize	glut	impartial		odious	flounder	sparse	stupefy
-noble	goad	impasse		officious	flourish	spendthrift	stygian
-nonchalant	gossamer	impassive		ominous	flouted	sporadic	stymie
-nonplussed	graft	impecunious		onerous	fluctuate	spurious	succor
-noxious	grandiloquent	impede		opaque	flummoxed	squalid	supercilious
-nullify	gregarious	imperious		opine	foible	stanza	supine
-numinous	grovel	impermeable		opprobrium	foment	static	suppliant
-obeisance	guffaw	imperturbable		opulent	forage	staunch	supplicant
-oblivious	guileless	impervious		oration	forbearance	stint	surfeit
-obscure	gumption	impetuous		ornate	foreground	subliminal	sycophant
-obsequious	hackneyed	impious		orotund	forestall	subpoena	table
-obsolete	hagiographic	implacable		orthodox	formidable	subtle	tamp
-obstinate	hail	implication		ossify	fortitude	succinct	tawdry
-obviate	halcyon	implicit		ostensible	fortuitous	sundry	tendentious
-omnipresent	hamper	implode		overt	fracas	superfluous	tetchy
-onerous	hamstrung	imprecation		overwrought	fractious	supplant	timorous
-opaque	haphazard	impugn		pacify	fraternize	surreptitious	toady
-opprobrium	harangue	impute		paean	frenetic	synergy	tonicity
-ostentatious	harried	inadvertent		palatial	froward	tacit	torpid
-oust	haughty	inasmuch		palliate	frugal	taciturn	torrid
-outstrip	hauteur	incarnadine		pallid	fruition	tact	tortuous
-overt	hector	incendiary		panacea	fudge	tangential	tractable
-painstaking	hedge	incentive		panache	fuliginous	tantalize	truculent
-palpable	hegemony	inchoate		panegyric	fulsome	tautology	tumid
-panacea	heretic	incipient		panoply	funereal	temper	turbid
-panache	heyday	incongruous		paradox	furor	temperate	turgid
-paradigmatic	histrionic	inconsequential		paragon	furtive	tenacity	turpitude
-parochial	hoary	inconstancy		parenthetical	gadfly	tender	tyro
-parsimonious	hobble	incorporate		pariah	gaffe	tentative	ubiquitous
-partial	hodgepodge	inculcate		parley	gainsay	tenuous	umbrage
-patent	hoodwink	indefatigable		parody	gallant	terse	uncouth
-peculiar	hound	indeterminate		parry	gambit	tirade	undulate
-pedantic	hubris	indifferent		parsimonious	gamboled	torque	unfeigned
-pedestrian	humdrum	indigence		partisan	garble	tout	untenable
-pellucid	iconoclast	indolent		pastiche	gargantuan	tranquil	untoward
-pensive	iconoclastic	inert		patriarch	garrulous	travesty	upbraid
-perennial	idiosyncrasy	inexorable		paucity	gauche	trepidation	urbane
-perfidy	ignoble	infallible		peccadillo	gaudy	trivial	usury
-perfunctory	ignominious	inform		pedagogical	genial	unfettered	vacuous
-perilous	illicit	ingenuous		pedantic	germane	unremitting	variegated
-peripheral	illustrious	ingrained		pejorative	germinate	vacillate	vaunt
-pernicious	imbibe	ingrate		penchant	ghastly	veracity	venal
-perpetrate	imbroglio	ingratiate		penitent	gild	veritable	venerate
-perpetuate	immaterial	inherent		penurious	glacial	vexation	veneration
-pertinacious	immure	inimical		peregrinate	glancing	viable	verdant
-pertinent	immutable	iniquity		perfidious	glaring	vigilant	verisimilitude
-pervasive	impartial	innocuous		perfunctory	glowered	vigor	vernacular
-petulant	impeccable	inordinate		peripatetic	glut	vilify	vestige
-phlegmatic	impecunious	inquest		permeate	goosebumps	viscous	virago
-pious	impede	insensible		pernicious	gossamer	vitality	virulent
-pithy	impending	insinuate		perquisite	grandiloquent	volatile	vitiate
-placate	imperious	insipid		perspicacity	grandiose	voracious	vitriolic
-placid	impermeable	insular		peruse	grandstand	waffle	viturperate
-plaintive	impertinent	insurrection		pervasive	grasping	waft	volubility
-plastic	impervious	intelligible		petulant	grating	wane	wag
-platitude	impetuous	inter		phalanx	gravitas	warranted	wax
-pliant	implacable	interplay		philanthropist	gregarious	waver	welter
-plodding	implausible	interregnum		philistine	grisly	weather	wend
-poignant	implicate	intractable		phlegmatic	grouse	whimsical	wheedle
-polarize	imponderable	intransigent		picayune	grovel	zealous	wizened
-polemical	importuned	intrepid		pious	gumption		
-polymath	impregnable	intrinsic		pith	guttural		
-portend	improvident	inundate		pithy	hackneyed		
-precarious	imprudent	inure		placid	haggard		
-precipitate	impudent	invective		platitude	halcyon		
-precipitous	impugn	inveigle		plebeian	hallowed		
-preclude	impute	investiture		plethora	hapless		
-predicament	inadvertent	invidious		pliant	haptic		
-predilection	inanity	irascible		plucky	harangue		
-premeditate	inarticulate	irresolute		polemical	harbinger		
-prescient	incense	itinerant		politic	hardscrabble		
-presumptuous	incessant	itinerary		polyglot	harmonious		
-pretentious	inchoate	jargon		populist	harried		
-prevaricate	incisive	jettison		posit	harrow		
-prime	inclement	jingoism		potentate	haughty		
-pristine	incongruous	jocular		pragmatic	headlong		
-probity	incontrovertible	judicious		prattle	hector		
-proclivity	incorrigible	juncture		precipitate	hegemony		
-prodigal	incumbent	juxtapose		precis	heinous		
-prodigious	indecorous	keen		precocious	herald		
-proficient	indict	kindle		predilection	hermetic		
-profligate	indifference	kinetic		prescience	heterodox		
-profound	indigenous	knell		pretense	heterogeneous		
-profundity	indigent	kudos		prevaricate	heyday		
-profuse	indignant	lachrymose		pristine	hiatus		
-proliferate	industrious	lackluster		probity	hidebound		
-prolix	ineffable	laconic		proclivity	hirsute		
-propagate	ineluctable	lament		prodigal	histrionic		
-propensity	inequity	lampoon		prodigy	hodgepodge		
-prophetic	inexorable	landmark		profligate	holistic		
-propriety	infelicitous	languid		progenitor	homespun		
-prosaic	inflammable	larceny		proletarian	homogeneous		
-providential	ingenuity	largess or largesse		proliferate	hortatory		
-provincial	ingenuous	lassitude		propensity	hubris		
-provocative	ingratiate	latent		propitiate	humbuggery		
-prowess	inimical	laudable		propriety	humdrum		
-prudent	inimitable	lavish		prosaic	husbandry		
-puerile	inkling	lax		proselytize	iconoclast		
-pugnacious	innocuous	layperson		provincial	ideological		
-punctilious	inscrutable	leery		prudent	idiosyncrasy		
-qualm	insidious	legerdemain		puerile	idyllic		
-quiescent	insipid	lethargic		pugilist	ignominy		
-quirky	insolent	levity		pugnacious	illiberal		
-quixotic	insolvent	levy		pulchritude	illusory		
-radical	insouciance	liberal		punctilious	imbroglio		
-rapacious	insufferable	libertine		pundit	imminent		
-rational	intermittent	licentious		pungent	immure		
-reconcile	internecine	likewise		pusillanimous	immutable		
-recondite	intimate	limpid		putrefy	impassive		
-recourse	intimation	lionize		quaff	impeccable		
-recrudescent	intransigent	lissome		quell	impecunious		
-refine	intrepid	listless		querulous	impeded		
-refute	inundate	livid		quiescent	impenetrable		
-regress	inure	log		quixotic	imperative		
-reiterate	invective	loquacious		quotidian	imperious		
-relinquish	inveterate	lucid		raconteur	imperturbable		
-relish	invidious	lugubrious		raiment	impetuous		
-remedial	inviolable	lull		rancorous	impetus		
-renege	inviolate	lumber		raucous	impinge		
-renounce	involved	luminous		raze	implacable		
-repercussion	irascible	lurid		rebuke	implication		
-replenish	irk	"machination or
-machinations"		rebut	implicit		
-reproach	irrefutable	maelstrom		recalcitrant	imploring		
-repudiate	irresolute	magnanimous		recondite	importune		
-restive	irrevocable	magnate		redoubtable	impregnable		
-reticent	itinerant	makeshift		redress	imprimatur		
-robust	jargon	malediction		refulgent	impromptu		
-rudimentary	jaundice	malinger		refute	impudence		
-ruminate	jejune	malleable		rejoinder	impugn		
-sagacious	jingoism	manifest		relegate	inalienable		
-salubrious	jingoist	mannered		remiss	inane		
-salutary	jocular	mar		remuneration	incandescent		
-sanctimonious	jovial	martinet		renounce	incensed		
-sanction	jubilant	maudlin		repast	inchoate		
-sanguine	juggernaut	maverick		replete	incipient		
-satirical	junta	maxim		repose	incisive		
-scant	juxtapose	mendacious		reprehensible	incoherent		
-scathing	kowtow	mendicant		reproach	incorporate		
-schism	laborious	mercurial		repudiate	incorrigible		
-scintillating	lacerate	meretricious		repugnant	inculcate		
-scorn	lachrymose	metamorphosis		requite	incumbent		
-scrupulous	laconic	metaphysical		rescind	indefatigable		
-sedulous	lambast	meticulous		restive	indictment		
-sensational	lampoon	milieu		reticent	indigenous		
-sever	languid	militate		revere	indignant		
-sham	languish	mired		reviler	indomitable		
-skirt	largess	mirth		rhapsodize	industrious		
-skittish	lascivious	misanthrope or misanthropist		rhetoric	ineffable		
-skullduggery	laudable	missive		ribald	ineluctable		
-slander	leery	mitigate		rococo	inestimable		
-slight	lethargic	modest		sacrosanct	inexorable		
-sluggish	limpid	modicum		sagacious	infinitesimal		
-somnolent	lionize	modish		sage	influx		
-sophisticated	litany	mollify		salient	ingenious		
-soporific	loath	molt		salubrious	ingenuous		
-sound	lucid	monastic		sanctimonious	ingrained		
-spartan	lugubrious	monotony		sanguine	ingratiate		
-specious	macabre	moreover		sardonic	inimical		
-spendthrift	machinate	mores		satiate	inimitable		
-sporadic	magisterial	morose		schism	innate		
-spurious	magnanimous	multifarious		scintillating	innocuous		
-stalwart	maintain	mundane		scoff	inordinate		
-stern	maladroit	munificent		scrupulous	inscrutable		
-stigmatize	malady	myopic		sedition	insinuate		
-stinting	malapropism	nadir		sedulous	insipid		
-stoic	malevolent	naïve		sentient	insolence		
-strife	malfeasance	nascent		seraphic	insular		
-stringent	malingerer	negate		sibilant	integrate		
-subjective	malleable	neologism		sinecure	interloper		
-subordinate	malodorous	neophyte		slake	intimate		
-subservient	martial	net		sobriquet	intrepid		
-subside	martinet	nettle		solecism	intrinsic		
-subsume	maudlin	nevertheless or nonetheless		solicitous	intrusive		
-subtle	maunder	noisome		solvent	inundated		
-subvert	maverick	nominal		somnolent	inveigh		
-superficial	mawkish	nontrivial		sonorous	inveigle		
-superfluous	maxim	normative		sophistry	invidious		
-supersede	meander	notoriety		soporific	inviolate		
-supplicate	melancholy	novel		Spartan	irascible		
-surmount	melee	nuance		specious	irk		
-surreptitious	mellifluous	obdurate		sportive	ironic		
-synoptic	mendacity	objective		spurious	irresolute		
-taciturn	mendicant	oblique		squalid	jargon		
-tact	mercurial	obsequious		stasis	jejune		
-tangential	mesmerize	obsolete		stentorian	jettison		
-tantalizing	meteoric	obstinate		stevedore	jingoism		
-tantamount	meticulous	obviate		stifle	jocose		
-tarnish	mettlesome	occlude		stigma	judicious		
-temper	misanthrope	occult		stoic	juggernaut		
-tempestuous	misattribute	offhand		stolid	juvenescence		
-temporal	misconstrue	officious		stricture	juxtapose		
-tenable	miscreant	offset		stultify	kindle		
-tendentious	miser	onerous		stymie	kindred		
-tentative	misogynist	opaque		sublime	kismet		
-tepid	mitigate	opine		subterfuge	kowtow		
-terse	modicum	opprobrium		subtle	lachrymose		
-thorough	mollify	optimal		subversive	lackadaisical		
-timorous	moment	optimum		succinct	laconic		
-tirade	moot	orotund		sully	lampoon		
-torpor	mordant	orthodox		supercilious	languid		
-tortuous	moribund	oscillate		superfluous	largess		
-tout	morose	ossify		supplant	lassitude		
-tractable	morph	ostensible or ostensive		surfeit	latent		
-tranquil	mulct	ostentatious		surly	laudable		
-transgression	mundane	outstrip		surreptitious	lax		
-transient	munificent	overshadow		sybarite	legerdemain		
-transitory	muted	overwrought		sycophant	lenient		
-trenchant	myopic	palatial		symbiosis	levity		
-trifling	myriad	palliate		syncopated	licentious		
-trivial	nadir	pallid		tacit	lionized		
-truculent	negligible	panache		taciturn	listless		
-turbulent	nettlesome	panegyric		tawdry	logorrhea		
-ubiquitous	noisome	panoply		temerity	loquacious		
-umbrage	nonchalant	paradigm		temperate	lovelorn		
-undermine	nonplussed	paradox		tenacious	lucid		
-underscore	nuance	paragon		toady	lucre		
-understated	obdurate	pare		tome	ludicrous		
-universal	objurgate	pariah		torpid	lugubrious		
-unprecedented	obliging	parley		transient	lumber		
-unscrupulous	oblique	parry		treacly	luminary		
-unseemly	obscure	partial		trenchant	lurid		
-upbraid	obsequious	partisan		trite	macabre		
-urbane	obstinate	pastiche		truculence	macerate		
-utilitarian	obstreperous	patent		truncated	machination		
-utterly	obtain	pathogenic		turgid	maelstrom		
-vacillate	obtuse	pathological		turpitude	magisterial		
-vanquish	officious	patronizing		tyro	magnanimous		
-vapid	opaque	paucity		ubiquitous	magnate		
-venal	opulence	peccadillo		umbrage	makeshift		
-venerate	ornate	pedant		unctuous	malevolent		
-veracity	ossify	peddle		untenable	malfeasance		
-verbose	ostentatious	pedestrian		upbraid	malign		
-verisimilitude	ostracize	pejorative		usury	malinger		
-veritable	overweening	pellucid		vacillate	malleable		
-versatile	palatable	penchant		vainglorious	manacle		
-vexation	palaver	penitent		venerated	mandate		
-viable	palimpsest	penumbra		veracity	manifold		
-vigilant	panacea	penury		verbose	marginal		
-virulent	panache	per se		verdant	marshal		
-visionary	panegyric	peregrinate		verisimilitude	maudlin		
-vitiate	paradoxical	perennial		vestige	mawkish		
-vivacious	paragon	perfidious		vicissitude	meager		
-vociferous	pariah	perfunctory		vim	meddle		
-volatile	parochial	peripatetic		virtuoso	meld		
-wane	parsimonious	peripheral		viscous	mellifluous		
-wary	parvenu	permeate		vitiate	melodramatic		
-wayward	pastoral	pernicious		vitriolic	mendacity		
-weary	patent	perspicacious		vituperate	mendicant		
-woeful	patronize	pervasive		vociferous	menial		
-zealous	paucity	phalanx		voluble	mephitic		
-	pecuniary	philanthropy		wane	mercenary		
-	pedantic	philistine		wanton	mercurial		
-	pedestrian	phlegmatic		whimsical	meretricious		
-	peevish	phony		wily	meterological		
-	pejorative	pious		wistful	meticulous		
-	pellucid	pith		wizened	mettle		
-	penurious	placate		wraith	miasma		
-	percipient	placid		zealous	microcosm		
-	peremptory	plastic		zenith	milieu		
-	perennial	platitude		zephyr	milquetoast		
-	perfidy	plausible			mimetic		
-	perfunctory	plebian			minatory		
-	peripatetic	plethora			minion		
-	pernicious	plucky			misanthrope		
-	perpetuate	plummet			miscreant		
-	perquisite	plutocracy			miserly		
-	perspicacious	polarized			misnomer		
-	pertinent	polemic			mitigate		
-	perturb	politic			modicum		
-	peruse	polyglot			modish		
-	petulant	ponderous			monastic		
-	phantasmagorical	posit			morass		
-	philistine	posthumous			morbid		
-	phlegmatic	potentate			mordant		
-	picayune	pragmatic			mores		
-	pillory	prattle			moribund		
-	pine	pre-empt			morose		
-	pinnacle	preamble			motile		
-	piquant	precarious			motley		
-	pith	precipitate			multifaceted		
-	pithy	précis			mundane		
-	pittance	precursor			munificent		
-	placate	predilection			myopic		
-	placid	predisposed			myriad		
-	platitude	prescient			nadir		
-	plodding	presumptive			naivete		
-	ploy	presumptuous			nascent		
-	plucky	pretentious			nebulous		
-	poignant	preternatural			neophyte		
-	polemic	prevaricate			nepotism		
-	Pollyannaish	primacy			nettle		
-	ponderous	principled			newfangled		
-	pontificate	pristine			noisome		
-	portentous	probity			non sequitur		
-	posit	proclivity			nonchalant		
-	powwow	prodigal			nondescript		
-	pragmatic	prodigious			nonpareil		
-	precarious	profligate			nonplussed		
-	precedent	profound			nontrivial		
-	precipitate	profuse			normative		
-	precipitous	prohibitive			nostalgia		
-	preclude	proliferate			nostrum		
-	precocious	prolix			notorious		
-	predilection	prologue			novel		
-	preempt	pronounced			novitiate		
-	preemptive	propagate			noxious		
-	prescience	propensity			nuance		
-	presentiment	prophetic			nugatory		
-	presumption	propitiate			obdurate		
-	presumptuous	propitious			obeisance		
-	prevail	propriety			obfuscated		
-	prevaricate	prosaic			objectionable		
-	primacy	proscribe			objective		
-	pristine	prospective			objurgation		
-	probity	providential			obloquy		
-	prodigal	proxy			obsequious		
-	prodigious	prudent			obstinate		
-	profligate	puerile			obstreperous		
-	profuse	pugilism			obtrusive		
-	profusion	pugnacious			occluded		
-	prognostication	puissance			odious		
-	prolific	pulchritude			officious		
-	prolixity	pungent			offset		
-	promulgate	pusillanimous			ogle		
-	propitiate	qualified			omission		
-	propitious	quandary			omniscient		
-	proponent	querulous			onus		
-	prosaic	quibble			opaque		
-	proscribe	quiescent			openhanded		
-	proselytize	quixotic			opine		
-	protean	quotidian			opportune		
-	provident	raconteur			opprobrium		
-	provincial	ranks			opulent		
-	provisional	rarefied			ornate		
-	puerile	reactant			orthodox		
-	pugnacious	reap			oscillate		
-	puissant	recalcitrant			ossified		
-	punctilious	recant			ostentatious		
-	pundit	recapitulate			ostracized		
-	pyrrhic	recluse			otiose		
-	quail	recondite			outmoded		
-	qualify	recrudescent			outstrip		
-	qualm	redound			overshadow		
-	quandary	redress			overweening		
-	querulous	refractory			pacific		
-	quip	refulgent			painstaking		
-	quisling	refute			palatable		
-	quixotic	rejoinder			palatial		
-	quotidian	relegate			palimpsest		
-	raconteur	remedial			pall		
-	raffish	rend			palliate		
-	raft	render			pallid		
-	raillery	repast			panacea		
-	rakish	repertorial			pander		
-	rankle	replete			pangs		
-	rapprochement	repose			panned		
-	rarefied	reproach			paradigm		
-	rash	reprobate			paragon		
-	ravenous	repudiate			pariah		
-	rebuke	requite			parley		
-	recapitulation	rescind			parochial		
-	reconcile	resolution			parody		
-	recondite	resolve			paroxysm		
-	recrimination	respectively			parsimonious		
-	recrudesce	restive			partiality		
-	redoubtable	resurgent			partisan		
-	redress	reticent			pastiche		
-	refractory	retrospective			pathos		
-	refute	revamp			patois		
-	relegate	reverent			paucity		
-	remiss	rhetoric			pedantic		
-	remonstrate	ribald			pedestrian		
-	renege	ridden			peevish		
-	replete	rife			penchant		
-	reprisal	rift			pendulous		
-	reproach	rococo			penitent		
-	reprobate	rudimentary			penurious		
-	repudiate	rue			penury		
-	rescind	ruminate			peons		
-	reservation	rustic			peregrinate		
-	resignation	sacrosanct			peremptory		
-	resolve	sagacious			perennial		
-	respite	salient			perfidy		
-	restive	salubrious			perfunctory		
-	resurgent	sanction			peripatetic		
-	reticent	sanguine			peripheral		
-	retiring	sap			permeated		
-	retract	sardonic			permutation		
-	reverent	satiate or sate			pernicious		
-	ribald	saturate			perquisites		
-	rile	savant			personified		
-	robust	savor			perspicacious		
-	row	scant			pertinacious		
-	rudimentary	scathing			perturb		
-	rustic	scintilla			pervasive		
-	sagacious	scurvy			perverse		
-	sanctimonious	searchingly			petulant		
-	sanction	secrete			philander		
-	sangfroid	secular			phlegmatic		
-	sanguine	sedition			physiological		
-	sardonic	sedulous			picaresque		
-	sartorial	semantic			picayune		
-	saturnine	sentient			picturesque		
-	savvy	seraphic			piebald		
-	schadenfreude	shard			pilfer		
-	scintillating	simultaneous			pillory		
-	screed	sinecure			pinnacle		
-	scrupulous	skeptic			pioneering		
-	sedulous	skirt			piquant		
-	self-effacing	skittish			pitfall		
-	semblance	slack			pith		
-	sententious	slake			pittance		
-	sentimental	slew			pivotal		
-	serendipity	slight			placate		
-	serene	sobriquet			plaintive		
-	simulacrum	solecism			platitude		
-	sinecure	solicitous			platonic		
-	slapdash	solidarity			plaudits		
-	smattering	somatic			plausible		
-	smug	soporific			plebeian		
-	snide	sound			plenipotentiary		
-	snub	spartan			pluck		
-	solecism	spate			plutocracy		
-	solicitous	spearhead			polarize		
-	solicitude	specious			polemic		
-	soporific	spectrum			politesse		
-	sordid	speculate			politic		
-	spartan	sporadic			pomp		
-	specious	sportive			ponderous		
-	spendthrift	squalid			portentous		
-	splenetic	squelch			poseur		
-	sporadic	standing			posit		
-	spurious	stark			posthumous		
-	spurn	stasis			pragmatic		
-	squander	static			prattle		
-	squelch	status quo			precarious		
-	staid	steeped			precocious		
-	stalwart	stentorian			precursor		
-	start	stigma			predilection		
-	staunch	stingy			premonition		
-	steadfast	stint			prescient		
-	stem	stipulate			pretext		
-	stipend	stoic or stoical			prevarication		
-	stolid	stolid			primed		
-	stringent	stratagem			primordial		
-	stultify	stratum			pristine		
-	stymie	strut			proclivity		
-	subsume	stymie or stymy			prodigal		
-	subterfuge	subjective			prodigious		
-	subversive	sublime			profane		
-	sullen	subpoena			profligacy		
-	summit	subside			profound		
-	supercilious	substantiate			profuse		
-	superfluous	succeeding			progenitors		
-	supplant	sully			prognosticate		
-	surfeit	supersede			proliferate		
-	surly	supplant			prolific		
-	surreptitious	supplicate			prolix		
-	sybarite	supposition			prominent		
-	sycophant	surfeit			promulgate		
-	taciturn	surly			pronounced		
-	tact	surmise			propagate		
-	tantamount	surrogate			propensity		
-	tarnish	sybarite			prophetic		
-	tawdry	sycophant			propitious		
-	taxing	symbiosis			propriety		
-	telling	synchronous			prosaic		
-	telltale	synoptic			protean		
-	temerity	syntax			providential		
-	temperance	table			provincial		
-	tempered	tacit			prowess		
-	tempestuous	taciturn			proximity		
-	tenacious	tangential			prudent		
-	tendentious	tawdry			puerile		
-	tender	temperance			pugnacious		
-	thoroughgoing	tendentious			pulchritude		
-	thrifty	tenuous			punctilious		
-	thwart	terrestrial			pungent		
-	timorous	terse			punitive		
-	tirade	timely			purist		
-	torpor	timorous			pusillanimous		
-	tortuous	tirade			putrid		
-	tout	toady			quagmire		
-	tractable	token			quail		
-	transient	tome			quandary		
-	transitory	torpor			quash		
-	transmute	torrid			querulous		
-	travail	tortuous			quiescent		
-	travesty	tractable			quintessential		
-	treacherous	transgression			quixotic		
-	trenchant	transitory			quizzical		
-	tribulation	travesty			quotidian		
-	trite	treacherous			raconteur		
-	truculence	trenchant			ragamuffin		
-	truculent	trifling			raiment		
-	truncate	trite			ramification		
-	tumult	truculent			rampant		
-	turgid	tumultuous			rancorous		
-	turpitude	turgid			rankled		
-	tyro	turpitude			rapacious		
-	umbrage	tyro			rapt		
-	unassailable	ubiquitous			rapturous		
-	uncanny	umbrage			rarefied		
-	uncompromising	unconscionable			rash		
-	unconscionable	undermine			raucous		
-	undermine	underscore			raze		
-	underscore	unearth			readily		
-	underwrite	unequivocal			realization		
-	unequivocal	unprecedented			reap		
-	unflappable	unseemly			rebuttal		
-	unforthcoming	unsparing			recalcitrant		
-	unimpeachable	untempered			recant		
-	unnerve	upbraid			recapitulated		
-	unprecedented	usury			recidivist		
-	unprepossessing	vacillate			reclusive		
-	unpropitious	vanguard			recondite		
-	unruly	variegated			recrudescent		
-	unscrupulous	venerate			rectitude		
-	unseemly	veracity			redouble		
-	unstinting	verbose			redress		
-	untenable	verdant			reductive		
-	untoward	verisimilar			redundant		
-	untrammeled	vernal			refracted		
-	unviable	vestige			refractory		
-	upbraid	vex			refulgent		
-	urbane	via			refute		
-	vacillate	viable			rejuvenated		
-	vacuous	vicissitude			relinquish		
-	vanquish	vim			relish		
-	variance	vintage			remedial		
-	vaunted	virtual			reminiscent		
-	vehement	virulent			remiss		
-	venality	viscid or viscous			remunerated		
-	veneer	vitriol			renowned		
-	venerate	vituperate			repertoire		
-	venial	vociferous			replete		
-	veracious	volatile			reprehensible		
-	verisimilitude	voluble			reprobate		
-	veritable	wan			reprove		
-	vicarious	wanton			repudiate		
-	vicissitude	warranted			repugnant		
-	vie	wary			requisite		
-	vilify	welter			resigned		
-	vindicate	whereas			resilient		
-	vindictive	whet			resolute		
-	virago	whimsical			resonant		
-	vitriol	whitewash			respite		
-	vitriolic	wily			resplendent		
-	vituperate	winnow			restitution		
-	vociferous	winsome			restive		
-	volubility	wizened			resurgence		
-	voracious	xenophobia			reticent		
-	wanting	yoke			retiring		
-	wanton	zeal			retrenchment		
-	wax	zenith			retrospection		
-	whimsical				revamp		
-	winsome				revanche		
-	zeitgeist				reverberate		
-	zenith				reverent		
-					revile		
-					revulsion		
-					rhapsodize		
-					rhetorical		
-					rickety		
-					rift		
-					riposte		
-					risible		
-					risque		
-					roborant		
-					robust		
-					rotund		
-					row		
-					rudimentary		
-					ruffian		
-					ruminate		
-					saccharine		
-					sacrosanct		
-					salacious		
-					salient		
-					salubrious		
-					salutary		
-					sangfroid		
-					sanguine		
-					sap		
-					sapid		
-					sapient		
-					sardonic		
-					sashayed		
-					satiated		
-					scanty		
-					scapegoat		
-					scathing		
-					schadenfreude		
-					schism		
-					scintillating		
-					sclerotic		
-					scofflaw		
-					scotch		
-					scrupulous		
-					scrutinize		
-					scuffle		
-					scurrilous		
-					scuttle		
-					secretes		
-					sectarian		
-					secular		
-					sedentary		
-					sedulous		
-					segue		
-					self-styled		
-					semblance		
-					seminal		
-					sententious		
-					sentient		
-					sequacious		
-					sere		
-					serendipity		
-					servile		
-					sham		
-					shard		
-					shelve		
-					shirk		
-					showy		
-					shrewd		
-					simper		
-					simulacrum		
-					sinuous		
-					skittish		
-					skulduggery		
-					skulk		
-					slake		
-					slander		
-					slatternly		
-					slipshod		
-					slothful		
-					slovenly		
-					sojourn		
-					solecism		
-					solicitous		
-					solidarity		
-					solipsistic		
-					somnolent		
-					sonorous		
-					sophistry		
-					sophomoric		
-					soporific		
-					sordid		
-					soupcon		
-					sovereign		
-					sparing		
-					sparse		
-					specious		
-					spendthrift		
-					splenetic		
-					spurious		
-					squalid		
-					squelch		
-					stalwart		
-					stanch		
-					staple		
-					statuesque		
-					staunch		
-					steadfast		
-					stigmas		
-					stilted		
-					stolid		
-					storied		
-					stratagem		
-					streamlined		
-					strenuous		
-					stricture		
-					strident		
-					stringent		
-					stultify		
-					stupefied		
-					subjective		
-					sublime		
-					subsequent		
-					subsidy		
-					substantiate		
-					subversive		
-					subvert		
-					succor		
-					succumb		
-					sullen		
-					sumptuary		
-					superficial		
-					supplant		
-					surly		
-					surmise		
-					surpassing		
-					surreptitious		
-					susceptible		
-					swathe		
-					sybarite		
-					sycophant		
-					synergy		
-					synoptic		
-					syntax		
-					taciturn		
-					tangible		
-					taxonomic		
-					temerity		
-					temperance		
-					tempestuous		
-					temporal		
-					tenable		
-					tendentious		
-					tensile		
-					tenuous		
-					tepid		
-					terse		
-					timorous		
-					tirade		
-					titular		
-					tonic		
-					toothsome		
-					torpid		
-					tortuous		
-					totalitarian		
-					touted		
-					tranquil		
-					transgression		
-					transitory		
-					treacly		
-					tremulous		
-					trepidation		
-					trifling		
-					truculent		
-					truncated		
-					tumid		
-					tumultuous		
-					turbid		
-					turgid		
-					turpitude		
-					ubiquitous		
-					umbrage		
-					unadorned		
-					unassuming		
-					unbridled		
-					unconscionable		
-					unconventional		
-					unctuous		
-					uncultivated		
-					undermine		
-					underscore		
-					understated		
-					undulate		
-					uniform		
-					unkempt		
-					unpretentiousness		
-					unpropitious		
-					unruly		
-					unsavory		
-					untenable		
-					untoward		
-					unwieldy		
-					upbraided		
-					urbane		
-					usurious		
-					usurp		
-					utilitarian		
-					utopian		
-					vacuous		
-					vainglorious		
-					vanquished		
-					vapid		
-					variegated		
-					vaunted		
-					vehement		
-					venal		
-					veracious		
-					verbose		
-					verboten		
-					verisimilar		
-					vernacular		
-					vertiginous		
-					vestige		
-					vex		
-					vicarious		
-					vigilant		
-					vilify		
-					vindicate		
-					vindictive		
-					virtuoso		
-					virulent		
-					viscous		
-					vitiate		
-					vitriolic		
-					vituperated		
-					vivacious		
-					vocation		
-					vociferous		
-					volatile		
-					volition		
-					voluminous		
-					voracious		
-					voyeur		
-					waffle		
-					wan		
-					wane		
-					wanting		
-					waspish		
-					watershed		
-					wax		
-					welter		
-					whet		
-					whimsical		
-					willful		
-					wily		
-					winnow		
-					winsome		
-					wistful		
-					wizened		
-					wont		
-					woo		
-					workmanlike		
-					worldly		
-					wrongheaded		
-					wry		
-					zealous		
-					zenith		
-					zephyr		
+anachronistic
+anathema
+alienate
+astonishment
+ardor
+admonished
+androgynous
+asperity
+analogous
+anemic
+alleviate
+audacious
+arrogate
+adorned
+anesthetic
+aspersion
+animus
+animosity
+aloof
+austere
+ascertain
+adroit
+assay
+anoint
+anodyne
+amalgamate
+avarice
+ascetic
+adulation
+anomalous
+asseverate
+ambiguous
+aver
+assail
+adulterate
+anomaly
+assiduous
+antedate
+ambivalent
+banal
+adversary
+antecedent
+astringent
+antipathy
+antedated
+ameliorate
+belie
+assuage
+advocate
+anthology
+attenuate
+antithesis
+antic
+amortize
+benign
+aegis
+attrition
+apathy
+anachronism
+biased
+aesthetic
+augury
+apologist
+antiquated
+analgesia
+bolster
+augment
+affable
+apprise
+august
+appease
+antithetical
+bombastic
+affectation
+approbation
+auspice
+apathetic
+anarchy
+brazen
+affiliated
+arbitrary
+auspicious
+apropos
+annul
+bucolic
+affront
+arcane
+apt
+apex
+burgeon
+aggrandized
+archaic
+axiomatic
+aphorism
+cacophony
+autonomy
+aghast
+archetype
+baleful
+aphoristic
+calumny
+alacrity
+ardent
+aplomb
+antagonize
+candid
+avuncular
+algorithm
+bane
+arduous
+apocryphal
+canon
+axiom
+beatify
+arresting
+apogee
+capacity
+allusion
+arrest
+bedizen
+artless
+apostate
+capricious
+belfry
+altruistic
+articulate
+beget
+apothegm
+castigate
+benevolent
+assimilate
+bent
+apotheosis
+catalyst
+bevy
+ambiguity
+bilge
+ascribe
+apostle
+caustic
+bifurcate
+ambivalence
+astute
+blandish
+appreciable
+apposite
+censure
+bilk
+ameliorated
+blithe
+assertive
+apprehension
+chauvinist
+blight
+amenable
+brook
+approbatory
+chicanery
+amicable
+byzantine
+appropriate
+chronological
+bombast
+authoritarian
+cabal
+appurtenant
+arbiter
+coalesce
+bonhomie
+ample
+cachinnate
+cogent
+boor
+aversion
+commensurate
+bromide
+analogue
+avid
+cadge
+arch
+compelling
+avow
+cajole
+comprehensive
+anile
+bedlam
+calumniate
+avaricious
+condone
+burnish
+belabor
+arrant
+confound
+annotation
+beleaguer
+canard
+arriviste
+artifact
+connoisseur
+banish
+consequential
+bellicose
+canonical
+baroque
+artful
+construe
+belligerent
+caparison
+base
+artifice
+consumption
+callous
+beneficent
+capitulate
+befuddled
+contend
+antediluvian
+captious
+artlessness
+aseptic
+contentious
+antipode
+caret
+ascendancy
+contrite
+bereave
+caterwauling
+aspersions
+convoluted
+cantankerous
+apace
+boisterous
+cavil
+copious
+apartheid
+celerity
+askance
+cosmopolitan
+cartographer
+chagrin
+berate
+covet
+brevity
+chasten
+betray
+craft
+cataclysm
+apoplectic
+broach
+assiduously
+attuned
+craven
+cathartic
+buff
+chide
+bogus
+credence
+catholic
+chimera
+atavism
+credulous
+choleric
+decorum
+cavalier
+buttress
+churlish
+boorish
+deference
+apportion
+candor
+cleave
+audacity
+deflect
+charlatan
+coda
+bridle
+autonomous
+deftness
+chary
+cardinal
+coeval
+delineate
+castigation
+collusion
+demur
+comely
+buoyant
+autocratic
+denigrate
+circumlocution
+conflate
+autonomously
+deride
+circumscribed
+consonant
+balk
+derivative
+circumspect
+consummate
+balloon
+desiccate
+clandestine
+centrifuge
+contemn
+cacophonous
+avert
+desultory
+cloying
+arid
+contumacious
+detachment
+coterie
+badger
+determinant
+coffer
+coterminous
+canny
+baying
+diatribe
+coercive
+countenance
+canonize
+didactic
+cozen
+diffident
+conciliate
+cognizant
+banality
+dilettante
+concomitant
+color
+cupidity
+cataclysmic
+dirge
+conflagration
+ashen
+decorous
+besiege
+disabuse
+conspicuous
+askew
+complaisance
+defalcate
+bastardization
+discern
+complement
+demagogue
+beatific
+discrepancy
+compliant
+cerebral
+becoming
+disinterested
+aspiration
+conciliatory
+denouement
+chastise
+beg
+disparage
+condemn
+deposition
+chauvinistic
+begrudge
+disparate
+corpulent
+condolence
+deprecate
+cherish
+behooves
+dispassionate
+corroborate
+depredate
+disregard
+cosset
+astray
+descant
+chivalrous
+belittle
+dissemble
+descry
+disseminate
+conspire
+circumscribe
+dissonance
+crescendo
+consternation
+desuetude
+bemoan
+brandish
+diverge
+culpable
+contemptuous
+clamorous
+benighted
+dogma
+cumbersome
+diaphanous
+dupe
+contiguous
+clangor
+bereft
+buffer
+ebullient
+curmudgeon
+cloak
+bureaucracy
+eccentric
+cynical
+authoritative
+convention
+dilatory
+besmirch
+eclectic
+dalliance
+automaton
+converge
+coercion
+besotted
+efficacy
+daunt
+conversion
+disaffect
+elegy
+dearth
+discomfit
+coin
+bilious
+bygone
+elicit
+debunk
+discursive
+collaborate
+blatant
+eloquence
+debutante
+corrosion
+distention
+comity
+bleak
+eminent
+declivity
+covert
+distrait
+commence
+blinkered
+empirical
+doggerel
+emulate
+deject
+cower
+dogmatic
+boon
+enervate
+deleterious
+dolorous
+competent
+engender
+dross
+complacent
+bowdlerize
+enhance
+battery
+cultured
+dulcet
+complementary
+cartography
+entitlement
+demarcate
+bauble
+cunning
+ebullience
+comply
+ephemeral
+edacious
+compromise
+bristle
+equable
+cursory
+edifying
+broadside
+equivocate
+derelict
+effluvia
+erroneous
+becalm
+damp
+effrontery
+erudite
+effusive
+congenial
+browbeat
+chauvinism
+eschew
+beguile
+egregious
+conjectural
+brusquely
+esoteric
+despoiler
+behemoth
+debacle
+egress
+buck
+estimable
+despot
+beleaguered
+debased
+consensus
+eulogy
+destitute
+belied
+debauchery
+emollient
+bumbling
+exacerbate
+decibel
+encomium
+clamber
+exacting
+decimate
+endemic
+contempt
+clamor
+exculpate
+defer
+enormity
+clinch
+exigent
+dictum
+beneficence
+epicure
+cadaverous
+exonerate
+deign
+epithet
+contravene
+callow
+coagulate
+expatiate
+eponymous
+explicate
+beseech
+demure
+equanimity
+convalescent
+exposition
+bifurcated
+equipoise
+conventional
+extraneous
+denounce
+convivial
+candidness
+extrapolate
+blasé
+collude
+facetious
+derision
+facilitate
+disdain
+bloviated
+essay
+cordial
+compendium
+fallacious
+disenfranchise
+bludgeon
+detraction
+euphony
+correlate
+carping
+fastidious
+disillusion
+deviance
+evince
+complaisant
+fluctuate
+disingenuous
+deviation
+exact
+foment
+diabolic
+excoriate
+forestall
+bootless
+exegesis
+concede
+fortuitous
+dissembler
+dichotomy
+exhort
+bravado
+diffuse
+cede
+concur
+gainsay
+digress
+expiate
+credible
+galvanize
+distaff
+dilapidated
+crestfallen
+censor
+confer
+garrulous
+dither
+din
+expostulate
+gauche
+diurnal
+brusque
+expound
+germane
+divert
+expurgate
+connote
+glib
+divine
+bugbear
+discordant
+exscind
+curb
+champion
+console
+gregarious
+doctrinaire
+bulwark
+discourse
+extant
+consolidate
+guile
+bumptious
+discreet
+extirpate
+curtail
+constrict
+hackneyed
+draconian
+bungle
+extol
+daunting
+harangue
+droll
+discrete
+facile
+dawdle
+hedonism
+dubious
+burdensome
+discretion
+fallow
+contextualize
+hierarchical
+burgeoning
+fatuous
+debilitating
+check
+contraries
+homogenous
+dyspeptic
+disinterest
+feckless
+checkered
+hyperbole
+earnest
+felicitious
+decadent
+iconoclast
+fetid
+conundrum
+ideological
+cache
+dispersed
+filigree
+decry
+imminent
+edify
+florid
+chortle
+conversant
+immutable
+efficacious
+dissolution
+conversely
+impair
+effigy
+distill
+ford
+deft
+convoke
+impediment
+calamitous
+distraught
+fracas
+deify
+circumvent
+imperturbable
+divest
+fractious
+clemency
+implacable
+egalitarian
+divulge
+frieze
+deliberate
+implicit
+calumnious
+froward
+imprudence
+camaraderie
+dynamo
+fulminate
+cohesive
+impudent
+fulsome
+inadvertent
+eloquent
+colossal
+Inchoate
+elucidate
+gambit
+commendable
+counterintuitive
+inconclusive
+embroil
+capacious
+gambol
+despotic
+counterpoint
+indebted
+counterproductive
+indefatigable
+emissary
+deviate
+indolent
+gauntlet
+crafty
+infer
+gawkishness
+complicit
+ingenuous
+caricatured
+enigmatic
+dictate
+compound
+credibility
+inimical
+enumerate
+gnostic
+Innocuous
+caterwaul
+gossamer
+inscrutable
+enervated
+causal
+episodic
+grandiloquence
+culminate
+insipid
+epitome
+gratuitous
+digression
+conducive
+insular
+enigma
+equivocal
+gravitas
+intensive
+ennui
+diminutive
+intermediary
+eradicate
+grouse
+discernible
+intimate
+espouse
+conniving
+debase
+intractable
+guy
+discount
+consecrate
+intransigent
+epistolary
+ethereal
+declaim
+intrepid
+hallow
+constituent
+inveterate
+euphemism
+constraint
+invulnerable
+ersatz
+evanescent
+harrow
+deem
+irascible
+erudition
+cinematic
+hectoring
+deface
+irresolute
+circuitous
+default
+laconic
+exemplar
+hermetic
+laud
+heterodox
+dissent
+contingent
+laudable
+ethos
+circumvents
+expel
+hirsute
+dissident
+litigation
+clairvoyant
+extemporaneous
+homiletics
+contrition
+delimit
+loquacious
+extend
+homily
+distort
+contrive
+lucid
+clangorous
+hubris
+distressed
+luminous
+iconoclastic
+divergent
+magnanimity
+climatic
+idyll
+divorced
+maladroit
+exasperate
+climax
+fallacy
+ignoble
+denote
+malign
+fancy
+ignominious
+documentary
+cornucopia
+malleable
+fawn
+imbroglio
+dogged
+corollary
+maverick
+cocksure
+fervent
+mendacity
+coddle
+fidelity
+imperious
+mercurial
+exorbitant
+coerced
+filibuster
+impiety
+cosseted
+detached
+meticulous
+expatriate
+flag
+importune
+deterrent
+misanthrope
+explicator
+flamboyant
+imprimatur
+duplicitous
+countermand
+mitigate
+explicit
+coherence
+flip
+impugn
+duress
+cow
+modest
+exponent
+flounder
+impute
+dwindling
+mollify
+cohort
+flout
+incandescent
+monotony
+flush
+inchoate
+creditable
+mundane
+forbearance
+ineffable
+eclipse
+credulity
+munificent
+ineluctable
+economy
+naïve
+exuberant
+commiserate
+forswear
+cryptic
+nascent
+companionable
+forte
+crystallize
+dilate
+neglect
+inimitable
+nonplussed
+fallible
+composure
+founder
+iniquity
+elated
+culpability
+notoriety
+compunction
+fraud
+innervate
+elementary
+nuance
+concession
+frugality
+obdurate
+concoct
+furtive
+insensible
+elitist
+obscure
+garner
+insouciant
+discerning
+obsequious
+fecund
+concord
+genial
+interdict
+embellish
+discomfiting
+obstinate
+felicity
+concupiscence
+invective
+debonair
+obviate
+fervid
+condign
+goad
+inveigh
+discredit
+occlude
+condones
+gratis
+enchant
+decimation
+occult
+flippant
+conferred
+gratitude
+involute
+encyclopedic
+offset
+flotsam
+confiscate
+hankering
+jejune
+discriminating
+olfactory
+foible
+hegemony
+jocose
+omniscience
+fomentation
+heretical
+labile
+deferential
+onerous
+foppish
+lachrymose
+entitled
+defray
+disjointed
+opaque
+conglomerate
+idiosyncrasy
+entrenched
+degrade
+dismiss
+opportunism
+formidable
+idolatrous
+lambaste
+opprobrium
+illusory
+languorous
+equitable
+delegate
+oscillate
+foster
+conscientious
+largess
+ostentatious
+impassive
+lascivious
+erratic
+dispatch
+outstrip
+frenetic
+lassitude
+disperse
+overshadow
+frivolous
+impenetrable
+escalate
+demean
+disposition
+painstaking
+frugal
+levee
+demonstrative
+disquieting
+partial
+impetuous
+levity
+partisan
+libertine
+estranged
+patent
+improbable
+limn
+euphoric
+paucity
+cordon
+limpid
+evade
+pedantic
+impunity
+list
+pedestrian
+incipient
+evasive
+perfidy
+incorrigible
+lubricious
+evoke
+distend
+perfunctory
+cowed
+incubation
+luculent
+derisive
+peripheral
+glower
+incumbent
+lugubrious
+permeate
+gradation
+lumber
+exasperated
+derive
+perseverance
+indifferent
+luminary
+derogative
+peruse
+crepuscular
+indignation
+macerate
+exhaustive
+desecrate
+pervasive
+grievous
+demotic
+maculate
+exhilarating
+desiccated
+phenomena
+grovel
+indomitable
+desideratum
+phlegmatic
+inept
+malinger
+exorcise
+document
+pith
+gustatory
+denizen
+inerrancy
+maunder
+exotic
+doff
+placate
+denuded
+inert
+maxim
+expedient
+deter
+plastic
+halcyon
+depiction
+ingenuity
+mellifluous
+expedite
+detrimental
+dormant
+platitude
+hapless
+deplete
+inherent
+explicable
+devolve
+dovetail
+plausible
+deplore
+innocuous
+mendicant
+exploitative
+diabolical
+plethora
+hedonist
+inopportune
+plummet
+inquisitive
+meretricious
+dictatorial
+polarize
+mettle
+extravagant
+duplicity
+polemical
+militate
+fabricate
+differentiate
+pragmatic
+histrionic
+intemperance
+minatory
+e.g.
+precarious
+hoary
+mince
+preceded
+despoiled
+misogynist
+precipitate
+husband
+mordant
+falter
+echelon
+precursor
+introspection
+moribund
+fanciful
+diligent
+prescient
+deteriorate
+inundate
+multifarious
+presumptuous
+devoid
+inured
+munificence
+prevail
+nadir
+feasible
+disaffected
+prevaricate
+devout
+irony
+discord
+pristine
+dexterity
+itinerant
+natty
+probity
+imbue
+itinerate
+nebulous
+feeble
+prodigal
+judicious
+neologism
+feign
+discriminate
+prodigious
+impasse
+lackluster
+neophyte
+felicitous
+profligate
+impecunious
+lament
+nexus
+proliferate
+latent
+nice
+disheartened
+propitiate
+impervious
+lethargic
+noisome
+fervor
+elevate
+propriety
+nostrum
+fester
+prospective
+impious
+noxious
+finicky
+qualification
+magnate
+nugatory
+emaciate
+quotidian
+dilute
+makeshift
+obloquy
+rationalize
+imprecation
+dint
+malevolent
+obstreperous
+dispensation
+reconcile
+dire
+flummoxed
+recondite
+manifest
+officious
+foil
+refute
+incarnadine
+disconcert
+marginal
+dissipate
+relentless
+martial
+oscillation
+foolhardy
+relevant
+ossified
+forbear
+docile
+reproach
+incontrovertible
+membrane
+ostensible
+foreseeable
+dog
+repudiate
+metamorphose
+overweening
+rescind
+incredulous
+disgruntled
+paean
+forsake
+doleful
+respectively
+inculcate
+dismantle
+milk
+palliate
+reticent
+indigenous
+dismissive
+panacea
+fret
+doughty
+reverent
+indignant
+misappropriate
+panache
+rhetoric
+misconstrue
+pandemic
+fruitful
+salubrious
+miscreant
+panegyric
+fungible
+sanction
+inexorable
+miserly
+pariah
+satiate
+ingenious
+displacing
+parry
+futile
+secular
+ingenue
+disputatious
+parsimonious
+gaffe
+sediment
+ingrate
+monotonous
+sedulous
+ingratiate
+disseminated
+morose
+peccadillo
+economical
+simultaneous
+distension
+multifaceted
+erstwhile
+solicitous
+myriad
+pellucid
+gawky
+effervescent
+soporific
+nominal
+peregrination
+sparse
+peremptory
+glum
+specious
+insidious
+divisive
+novel
+gratify
+egotist
+sporadic
+spurious
+insolence
+oblique
+perigee
+hamper
+eke
+stolid
+doggedness
+peripatetic
+haphazard
+elaborate
+subjective
+insurrection
+pernicious
+harbinger
+elegiac
+substantiate
+inter
+obtuse
+peroration
+headstrong
+subversive
+interlocutor
+petrous
+heed
+sufficient
+interregnum
+odious
+philistine
+elude
+superbly
+dour
+ominous
+heterogeneous
+elusive
+supine
+picaresque
+hinder
+supplant
+pied
+embroiled
+sycophant
+inure
+ornery
+pillory
+hodgepodge
+embryonic
+synthesize
+dudgeon
+piquant
+homogeneous
+tacit
+inveigle
+ostracism
+pique
+humdrum
+empathetic
+taciturn
+investiture
+paradigm
+pithy
+empiricism
+temperance
+invidious
+dwindle
+paradox
+plaintive
+tenuous
+invoke
+parody
+plangent
+enamor
+timorous
+platonic
+immure
+encumber
+tirade
+pliant
+torpor
+jettison
+effaced
+pedagogy
+plumb
+tortuous
+jingoism
+effete
+impede
+faction
+tractable
+jocular
+penchant
+portentious
+enjoin
+transient
+juncture
+efflorescence
+penultimate
+poseur
+impertinent
+enmity
+ubiquitous
+juxtapose
+effluvium
+penury
+prate
+fanatical
+unadorned
+keen
+perennial
+prattle
+enthrall
+undermine
+kindle
+precept
+improvise
+entice
+underscore
+kinetic
+perjury
+precis
+fathom
+untenable
+knell
+personable
+predilection
+inborn
+vacillate
+eldritch
+pertinent
+preen
+incendiary
+venality
+emancipate
+incessant
+epigram
+venerate
+privation
+inclined
+epiphany
+veracity
+lampoon
+petulant
+prize
+incongruous
+eponym
+verbose
+languid
+pine
+vexation
+lapidary
+pious
+volatile
+indiscriminate
+whimsical
+emphatic
+placebo
+prolific
+indispensable
+figurative
+zeal
+plasticity
+prolix
+err
+finesse
+
+propinquity
+industrious
+errant
+lavish
+encompass
+inform
+fledgling
+legerdemain
+encroaching
+plod
+prosaic
+fleeting
+enervating
+proscribe
+inhibit
+lexicography
+poignant
+provident
+liberate
+pompous
+puerile
+fluke
+porous
+pugnacious
+licentious
+ensorcelled
+puissance
+forage
+pulchritude
+lissome
+entreat
+pullulation
+interchangeable
+euphoria
+foreshadow
+listless
+punctilious
+intermittent
+preempt
+pundit
+intertwined
+forfeit
+presumption
+pusillanimous
+evenhanded
+fortify
+putrefy
+prime
+quaff
+machination
+quail
+intrinsic
+exalt
+maelstrom
+proclivity
+quay
+magnanimous
+querulous
+invasive
+fringe
+profuse
+quiescence
+excruciating
+malediction
+quixotic
+execrate
+espy
+prone
+malice
+propagate
+raffish
+invigorate
+propensity
+rail
+inviolate
+exemplify
+provincial
+ramify
+malodorous
+etiolated
+prudent
+rampart
+ire
+exiguity
+mar
+prune
+rancorous
+irksome
+eurytopic
+pursuant
+rapacious
+ironclad
+martinet
+qualify
+rebus
+expansive
+matriarch
+evinced
+qualm
+recant
+irreverent
+maudlin
+exacerbated
+query
+recidivism
+jeopardize
+expunge
+gestation
+queue
+gist
+melange
+quintessential
+reconnoiter
+glacial
+mendacious
+exaggerate
+rarefy
+recreant
+extenuating
+excise
+raucous
+rectitude
+excoriated
+recalcitrant
+recumbent
+exculpated
+recluse
+redolent
+largesse
+goosebumps
+meritocracy
+execrable
+reconciliation
+redoubtable
+factious
+gouge
+reconnaissance
+refractory
+lax
+factitious
+exodus
+rectify
+regale
+graft
+mirth
+rent
+liability
+grandiloquent
+relegate
+repine
+grandstand
+relish
+replete
+grating
+miser
+remedial
+reprobate
+lionize
+missive
+remonstrate
+reprove
+loathe
+fell
+remuneration
+ribald
+ferret
+renaissance
+rubicund
+fete
+molt
+renege
+runic
+lucrative
+fickle
+monastic
+sagacious
+lull
+finagle
+morass
+salacious
+magisterial
+firebrand
+moratorium
+malfeasance
+hallmark
+mores
+resolute
+sanatorium
+handwringing
+respite
+sanctimony
+fleece
+restitution
+sanguine
+manacle
+resurrect
+sartorial
+hardy
+exult
+retard
+marginalize
+flummox
+myopic
+saturnine
+mawkish
+haven
+scurrilous
+flux
+hearken
+scurvy
+mercenary
+hedge
+narcissist
+fanatic
+rubric
+farce
+rue
+seine
+metaphorical
+salient
+seminal
+forlorn
+nefarious
+salutary
+sententious
+mettlesome
+forthcoming
+fawning
+salve
+sepulchral
+mimic
+forthright
+hew
+sidereal
+minute
+hierarchy
+nettle
+simper
+misanthropic
+nihilism
+sap
+sinecure
+satire
+sinuous
+misnomer
+homage
+saturate
+slake
+frustrate
+savor
+sodden
+hoodwink
+festoon
+schism
+solder
+modish
+hotly
+numismatic
+secrete
+fiasco
+sedative
+sophistry
+momentary
+gall
+hyberbole
+obfuscate
+filial
+serenity
+sophomoric
+fillip
+sever
+finagled
+shard
+soubriquet
+idolatry
+singular
+splenetic
+idyllic
+fitful
+slight
+stanch
+flagrant
+slothful
+steep
+naive
+genteel
+illiberality
+soliloquy
+stentorian
+obstructionist
+solvent
+stoic
+negligent
+gerrymander
+somber
+striated
+glean
+flotilla
+sordid
+strident
+nettlesome
+sparing
+strut
+neutralize
+glut
+impartial
+stupefy
+noble
+flourish
+spendthrift
+stygian
+nonchalant
+flouted
+stymie
+succor
+squalid
+supercilious
+nullify
+opine
+stanza
+numinous
+impermeable
+static
+suppliant
+obeisance
+guffaw
+opulent
+staunch
+supplicant
+oblivious
+guileless
+oration
+stint
+surfeit
+gumption
+ornate
+foreground
+subliminal
+orotund
+subpoena
+table
+obsolete
+hagiographic
+orthodox
+subtle
+tamp
+hail
+implication
+ossify
+fortitude
+succinct
+tawdry
+sundry
+tendentious
+omnipresent
+implode
+overt
+superfluous
+tetchy
+hamstrung
+overwrought
+pacify
+fraternize
+surreptitious
+toady
+synergy
+tonicity
+harried
+palatial
+torpid
+oust
+haughty
+inasmuch
+torrid
+hauteur
+pallid
+fruition
+tact
+hector
+fudge
+tangential
+incentive
+fuliginous
+tantalize
+truculent
+palpable
+tautology
+tumid
+heretic
+panoply
+funereal
+temper
+turbid
+heyday
+furor
+temperate
+turgid
+paradigmatic
+inconsequential
+paragon
+tenacity
+turpitude
+parochial
+inconstancy
+parenthetical
+gadfly
+tender
+tyro
+hobble
+incorporate
+tentative
+parley
+umbrage
+gallant
+terse
+uncouth
+peculiar
+hound
+indeterminate
+undulate
+gamboled
+torque
+unfeigned
+indigence
+garble
+tout
+pastiche
+gargantuan
+tranquil
+untoward
+pensive
+patriarch
+travesty
+upbraid
+trepidation
+urbane
+infallible
+gaudy
+trivial
+usury
+pedagogical
+unfettered
+vacuous
+perilous
+illicit
+unremitting
+variegated
+illustrious
+ingrained
+pejorative
+germinate
+vaunt
+imbibe
+ghastly
+venal
+perpetrate
+penitent
+gild
+veritable
+perpetuate
+immaterial
+penurious
+veneration
+pertinacious
+peregrinate
+glancing
+viable
+verdant
+perfidious
+glaring
+vigilant
+verisimilitude
+glowered
+vigor
+vernacular
+impeccable
+inordinate
+vilify
+vestige
+inquest
+viscous
+virago
+vitality
+virulent
+impending
+insinuate
+perquisite
+vitiate
+perspicacity
+grandiose
+voracious
+vitriolic
+placid
+waffle
+viturperate
+grasping
+waft
+volubility
+intelligible
+wane
+wag
+phalanx
+warranted
+wax
+interplay
+philanthropist
+waver
+welter
+plodding
+implausible
+grisly
+weather
+wend
+implicate
+wheedle
+imponderable
+picayune
+zealous
+wizened
+importuned
+polymath
+impregnable
+guttural
+portend
+improvident
+imprudent
+haggard
+precipitous
+plebeian
+hallowed
+preclude
+predicament
+haptic
+inanity
+plucky
+premeditate
+inarticulate
+incense
+politic
+hardscrabble
+itinerary
+polyglot
+harmonious
+pretentious
+jargon
+populist
+incisive
+posit
+inclement
+potentate
+headlong
+heinous
+indecorous
+precocious
+herald
+proficient
+indict
+indifference
+prescience
+profound
+pretense
+profundity
+indigent
+kudos
+hiatus
+hidebound
+inequity
+prodigy
+prophetic
+landmark
+holistic
+infelicitous
+progenitor
+homespun
+inflammable
+larceny
+proletarian
+providential
+or
+hortatory
+provocative
+humbuggery
+prowess
+husbandry
+inkling
+proselytize
+layperson
+leery
+quiescent
+pugilist
+ignominy
+quirky
+insolent
+illiberal
+insolvent
+levy
+radical
+insouciance
+liberal
+insufferable
+rational
+pungent
+internecine
+likewise
+recourse
+intimation
+recrudescent
+quell
+refine
+impeded
+livid
+regress
+log
+imperative
+reiterate
+relinquish
+raconteur
+raiment
+inviolable
+impetus
+impinge
+renounce
+involved
+raze
+repercussion
+lurid
+rebuke
+replenish
+irk
+"machination
+machinations"
+rebut
+irrefutable
+imploring
+restive
+irrevocable
+redress
+robust
+refulgent
+impromptu
+rudimentary
+jaundice
+impudence
+ruminate
+rejoinder
+inalienable
+jingoist
+mannered
+remiss
+inane
+sanctimonious
+jovial
+incensed
+jubilant
+repast
+juggernaut
+satirical
+junta
+repose
+scant
+reprehensible
+incoherent
+scathing
+kowtow
+laborious
+scintillating
+lacerate
+repugnant
+scorn
+metamorphosis
+requite
+scrupulous
+metaphysical
+lambast
+indictment
+sensational
+milieu
+revere
+sham
+languish
+mired
+reviler
+skirt
+rhapsodize
+skittish
+misanthropist
+skullduggery
+slander
+rococo
+inestimable
+sacrosanct
+sluggish
+modicum
+infinitesimal
+somnolent
+sage
+influx
+sophisticated
+litany
+loath
+sound
+spartan
+macabre
+moreover
+sardonic
+machinate
+innate
+stalwart
+maintain
+scoff
+stern
+stigmatize
+malady
+sedition
+stinting
+malapropism
+sentient
+strife
+seraphic
+stringent
+malingerer
+negate
+sibilant
+integrate
+interloper
+subordinate
+subservient
+net
+sobriquet
+subside
+solecism
+subsume
+nevertheless
+nonetheless
+intrusive
+inundated
+subvert
+superficial
+nontrivial
+sonorous
+normative
+supersede
+meander
+supplicate
+melancholy
+Spartan
+surmount
+melee
+sportive
+ironic
+synoptic
+objective
+stasis
+mesmerize
+tantalizing
+meteoric
+stevedore
+tantamount
+stifle
+tarnish
+stigma
+tempestuous
+misattribute
+offhand
+juvenescence
+temporal
+stricture
+tenable
+stultify
+kindred
+sublime
+kismet
+tepid
+subterfuge
+thorough
+optimal
+lackadaisical
+moment
+optimum
+moot
+sully
+morph
+ostensive
+mulct
+surly
+transgression
+sybarite
+transitory
+muted
+lenient
+trenchant
+symbiosis
+trifling
+syncopated
+lionized
+negligible
+turbulent
+logorrhea
+temerity
+lovelorn
+tenacious
+lucre
+understated
+pare
+tome
+ludicrous
+universal
+objurgate
+unprecedented
+obliging
+unscrupulous
+treacly
+unseemly
+trite
+truculence
+utilitarian
+truncated
+utterly
+obtain
+pathogenic
+pathological
+vanquish
+patronizing
+vapid
+opulence
+pedant
+unctuous
+peddle
+ostracize
+versatile
+palatable
+vainglorious
+palaver
+venerated
+mandate
+palimpsest
+penumbra
+manifold
+per
+se
+marshal
+visionary
+paradoxical
+vivacious
+vicissitude
+meager
+vociferous
+vim
+meddle
+virtuoso
+meld
+wary
+parvenu
+melodramatic
+wayward
+pastoral
+weary
+perspicacious
+vituperate
+woeful
+patronize
+menial
+voluble
+mephitic
+pecuniary
+philanthropy
+wanton
+peevish
+phony
+wily
+meterological
+wistful
+wraith
+miasma
+percipient
+microcosm
+zenith
+zephyr
+milquetoast
+mimetic
+plebian
+minion
+plutocracy
+polarized
+polemic
+perturb
+ponderous
+phantasmagorical
+posthumous
+morbid
+pre-empt
+pinnacle
+preamble
+motile
+motley
+précis
+pittance
+predisposed
+presumptive
+naivete
+ploy
+preternatural
+nepotism
+Pollyannaish
+primacy
+principled
+newfangled
+pontificate
+portentous
+non
+sequitur
+powwow
+nondescript
+nonpareil
+precedent
+prohibitive
+nostalgia
+notorious
+prologue
+pronounced
+novitiate
+preemptive
+presentiment
+propitious
+obfuscated
+objectionable
+objurgation
+proxy
+pugilism
+obtrusive
+profusion
+occluded
+prognostication
+prolixity
+promulgate
+ogle
+qualified
+omission
+quandary
+omniscient
+proponent
+onus
+quibble
+openhanded
+protean
+opportune
+ranks
+provisional
+rarefied
+reactant
+reap
+puissant
+recapitulate
+ostracized
+pyrrhic
+otiose
+outmoded
+redound
+pacific
+quip
+quisling
+pall
+rend
+raft
+render
+raillery
+rakish
+repertorial
+pander
+rankle
+pangs
+rapprochement
+panned
+rash
+ravenous
+recapitulation
+resolution
+resolve
+paroxysm
+recrimination
+recrudesce
+partiality
+resurgent
+retrospective
+pathos
+revamp
+patois
+ridden
+rife
+reprisal
+rift
+pendulous
+peons
+reservation
+rustic
+resignation
+retiring
+permeated
+retract
+permutation
+sate
+perquisites
+rile
+savant
+personified
+row
+scintilla
+perverse
+searchingly
+philander
+sangfroid
+physiological
+semantic
+picturesque
+savvy
+piebald
+schadenfreude
+pilfer
+screed
+skeptic
+pioneering
+self-effacing
+pitfall
+semblance
+slack
+sentimental
+slew
+pivotal
+serendipity
+serene
+simulacrum
+slapdash
+solidarity
+plaudits
+smattering
+somatic
+smug
+snide
+plenipotentiary
+snub
+pluck
+spate
+spearhead
+solicitude
+spectrum
+politesse
+speculate
+pomp
+squelch
+standing
+stark
+spurn
+squander
+status
+quo
+staid
+steeped
+start
+stingy
+premonition
+steadfast
+stem
+stipulate
+pretext
+stipend
+stoical
+prevarication
+primed
+stratagem
+primordial
+stratum
+stymy
+profane
+sullen
+profligacy
+summit
+succeeding
+progenitors
+prognosticate
+supposition
+prominent
+surmise
+surrogate
+taxing
+telling
+synchronous
+telltale
+syntax
+tempered
+proximity
+thoroughgoing
+thrifty
+thwart
+terrestrial
+punitive
+timely
+purist
+putrid
+quagmire
+token
+quash
+transmute
+travail
+treacherous
+quizzical
+tribulation
+ragamuffin
+truncate
+ramification
+tumult
+rampant
+tumultuous
+rankled
+rapt
+unassailable
+rapturous
+uncanny
+uncompromising
+unconscionable
+unearth
+readily
+underwrite
+unequivocal
+realization
+unflappable
+rebuttal
+unforthcoming
+unsparing
+unimpeachable
+untempered
+unnerve
+recapitulated
+recidivist
+unprepossessing
+reclusive
+unpropitious
+vanguard
+unruly
+redouble
+unstinting
+reductive
+verisimilar
+redundant
+untrammeled
+vernal
+refracted
+unviable
+vex
+via
+rejuvenated
+variance
+vintage
+vaunted
+virtual
+reminiscent
+vehement
+viscid
+remunerated
+veneer
+vitriol
+renowned
+repertoire
+venial
+veracious
+wan
+vicarious
+vie
+requisite
+resigned
+vindicate
+whereas
+resilient
+vindictive
+whet
+resonant
+whitewash
+resplendent
+winnow
+winsome
+resurgence
+xenophobia
+wanting
+yoke
+retrenchment
+retrospection
+revanche
+zeitgeist
+reverberate
+revile
+revulsion
+rhetorical
+rickety
+riposte
+risible
+risque
+roborant
+rotund
+ruffian
+saccharine
+sapid
+sapient
+sashayed
+satiated
+scanty
+scapegoat
+sclerotic
+scofflaw
+scotch
+scrutinize
+scuffle
+scuttle
+secretes
+sectarian
+sedentary
+segue
+self-styled
+sequacious
+sere
+servile
+shelve
+shirk
+showy
+shrewd
+skulduggery
+skulk
+slatternly
+slipshod
+slovenly
+sojourn
+solipsistic
+soupcon
+sovereign
+staple
+statuesque
+stigmas
+stilted
+storied
+streamlined
+strenuous
+stupefied
+subsequent
+subsidy
+succumb
+sumptuary
+surpassing
+susceptible
+swathe
+tangible
+taxonomic
+tensile
+titular
+tonic
+toothsome
+totalitarian
+touted
+tremulous
+unassuming
+unbridled
+unconventional
+uncultivated
+uniform
+unkempt
+unpretentiousness
+unsavory
+unwieldy
+upbraided
+usurious
+usurp
+utopian
+vanquished
+verboten
+vertiginous
+vituperated
+vocation
+volition
+voluminous
+voyeur
+waspish
+watershed
+willful
+wont
+woo
+workmanlike
+worldly
+wrongheaded
+wry
