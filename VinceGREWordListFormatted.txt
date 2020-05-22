@@ -552,7 +552,6 @@ denounce
 convivial
 candidness
 extrapolate
-blasé
 collude
 facetious
 derision
@@ -748,7 +747,7 @@ credibility
 inimical
 enumerate
 gnostic
-Innocuous
+innocuous
 caterwaul
 gossamer
 inscrutable
@@ -908,7 +907,7 @@ credulity
 munificent
 ineluctable
 economy
-naïve
+naive
 exuberant
 commiserate
 forswear
@@ -1150,7 +1149,6 @@ pragmatic
 histrionic
 intemperance
 minatory
-e.g.
 precarious
 hoary
 mince
@@ -1504,7 +1502,6 @@ plasticity
 prolix
 err
 finesse
-
 propinquity
 industrious
 errant
@@ -2134,8 +2131,8 @@ lurid
 rebuke
 replenish
 irk
-"machination
-machinations"
+machination
+machinations
 rebut
 irrefutable
 imploring
@@ -2343,8 +2340,6 @@ mandate
 palimpsest
 penumbra
 manifold
-per
-se
 marshal
 visionary
 paradoxical
@@ -2395,12 +2390,10 @@ ponderous
 phantasmagorical
 posthumous
 morbid
-pre-empt
 pinnacle
 preamble
 motile
 motley
-précis
 pittance
 predisposed
 presumptive
@@ -2408,14 +2401,12 @@ naivete
 ploy
 preternatural
 nepotism
-Pollyannaish
+pollyannaish
 primacy
 principled
 newfangled
 pontificate
 portentous
-non
-sequitur
 powwow
 nondescript
 nonpareil
@@ -2526,7 +2517,6 @@ pilfer
 screed
 skeptic
 pioneering
-self-effacing
 pitfall
 semblance
 slack
@@ -2558,8 +2548,6 @@ standing
 stark
 spurn
 squander
-status
-quo
 staid
 steeped
 start
@@ -2720,7 +2708,6 @@ secretes
 sectarian
 sedentary
 segue
-self-styled
 sequacious
 sere
 servile
