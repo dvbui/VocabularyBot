@@ -87,20 +87,26 @@ def load_user_data():
 
 def save_user_data():
     global db
-    for user in listOfUsers:
-        doc_ref = db.collection(u'users').document(str(user.id))
-        doc_ref.set({
-            u'score': listOfUsers[user]["score"],
-            u'receive_message': listOfUsers[user]["receive_message"]
-        })
+    try:
+        for user in listOfUsers:
+            doc_ref = db.collection(u'users').document(str(user.id))
+            doc_ref.set({
+                u'score': listOfUsers[user]["score"],
+                u'receive_message': listOfUsers[user]["receive_message"]
+            })
+    except:
+        print("Can't save user data!")
 
 
 def save_block():
     global listOfUsers
     global db
     global game_finished
-    doc_ref = db.collection(u'blocks').document(str(game_finished))
-    doc_ref.set({u'content': str(clues)})
+    try:
+        doc_ref = db.collection(u'blocks').document(str(game_finished))
+        doc_ref.set({u'content': str(clues)})
+    except:
+        print("Can't save block data!")
 
 
 def free_all_users():
