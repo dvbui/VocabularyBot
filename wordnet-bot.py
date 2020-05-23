@@ -9,7 +9,7 @@ import messenger
 import sys
 import firebase_admin
 import json
-import copy
+import pickle
 from firebase_admin import credentials
 from firebase_admin import firestore
 sys.setrecursionlimit(10 ** 6)
@@ -74,6 +74,7 @@ acceptingKeyword = False
 game_finished = 0
 max_number_of_games = 10
 clock = 0
+block_info = {}
 # constant
 client = discord.Client()
 
@@ -150,9 +151,27 @@ def save_block():
     global game_finished
     try:
         doc_ref = db.collection(u'blocks').document(str(game_finished))
-        doc_ref.set({u'content': str(clues)})
+        doc_ref.set({u'content': pickle.dumps(clues)})
+        block_info[game_finished] = clues
     except:
         print("Can't save block data!")
+
+
+def load_block():
+    global db
+    for i in range(1, 11):
+        if not (i in block_info):
+            try:
+                doc_ref = db.collection(u'blocks').document(str(i))
+                doc = doc_ref.get()
+                if doc.exists:
+                    doc = doc.to_dict()
+                    block_info[i] = pickle.loads(doc["content"])
+                    pass
+                else:
+                    print("Cannot load block")
+            except:
+                print("Cannot load block")
 
 
 def free_all_users():
@@ -343,8 +362,8 @@ async def main_game():
             await send_message(user, messenger.ranklist_message(listOfUsers))
         await send_message(channel, messenger.ranklist_message(listOfUsers), True)
         status = 0
-        save_user_data()
         save_block()
+        save_user_data()
         if game_finished == max_number_of_games:
             os.system("bash ./restart.sh")
             return
@@ -501,17 +520,25 @@ async def on_message(message):
         else:
             mess = "We are not accepting keyword answers. Please wait a little bit and try again."
 
-    if len(args) == 2 and args[1] == "export" and message.author in listOfUsers:
-        mess = "Exporting words failed. Please try again later."
+    if len(args) in [2, 3] and (args[1] == "export" or args[1] == "recent"):
+        if len(args) == 2:
+            load_block()
+            for i in block_info:
+                for j in range(0, len(block_info[i])):
+                    mess += block_info[i][j][0]+" "
+                mess += "\n"
+
+        if len(args) == 3:
+            load_block()
+            for i in block_info:
+                for j in range(0, len(block_info[i])):
+                    mess += block_info[i][j][0]+" "+block_info[i][j][1]+"\n"
 
     if len(args) == 2 and args[1] == "help":
         mess = messenger.help_message()
 
-    if len(args) == 2 and args[1] == "recent":
-        mess = "Exporting words failed. Please try again later."
-
     if len(args) == 3 and args[1] == "def" and args[2].isalpha():
-        mess = "Exporting words failed. Please try again later."
+        mess = vocs.getLink(args[2])
 
     if len(args) == 3 and args[1] == "mega" and args[2] in ["1", "2", "3"]:
         if message.author in listOfUsers and listOfUsers[message.author]["subgame_playing"]:
