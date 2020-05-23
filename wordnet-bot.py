@@ -72,6 +72,7 @@ winner = ""
 acceptingAnswers = False
 acceptingKeyword = False
 game_finished = 0
+max_number_of_games = 10
 clock = 0
 # constant
 client = discord.Client()
@@ -134,6 +135,10 @@ def save_user_data():
 
     if saved_all:
         oldListOfUsers = listOfUsers.copy()
+    else:
+        global game_finished
+        game_finished = min(game_finished, 9)
+
 
 
 def save_block():
@@ -334,7 +339,7 @@ async def main_game():
         status = 0
         save_user_data()
         save_block()
-        if game_finished == 10:
+        if game_finished == max_number_of_games:
             os.system("bash ./restart.sh")
             return
 
