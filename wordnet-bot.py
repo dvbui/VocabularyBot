@@ -378,7 +378,7 @@ async def main_game():
 async def on_member_join(member):
     print("I'm here")
 
-    server_id = str(member.guild.id)
+    server_id = member.guild.id
     purpose = "welcome_message"
 
     mess = ""
@@ -402,6 +402,7 @@ async def on_member_join(member):
     mess = mess.replace("{user}", str(member))
 
     if mess == "":
+        print("Mess is empty")
         return
 
     try:
