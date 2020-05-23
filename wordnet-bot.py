@@ -123,7 +123,7 @@ def save_user_data():
             new_info["score"] = listOfUsers[user]["score"]
             old_info["receive_message"] = oldListOfUsers[user]["receive_message"]
             new_info["receive_message"] = listOfUsers[user]["receive_message"]
-        print(user+"\n"+old_info+"\n"+new_info)
+        print(str(user)+"\n"+str(old_info)+"\n"+str(new_info))
         if (not (user in oldListOfUsers)) or old_info != new_info:
             try:
                 doc_ref = db.collection(u'users').document(str(user.id))
