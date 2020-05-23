@@ -111,7 +111,8 @@ def load_user_data():
 
 def save_user_data():
     global db
-    save_all = True
+    global oldListOfUsers
+    saved_all = True
     for user in listOfUsers:
         old_info = {"score": 0, "receive_message": False}
         new_info = {"score": 1, "receive_message": True}
@@ -132,7 +133,6 @@ def save_user_data():
                 print("Can't save user {} data".format(str(user)))
 
     if saved_all:
-        global oldListOfUsers
         oldListOfUsers = listOfUsers.copy()
 
 
