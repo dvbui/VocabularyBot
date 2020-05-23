@@ -373,6 +373,7 @@ async def main_game():
 
     await main_game()
 
+
 @client.event
 async def on_member_join(member):
     print("I'm here")
@@ -410,6 +411,7 @@ async def on_member_join(member):
         await send_message(channel, mess, True)
     except:
         print("Cannot send message")
+
 
 @client.event
 async def on_ready():
