@@ -4,7 +4,24 @@ from nltk.corpus import wordnet
 
 # question data
 WORD_LIST = ["VocabularyWorkshopEasy.txt", "VocabularyWorkshopMedium.txt", "VocabularyWorkshopHard.txt"]
+SWEAR_WORDS_FILE = "swearWords.txt"
+swear_words = {}
 master_word_data = [{}, {}, {}]
+
+
+def init_swear_words_file():
+    f = open(SWEAR_WORDS_FILE, "r")
+    lines = f.read().split('\n')
+    for line in lines:
+        swear_words[line.strip().lower()] = ""
+    f.close()
+
+
+def has_swear_words(s):
+    for word in swear_words:
+        if word in s:
+            return True
+    return False
 
 
 # Input: a string
@@ -167,6 +184,13 @@ def generate_custom_question(difficulty=1, chosen_word=""):
     question += "{}. {}\n".format(answer, chosen_antonym)
     for i in range(answer, 4):
         question += "{}. {}\n".format(i+1, not_antonyms[i-1])
+
+    if has_swear_words(question+" "+word):
+        if chosen_word == "":
+            del master_word_data[difficulty-1][word]
+            return generate_custom_question(difficulty)
+        else:
+            return None
 
     return question, answer, word
 

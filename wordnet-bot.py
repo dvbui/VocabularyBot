@@ -210,6 +210,10 @@ def pick_keyword():
         clue_list.append((k, details[k]))
     clue_list.append((word, word_definition))
 
+    if wordDef.has_swear_words(str(clue_list)+" "+word):
+        del wordDatabase[word]
+        return pick_keyword()
+
     return word, clue_list
 
 
@@ -356,6 +360,7 @@ async def on_ready():
     init_word_list()
     global db
     messenger.init_message(db)
+    wordDef.init_swear_words_file()
     await main_game()
 
 
