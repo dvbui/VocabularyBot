@@ -532,7 +532,7 @@ async def on_message(message):
             load_block()
             for i in block_info:
                 for j in range(0, len(block_info[i])):
-                    mess += block_info[i][j][0]+" "+block_info[i][j][1]+"\n"
+                    mess += block_info[i][j][0]+"\t"+block_info[i][j][1]+"\n"
 
         mess = "```\n"+mess+"```"
 
