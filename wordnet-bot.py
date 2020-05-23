@@ -534,6 +534,8 @@ async def on_message(message):
                 for j in range(0, len(block_info[i])):
                     mess += block_info[i][j][0]+" "+block_info[i][j][1]+"\n"
 
+        mess = "```\n"+mess+"```"
+
     if len(args) == 2 and args[1] == "help":
         mess = messenger.help_message()
 
