@@ -447,7 +447,7 @@ async def on_message(message):
                 if status <= 4:
                     if acceptingAnswers:
                         listOfUsers[message.author]["answer"] = message.content[
-                                                                0:min(len(message.content), len(clues[status - 1][1]))]
+                                                                0:min(len(message.content), len(clues[status - 1][0]))]
                         mess = "Your current answer is " + message.content + "\n({} characters)".format(
                             len(message.content))
                         global clock
