@@ -366,6 +366,7 @@ async def main_game():
         status = 0
         save_block()
         save_user_data()
+        print("Finished {}".format(game_finished))
         if game_finished == max_number_of_games:
             os.system("bash ./restart.sh")
             return
