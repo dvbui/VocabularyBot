@@ -395,7 +395,7 @@ async def on_member_join(member):
                 if ("welcome_channel" in doc) and (purpose in doc):
                     message_cache[server_id][purpose] = doc[purpose].replace("\\n", "\n")
                     message_cache[server_id]["welcome_channel"] = doc["welcome_channel"]
-                    mess = doc[purpose]
+                    mess = message_cache[server_id][purpose]
         except:
             print("Cannot retrieve welcome message")
 
