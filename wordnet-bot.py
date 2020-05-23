@@ -389,7 +389,7 @@ async def on_member_join(member):
         message_cache[server_id] = {}
         try:
             global db
-            doc = db.collection(u'message').document(str(server_id)).get()
+            doc = db.collection(u'messages').document(str(server_id)).get()
             if doc.exists:
                 doc = doc.to_dict()
                 if ("welcome_channel" in doc) and (purpose in doc):
