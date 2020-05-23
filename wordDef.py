@@ -138,23 +138,35 @@ def generate_custom_question(difficulty=1, chosen_word=""):
     else:
         word = chosen_word
     info = get_definition(word)
-    synonyms = list(get_related(word, "synonyms").keys())
     antonyms = get_antonyms(word)
-    if len(synonyms) < 3 or len(antonyms) < 1 or info == "" or info.count("\t") >= 6:
+    chosen_antonym = ""
+    if len(antonyms) >= 1:
+        chosen_antonym = random.choice(antonyms)
+    not_antonyms = {}
+    not_antonyms = merge(not_antonyms, get_related(chosen_antonym, "hyponyms"))
+    remove = {}
+    for key in not_antonyms:
+        if key.lower() in chosen_antonym.lower() or chosen_antonym.lower() in key.lower():
+            remove[key] = ""
+    for key in remove:
+        del not_antonyms[key]
+
+    if len(not_antonyms) < 3 or len(antonyms) < 1 or info == "" or info.count("\t") >= 6:
         if chosen_word == "":
             del master_word_data[difficulty-1][word]
             return generate_custom_question(difficulty)
         else:
             return None
 
-    synonyms = random.sample(synonyms, 3)
+    not_antonyms = list(not_antonyms.keys())
+    not_antonyms = random.sample(not_antonyms, 3)
     question = "Which of the following words is an antonym for {}?\n".format(word)
     answer = random.randint(1, 4)
     for i in range(0, answer-1):
-        question += "{}. {}\n".format(i+1, synonyms[i])
-    question += "{}. {}\n".format(answer, random.choice(antonyms))
+        question += "{}. {}\n".format(i+1, not_antonyms[i])
+    question += "{}. {}\n".format(answer, chosen_antonym)
     for i in range(answer, 4):
-        question += "{}. {}\n".format(i+1, synonyms[i-1])
+        question += "{}. {}\n".format(i+1, not_antonyms[i-1])
 
     return question, answer, word
 
