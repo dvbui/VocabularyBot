@@ -408,7 +408,7 @@ async def on_member_join(member):
     try:
         welcome_channel_id = message_cache[server_id]["welcome_channel"]
         global client
-        channel = client.get_channel(welcome_channel_id)
+        channel = client.get_channel(int(welcome_channel_id))
         await send_message(channel, mess, True)
     except:
         print("Cannot send message")
