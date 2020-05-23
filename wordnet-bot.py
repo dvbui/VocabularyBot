@@ -107,7 +107,8 @@ def load_user_data():
             listOfUsers[user]["receive_message"] = user_info["receive_message"]
 
     global oldListOfUsers
-    oldListOfUsers = listOfUsers.copy()
+    for user in listOfUsers:
+        oldListOfUsers[user] = listOfUsers[user].copy()
 
 
 def save_user_data():
@@ -136,7 +137,8 @@ def save_user_data():
                 print("Can't save user {} data".format(str(user)))
 
     if saved_all:
-        oldListOfUsers = listOfUsers.copy()
+        for user in listOfUsers:
+            oldListOfUsers[user] = listOfUsers[user].copy()
     else:
         global game_finished
         game_finished = min(game_finished, 9)
