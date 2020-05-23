@@ -7,6 +7,7 @@ from firebase_admin import firestore
 from time import sleep
 
 import vocs
+import wordDef
 
 OLYMPIA_MAIN_SERVER = 709919416456052897
 
@@ -127,12 +128,14 @@ def ranklist_message(user_list):
     return mess
 
 
-def show_user_answer(user_list):
+def show_user_answer(user_list, answer, question):
     mess = "```\n"
     table = [["Name", "Answer"]]
     for user in user_list:
         if user_list[user]["answer"] != "":
-            table.append([str(user), str(user_list[user]["answer"])])
+            similarity = wordDef.get_similarity(answer, question, user_list[user]["answer"])
+            if similarity != 0:
+                table.append([str(user), str(user_list[user]["answer"])])
     mess += print_table(table, max_length_string=500)
     mess += "```\n"
     return mess

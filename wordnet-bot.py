@@ -295,7 +295,7 @@ async def main_game():
                 fake_list[user] = {}
                 fake_list[user]["answer"] = listOfUsers[user]["answer"]
 
-            user_answers = messenger.show_user_answer(fake_list)
+            user_answers = messenger.show_user_answer(fake_list, answer, question)
             for user in listOfUsers:
                 await send_message(user, user_answers)
             await send_message(channel, user_answers, True)
