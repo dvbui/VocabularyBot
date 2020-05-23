@@ -113,6 +113,7 @@ def load_user_data():
 def save_user_data():
     global db
     global oldListOfUsers
+    print("Saving user data!\n")
     saved_all = True
     for user in listOfUsers:
         old_info = {"score": 0, "receive_message": False}
@@ -122,6 +123,7 @@ def save_user_data():
             new_info["score"] = listOfUsers[user]["score"]
             old_info["receive_message"] = oldListOfUsers[user]["receive_message"]
             new_info["receive_message"] = listOfUsers[user]["receive_message"]
+        print(user+"\n"+old_info+"\n"+new_info)
         if (not (user in oldListOfUsers)) or old_info != new_info:
             try:
                 doc_ref = db.collection(u'users').document(str(user.id))
@@ -138,7 +140,6 @@ def save_user_data():
     else:
         global game_finished
         game_finished = min(game_finished, 9)
-
 
 
 def save_block():
@@ -235,7 +236,6 @@ async def main_game():
 
     if status == 0:  # Registering phase
         free_all_users()
-        global oldListOfUsers
         wrong_keyWords = ""
         winner = ""
         acceptingAnswers = False
