@@ -239,6 +239,7 @@ def pick_keyword():
 async def send_message(user, message, special=False):
     if special or ((user in listOfUsers) and listOfUsers[user]["receive_message"]):
         try:
+            message = message[0:min(len(message), 2000)]
             print(str(user) + " " + str(message))
             await user.send(message)
         except:
@@ -535,6 +536,7 @@ async def on_message(message):
                     mess += block_info[i][j][0]+"\t"+block_info[i][j][1]+"\n"
 
         mess = "```\n"+mess+"```"
+        mess = mess[0:min(len(mess), 2000)]
 
     if len(args) == 2 and args[1] == "help":
         mess = messenger.help_message()
