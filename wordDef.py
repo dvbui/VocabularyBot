@@ -159,12 +159,14 @@ def generate_custom_question(difficulty=1, chosen_word=""):
     chosen_antonym = ""
     if len(antonyms) >= 1:
         chosen_antonym = random.choice(antonyms)
+
     not_antonyms = {}
     not_antonyms = merge(not_antonyms, get_related(chosen_antonym, "hyponyms"))
     remove = {}
     for key in not_antonyms:
-        if key.lower() in chosen_antonym.lower() or chosen_antonym.lower() in key.lower():
+        if key.lower() in word.lower() or word.lower() in key.lower():
             remove[key] = ""
+
     for key in remove:
         del not_antonyms[key]
 
