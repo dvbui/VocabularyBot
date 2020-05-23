@@ -222,7 +222,7 @@ async def main_game():
     if status == 0:  # Registering phase
         free_all_users()
         global oldListOfUsers
-        oldListOfUsers = copy.deepcopy(listOfUsers)
+        oldListOfUsers = dict(listOfUsers)
         wrong_keyWords = ""
         winner = ""
         acceptingAnswers = False
