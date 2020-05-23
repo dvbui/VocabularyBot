@@ -105,9 +105,13 @@ def load_user_data():
             listOfUsers[user]["score"] = user_info["score"]
             listOfUsers[user]["receive_message"] = user_info["receive_message"]
 
+    global oldListOfUsers
+    oldListOfUsers = listOfUsers.copy()
+
 
 def save_user_data():
     global db
+    save_all = True
     for user in listOfUsers:
         old_info = {"score": 0, "receive_message": False}
         new_info = {"score": 1, "receive_message": True}
@@ -124,7 +128,12 @@ def save_user_data():
                     u'receive_message': listOfUsers[user]["receive_message"]
                 })
             except:
+                saved_all = False
                 print("Can't save user {} data".format(str(user)))
+
+    if saved_all:
+        global oldListOfUsers
+        oldListOfUsers = listOfUsers.copy()
 
 
 def save_block():
@@ -222,7 +231,6 @@ async def main_game():
     if status == 0:  # Registering phase
         free_all_users()
         global oldListOfUsers
-        oldListOfUsers = dict(listOfUsers)
         wrong_keyWords = ""
         winner = ""
         acceptingAnswers = False
