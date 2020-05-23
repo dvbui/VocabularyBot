@@ -581,12 +581,21 @@ async def on_message(message):
 
         mess = "```\n"+mess+"```"
         mess = mess[0:min(len(mess), 2000)]
+        if mess != "":
+            await send_message(message.channel, mess, True)
+            return
 
     if len(args) == 2 and args[1] == "help":
         mess = messenger.help_message()
+        if mess != "":
+            await send_message(message.channel, mess, True)
+            return
 
     if len(args) == 3 and args[1] == "def" and args[2].isalpha():
         mess = vocs.getLink(args[2])
+        if mess != "":
+            await send_message(message.channel, mess, True)
+            return
 
     if len(args) == 3 and args[1] == "mega" and args[2] in ["1", "2", "3"]:
         if message.author in listOfUsers and listOfUsers[message.author]["subgame_playing"]:
@@ -599,6 +608,7 @@ async def on_message(message):
             print("I'm here")
             listOfUsers[message.author]["subgame_answer"] = args[2]
             await send_message(message.channel, "Your current answer is {}".format(args[2]), True)
+            return
 
     if len(args) == 2 and args[1] == "restart" and message.author.id == ADMIN_ID:
         os.system("bash ./restart.sh")
