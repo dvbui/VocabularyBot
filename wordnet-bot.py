@@ -9,6 +9,7 @@ import messenger
 import sys
 import firebase_admin
 import json
+import copy
 from firebase_admin import credentials
 from firebase_admin import firestore
 sys.setrecursionlimit(10 ** 6)
@@ -64,6 +65,7 @@ status = 0
 keyWord = ""
 clues = {}
 listOfUsers = {}
+oldListOfUsers = {}
 answers = {}
 wrong_keyWords = ""
 winner = ""
@@ -81,12 +83,11 @@ def register_user(user, receive_message=True):
         listOfUsers[user] = {
             "answer": "",
             "score": 0,
-            "receive_message": True,
+            "receive_message": receive_message,
             "eliminate": False,
             "subgame_answer": "",
-            "subgame_playing": False
+            "subgame_playing": False,
         }
-        listOfUsers[user]["activate"] = False
     listOfUsers[user]["receive_message"] = receive_message
 
 
@@ -107,15 +108,23 @@ def load_user_data():
 
 def save_user_data():
     global db
-    try:
-        for user in listOfUsers:
-            doc_ref = db.collection(u'users').document(str(user.id))
-            doc_ref.set({
-                u'score': listOfUsers[user]["score"],
-                u'receive_message': listOfUsers[user]["receive_message"]
-            })
-    except:
-        print("Can't save user data!")
+    for user in listOfUsers:
+        old_info = {"score": 0, "receive_message": False}
+        new_info = {"score": 1, "receive_message": True}
+        if user in oldListOfUsers:
+            old_info["score"] = oldListOfUsers[user]["score"]
+            new_info["score"] = listOfUsers[user]["score"]
+            old_info["receive_message"] = oldListOfUsers[user]["receive_message"]
+            new_info["receive_message"] = listOfUsers[user]["receive_message"]
+        if (not (user in oldListOfUsers)) or old_info != new_info:
+            try:
+                doc_ref = db.collection(u'users').document(str(user.id))
+                doc_ref.set({
+                    u'score': listOfUsers[user]["score"],
+                    u'receive_message': listOfUsers[user]["receive_message"]
+                })
+            except:
+                print("Can't save user {} data".format(str(user)))
 
 
 def save_block():
@@ -133,7 +142,6 @@ def free_all_users():
     global listOfUsers
     for user in listOfUsers:
         listOfUsers[user]["eliminate"] = False
-        listOfUsers[user]["activate"] = False
 
 
 def stop_user(user):
@@ -212,8 +220,9 @@ async def main_game():
         return
 
     if status == 0:  # Registering phase
-        #  load_user_data()
         free_all_users()
+        global oldListOfUsers
+        oldListOfUsers = copy.deepcopy(listOfUsers)
         wrong_keyWords = ""
         winner = ""
         acceptingAnswers = False
@@ -290,8 +299,8 @@ async def main_game():
                         similarity = 0
                         if len(user_answer) == len(answer):
                             similarity = wordDef.get_similarity(answer, question, listOfUsers[user]["answer"])
-
-                        listOfUsers[user]["score"] += similarity
+                        if similarity != 0:
+                            listOfUsers[user]["score"] += similarity
                         m += "You get {} points for your answer.".format(similarity)
                         m += " The correct answer is {} ".format(answer)
 
@@ -352,7 +361,8 @@ async def guess_keyword(user, key_answer):
         if len(key_answer) == len(keyWord):
             similarity = wordDef.get_similarity(key_answer, "", keyWord)
         score = max(1, (5 - status) * 2) * similarity
-        listOfUsers[user]["score"] += score
+        if score != 0:
+            listOfUsers[user]["score"] += score
         mess = "Puzzle is not solved.\n"
         mess += "You get {} points for your answer.".format(score) + "\n"
         mess += "You have been eliminated from the game."
@@ -461,7 +471,6 @@ async def on_message(message):
         stop_user(message.author)
 
     if len(args) == 3 and args[1] == "solve" and 1 <= status <= 5 and message.author in listOfUsers:
-        listOfUsers[message.author]["activate"] = True
         if acceptingKeyword:
             if listOfUsers[message.author]["eliminate"]:
                 mess = "You have been eliminated from this game."
