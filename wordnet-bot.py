@@ -405,6 +405,8 @@ async def on_member_join(member):
         print("Mess is empty")
         return
 
+    print(mess)
+
     try:
         welcome_channel_id = message_cache[server_id]["welcome_channel"]
         global client
