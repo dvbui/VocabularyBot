@@ -412,6 +412,7 @@ async def sub_game(author, channel, difficulty):
         await send_message(channel, "Your final answer is {}".format(listOfUsers[author]["subgame_answer"]), True)
     else:
         await send_message(channel, "We did not receive any answer from you. 0 points.", True)
+        await send_message(channel, vocs.getLink(word), True)
         return
 
     await asyncio.sleep(1)
