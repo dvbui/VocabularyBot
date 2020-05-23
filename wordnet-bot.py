@@ -22,6 +22,7 @@ WORD_LIST = "VinceGREWordListFormatted.txt"
 wordDatabase = {}
 
 db = None
+message_cache = {}
 
 
 def create_credential_file():
@@ -371,6 +372,43 @@ async def main_game():
 
     await main_game()
 
+@client.event
+async def on_member_join(member):
+    print("I'm here")
+
+    server_id = str(member.guild.id)
+    purpose = "welcome_message"
+
+    mess = ""
+
+    if (server_id in message_cache) and (purpose in message_cache[server_id]):
+        mess = message_cache[server_id][purpose]
+    else:
+        message_cache[server_id] = {}
+        try:
+            global db
+            doc = db.collection(u'message').document(str(server_id)).get()
+            if doc.exists:
+                doc = doc.to_dict()
+                if ("welcome_channel" in doc) and (purpose in doc):
+                    message_cache[server_id][purpose] = doc[purpose]
+                    message_cache[server_id]["welcome_channel"] = doc["welcome_channel"]
+                    mess = doc[purpose]
+        except:
+            print("Cannot retrieve welcome message")
+
+    mess = mess.replace("{user}", str(member))
+
+    if mess == "":
+        return
+
+    try:
+        welcome_channel_id = message_cache[server_id]["welcome_channel"]
+        global client
+        channel = client.get_channel(welcome_channel_id)
+        await send_message(channel, mess, True)
+    except:
+        print("Cannot send message")
 
 @client.event
 async def on_ready():
