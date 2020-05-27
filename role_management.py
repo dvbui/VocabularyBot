@@ -12,8 +12,9 @@ def get_max_score(list_of_users):
     return result
 
 
-async def give_role(member, role):
+async def give_role(guild, member, role):
     try:
+        member = guild.get_member(member.id)
         await member.add_roles(role)
     except discord.Forbidden:
         print("Can't give role")
@@ -104,7 +105,7 @@ async def update_roles(client, db, list_of_users):
                 condition2 = role_info[guild][role_id]["score"] <= user_score
                 if condition1 and condition2:
                     role = discord.utils.get(guild.roles, id=role_id)
-                    await give_role(user, role)
+                    await give_role(guild, user, role)
 
 
 
