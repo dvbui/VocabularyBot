@@ -22,6 +22,15 @@ async def give_role(guild, member, role):
         print(role)
 
 
+async def remove_role(guild, member, role):
+    try:
+        member = guild.get_member(member.id)
+        if role in member.roles:
+            await member.remove_roles(role)
+    except discord.Forbidden:
+        print("Can't remove role")
+
+
 def add_role(db, server_id, setter_id, role_id, percentage, score):
     roles_ref = db.collection(u'roles').document(str(server_id))
 
@@ -106,6 +115,8 @@ async def update_roles(client, db, list_of_users):
                 if condition1 and condition2:
                     role = discord.utils.get(guild.roles, id=role_id)
                     await give_role(guild, user, role)
+                else:
+                    await remove_role(guild, user, role)
 
 
 
