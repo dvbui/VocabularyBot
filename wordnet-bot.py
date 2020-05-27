@@ -280,6 +280,7 @@ async def main_game():
         acceptingKeyword = False
         m = messenger.register_message()
         await send_message(channel, messenger.register_message(), True)
+        voice_client.play(thinking_music)
         for user in listOfUsers:
             await send_message(user, m)
         keyWord, clues = pick_keyword()
