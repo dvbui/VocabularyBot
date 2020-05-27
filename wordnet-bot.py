@@ -624,6 +624,7 @@ async def on_message(message):
             s = s.replace('<', '')
             s = s.replace('&', '')
             s = s.replace('@', '')
+            s = s.replace('>', '')
             return int(s)
 
         role_id = 0
