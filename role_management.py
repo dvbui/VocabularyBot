@@ -20,6 +20,7 @@ async def give_role(member, role):
         await member.add_roles(role)
     except:
         print("Can't give role")
+        print(role)
 
 
 def add_role(db, server_id, setter_id, role_id, percentage, score):
