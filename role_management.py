@@ -1,4 +1,5 @@
 import discord
+import asyncio
 import firebase_admin
 from firebase_admin import firestore, credentials
 import pickle
@@ -84,7 +85,7 @@ def init_roles(client, db):
             role_info[guild] = pickle.loads(real_doc["content"])
 
 
-def update_roles(client, db, list_of_users):
+async def update_roles(client, db, list_of_users):
     if role_info == {}:
         init_roles(client, db)
 
