@@ -50,8 +50,9 @@ def create_credential_file():
 def initialize_firebase(create_file=True):
     if create_file:
         create_credential_file()
-    cred = credentials.Certificate("serviceAccountKey.json")
-    firebase_admin.initialize_app(cred)
+        cred = credentials.Certificate("serviceAccountKey.json")
+        firebase_admin.initialize_app(cred)
+
     global db
     db = firestore.client()
 
