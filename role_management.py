@@ -92,7 +92,7 @@ async def update_roles(client, db, list_of_users):
 
     max_score = get_max_score(list_of_users)
     for user in list_of_users:
-        user_score = list_of_users[user_score]["score"]
+        user_score = list_of_users[user]["score"]
         percentage = user_score / max_score * 100
         for guild in role_info:
             for role_id in role_info[guild]:
