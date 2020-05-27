@@ -621,14 +621,15 @@ async def on_message(message):
         author_id = message.author.id
 
         def to_role_id(s):
-            s = s.replace('<','')
-            s = s.replace('&','')
+            s = s.replace('<', '')
+            s = s.replace('&', '')
             return int(s)
 
         role_id = 0
         try:
             role_id = to_role_id(args[2])
         except:
+            print(args[2])
             print("Invalid role id")
             return
 
