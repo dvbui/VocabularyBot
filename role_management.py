@@ -82,7 +82,8 @@ def init_roles(client, db):
         guild = client.get_guild(int(doc.id))
         if not (guild is None):
             real_doc = doc.to_dict()
-            role_info[guild] = pickle.loads(real_doc["content"])
+            if real_doc["content"] != "":
+                role_info[guild] = pickle.loads(real_doc["content"])
 
 
 async def update_roles(client, db, list_of_users):
