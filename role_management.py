@@ -22,7 +22,7 @@ async def give_role(member, role):
         print("Can't give role")
 
 
-def add_role(db, server_id, setter_id, role_id, percentage, level):
+def add_role(db, server_id, setter_id, role_id, percentage, score):
     roles_ref = db.collection(u'roles').document(str(server_id))
 
     try:
@@ -39,7 +39,7 @@ def add_role(db, server_id, setter_id, role_id, percentage, level):
     if doc["content"] != "":
         content = pickle.loads(doc["content"])
 
-    content[role_id] = {"percentage": percentage, "level": level}
+    content[role_id] = {"percentage": percentage, "score": score}
 
     try:
         roles_ref.set({"admin_id": doc["admin_id"], "content": pickle.dumps(content)})
@@ -48,7 +48,7 @@ def add_role(db, server_id, setter_id, role_id, percentage, level):
         return
 
 
-def remove_role(db, server_id, setter_id, role_id, percentage, level):
+def remove_role(db, server_id, setter_id, role_id, percentage, score):
     roles_ref = db.collection(u'roles').document(str(server_id))
     try:
         doc = roles_ref.get().to_dict()
