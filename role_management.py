@@ -48,7 +48,7 @@ def add_role(db, server_id, setter_id, role_id, percentage, score):
         return
 
 
-def remove_role(db, server_id, setter_id, role_id, percentage, score):
+def remove_role(db, server_id, setter_id, role_id):
     roles_ref = db.collection(u'roles').document(str(server_id))
     try:
         doc = roles_ref.get().to_dict()
