@@ -369,6 +369,7 @@ async def main_game():
         save_block()
         save_user_data()
         print("Finished {}".format(game_finished))
+        await role_management.update_roles(client, db, listOfUsers)
         if game_finished == max_number_of_games:
             os.system("bash ./restart.sh")
             return
