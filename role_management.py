@@ -112,8 +112,8 @@ async def update_roles(client, db, list_of_users):
             for role_id in role_info[guild]:
                 condition1 = role_info[guild][role_id]["percentage"] <= percentage
                 condition2 = role_info[guild][role_id]["score"] <= user_score
+                role = discord.utils.get(guild.roles, id=role_id)
                 if condition1 and condition2:
-                    role = discord.utils.get(guild.roles, id=role_id)
                     await give_role(guild, user, role)
                 else:
                     await remove_role(guild, user, role)
