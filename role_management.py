@@ -22,7 +22,7 @@ async def give_role(guild, member, role):
         print(role)
 
 
-async def remove_role(guild, member, role):
+async def take_away_role(guild, member, role):
     try:
         member = guild.get_member(member.id)
         if role in member.roles:
@@ -116,7 +116,7 @@ async def update_roles(client, db, list_of_users):
                 if condition1 and condition2:
                     await give_role(guild, user, role)
                 else:
-                    await remove_role(guild, user, role)
+                    await take_away_role(guild, user, role)
 
 
 
