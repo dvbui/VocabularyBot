@@ -20,6 +20,7 @@ async def give_role(member, role):
         await member.add_roles(role)
     except:
         print("Can't give role")
+        print(member)
         print(role)
 
 
@@ -88,6 +89,8 @@ def init_roles(client, db):
             real_doc = doc.to_dict()
             if real_doc["content"] != "":
                 role_info[guild] = pickle.loads(real_doc["content"])
+
+    print(role_info)
 
 
 async def update_roles(client, db, list_of_users):
