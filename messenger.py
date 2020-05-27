@@ -57,7 +57,7 @@ def question_message(question, clues, index=1, number_of_character="", final_clu
     mess += "Clue {} ({} characters):\n".format(index, number_of_character)
     mess += question+"\n"
     mess += "\n"
-    mess += "You have 25 seconds to answer this clue.\n"
+    mess += "You have 20 seconds to answer this clue.\n"
     if not final_clue:
         mess += "Type your best answer (and only your answer) for this clue.\n"
         mess += "To guess the keyword, type \"olym solve [keyword]\"\n"

@@ -27,6 +27,9 @@ wordDatabase = {}
 db = None
 message_cache = {}
 
+# music
+thinking_music = discord.FFmpegPCMAudio('./music/20s.mp3')
+
 
 def create_credential_file():
     dict = {
@@ -262,6 +265,7 @@ async def main_game():
     global winner
     global acceptingAnswers, acceptingKeyword
     channel = client.get_channel(710081986466676757)
+    voice_client = client.get_channel(709919416984273001).connect()
 
     if client.is_closed():
         return
@@ -308,7 +312,8 @@ async def main_game():
 
         #  time to answer clue
         global clock
-        clock = 25
+        clock = 20
+        voice_client.play(thinking_music)
         while clock > 0:
             clock -= 1
             print(clock)
