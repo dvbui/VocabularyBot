@@ -41,6 +41,9 @@ def add_role(db, server_id, setter_id, role_id, percentage, score):
 
     content[role_id] = {"percentage": percentage, "score": score}
 
+    print("after add")
+    print(content)
+
     try:
         roles_ref.set({"admin_id": doc["admin_id"], "content": pickle.dumps(content)})
     except:
