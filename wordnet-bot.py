@@ -497,7 +497,6 @@ async def sub_game(author, channel, difficulty):
     else:
         await send_message(channel, "That is not the correct answer. The correct answer is {}.".format(answer), True)
     listOfUsers[author]["subgame_answer"] = ""
-    await role_management.update_roles(client, db, listOfUsers)
     await send_message(channel, vocs.getLink(word), True)
 
 
