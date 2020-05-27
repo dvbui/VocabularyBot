@@ -286,7 +286,6 @@ async def main_game():
         acceptingKeyword = False
         m = messenger.register_message()
         await send_message(channel, messenger.register_message(), True)
-        voice_client.play(thinking_music)
         for user in listOfUsers:
             await send_message(user, m)
         keyWord, clues = pick_keyword()
@@ -295,6 +294,8 @@ async def main_game():
         await send_message(channel, m, True)
         for user in listOfUsers:
             await send_message(user, m)
+        rule_music = discord.FFmpegPCMAudio("./music/30s.mp3")
+        voice_client.play(rule_music)
         await asyncio.sleep(60)
         await send_message(channel, messenger.keyword_message(len(keyWord)), True)
         for user in listOfUsers:
