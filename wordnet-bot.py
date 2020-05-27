@@ -265,7 +265,8 @@ async def main_game():
     global winner
     global acceptingAnswers, acceptingKeyword
     channel = client.get_channel(710081986466676757)
-    voice_client = client.get_channel(709919416984273001).connect()
+    voice_channel = client.get_channel(709919416984273001)
+    voice_client = await voice_channel.connect()
 
     if client.is_closed():
         return
