@@ -28,7 +28,14 @@ db = None
 message_cache = {}
 
 # music
-thinking_music = discord.FFmpegPCMAudio('./music/20s.mp3')
+voice_client = None
+
+
+async def init_voice_client():
+    voice_channel = client.get_channel(709919416984273001)
+    global voice_client
+    voice_client = await voice_channel.connect()
+
 
 
 def create_credential_file():
@@ -265,8 +272,7 @@ async def main_game():
     global winner
     global acceptingAnswers, acceptingKeyword
     channel = client.get_channel(710081986466676757)
-    voice_channel = client.get_channel(709919416984273001)
-    voice_client = await voice_channel.connect()
+    global voice_client
 
     if client.is_closed():
         return
@@ -315,6 +321,7 @@ async def main_game():
         #  time to answer clue
         global clock
         clock = 20
+        thinking_music = discord.FFmpegPCMAudio('./music/20s.mp3')
         voice_client.play(thinking_music)
         while clock > 0:
             clock -= 1
@@ -441,6 +448,7 @@ async def on_ready():
     wordDef.init_swear_words_file()
     role_management.init_roles(client, db)
     game_music.load_opus_lib()
+    await init_voice_client()
     await main_game()
 
 
