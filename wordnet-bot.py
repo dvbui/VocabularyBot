@@ -47,8 +47,9 @@ def create_credential_file():
     f.close()
 
 
-def initialize_firebase():
-    create_credential_file()
+def initialize_firebase(create_file=True):
+    if create_file:
+        create_credential_file()
     cred = credentials.Certificate("serviceAccountKey.json")
     firebase_admin.initialize_app(cred)
     global db
@@ -264,6 +265,7 @@ async def main_game():
         return
 
     if status == 0:  # Registering phase
+        initialize_firebase(False)
         free_all_users()
         wrong_keyWords = ""
         winner = ""
