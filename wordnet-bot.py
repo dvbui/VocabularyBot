@@ -11,6 +11,7 @@ import firebase_admin
 import json
 import pickle
 import role_management
+import game_music
 
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -432,6 +433,7 @@ async def on_ready():
     messenger.init_message(db)
     wordDef.init_swear_words_file()
     role_management.init_roles(client, db)
+    game_music.load_opus_lib()
     await main_game()
 
 
