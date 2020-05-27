@@ -1,7 +1,4 @@
 import discord
-import asyncio
-import firebase_admin
-from firebase_admin import firestore, credentials
 import pickle
 
 
@@ -18,7 +15,7 @@ def get_max_score(list_of_users):
 async def give_role(member, role):
     try:
         await member.add_roles(role)
-    except:
+    except discord.Forbidden:
         print("Can't give role")
         print(member)
         print(role)
