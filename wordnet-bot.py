@@ -623,6 +623,7 @@ async def on_message(message):
         def to_role_id(s):
             s = s.replace('<', '')
             s = s.replace('&', '')
+            s = s.replace('@', '')
             return int(s)
 
         role_id = 0
