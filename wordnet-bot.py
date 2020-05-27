@@ -75,7 +75,7 @@ winner = ""
 acceptingAnswers = False
 acceptingKeyword = False
 game_finished = 0
-max_number_of_games = 10
+max_number_of_games = 100
 clock = 0
 block_info = {}
 # constant
@@ -145,7 +145,7 @@ def save_user_data():
             oldListOfUsers[user] = listOfUsers[user].copy()
     else:
         global game_finished
-        game_finished = min(game_finished, 9)
+        game_finished = min(game_finished, max_number_of_games-1)
 
 
 def save_block():
