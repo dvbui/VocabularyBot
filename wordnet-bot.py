@@ -10,6 +10,8 @@ import sys
 import firebase_admin
 import json
 import pickle
+import role_management
+
 from firebase_admin import credentials
 from firebase_admin import firestore
 sys.setrecursionlimit(10 ** 6)
@@ -425,6 +427,7 @@ async def on_ready():
     global db
     messenger.init_message(db)
     wordDef.init_swear_words_file()
+    role_management.init_roles(client, db)
     await main_game()
 
 
@@ -612,6 +615,27 @@ async def on_message(message):
 
     if len(args) == 2 and args[1] == "restart" and message.author.id == ADMIN_ID:
         os.system("bash ./restart.sh")
+
+    if len(args) == 5 and args[1] == "add_roles":
+        server_id = message.guild.id
+        author_id = message.author.id
+
+        def to_role_id(s):
+            s = s.replace('<','')
+            s = s.replace('&','')
+            return int(s)
+
+        role_id = 0
+        try:
+            role_id = to_role_id(args[2])
+        except:
+            print("Invalid role id")
+            return
+
+        try:
+            role_management.add_role(db, server_id, author_id, role_id, float(args[3]), float(args[4]))
+        except:
+            print("Invalid parameters")
 
     if mess != "":
         await send_message(message.author, mess, True)
