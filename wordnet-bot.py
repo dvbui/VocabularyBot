@@ -261,6 +261,22 @@ async def send_message(user, message, special=False):
             print("Can't send message")
 
 
+async def play_music(file_name, retry=3):
+    global voice_client
+    music = discord.FFmpegPCMAudio(file_name)
+    while retry > 0:
+        try:
+            voice_client.play(music)
+            break
+        except discord.ClientException:
+            if voice_client.is_playing():
+                voice_client.stop()
+            else:
+                voice_client.disconnect()
+                await init_voice_client()
+            retry -= 1
+
+
 async def main_game():
     await client.wait_until_ready()
 
@@ -290,8 +306,8 @@ async def main_game():
         keyWord, clues = pick_keyword()
 
         # wait_music
-        wait_music = discord.FFmpegPCMAudio("./music/30s.mp3")
-        voice_client.play(wait_music)
+        await play_music("./music/30s.mp3")
+
         await asyncio.sleep(32)
 
         # rule_music
@@ -299,21 +315,18 @@ async def main_game():
         await send_message(channel, m, True)
         for user in listOfUsers:
             await send_message(user, m)
-        rule_music = discord.FFmpegPCMAudio("./music/32s.mp3")
-        voice_client.play(rule_music)
+        await play_music("./music/32s.mp3")
         await asyncio.sleep(33)
 
         # block_buster_opening
-        block_buster_opening = discord.FFmpegPCMAudio("./music/opening.mp3")
-        voice_client.play(block_buster_opening)
+        await play_music("./music/opening.mp3")
         await asyncio.sleep(13)
 
         # open hint
         await send_message(channel, messenger.keyword_message(len(keyWord)), True)
         for user in listOfUsers:
             await send_message(user, messenger.keyword_message(len(keyWord)))
-        open_hint = discord.FFmpegPCMAudio("./music/open_hint.mp3")
-        voice_client.play(open_hint)
+        await play_music("./music/open_hint.mp3")
         await asyncio.sleep(15)
 
         status += 1
@@ -338,8 +351,7 @@ async def main_game():
         #  time to answer clue
         global clock
         clock = 20
-        thinking_music = discord.FFmpegPCMAudio('./music/20s.mp3')
-        voice_client.play(thinking_music)
+        await play_music('./music/20s.mp3')
         while clock > 0:
             clock -= 1
             print(clock)
@@ -357,8 +369,7 @@ async def main_game():
             for user in listOfUsers:
                 await send_message(user, user_answers)
             await send_message(channel, user_answers, True)
-            open_answer = discord.FFmpegPCMAudio("./music/answers.mp3")
-            voice_client.play(open_answer)
+            await play_music("./music/answers.mp3")
             await asyncio.sleep(5)
 
             for user in fake_list:
