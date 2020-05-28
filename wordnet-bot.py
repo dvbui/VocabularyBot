@@ -37,7 +37,6 @@ async def init_voice_client():
     voice_client = await voice_channel.connect()
 
 
-
 def create_credential_file():
     dict = {
         "type": os.environ["FIREBASE_TYPE"],
@@ -88,7 +87,7 @@ winner = ""
 acceptingAnswers = False
 acceptingKeyword = False
 game_finished = 0
-max_number_of_games = 100
+max_number_of_games = 10
 clock = 0
 block_info = {}
 # constant
@@ -289,17 +288,34 @@ async def main_game():
         for user in listOfUsers:
             await send_message(user, m)
         keyWord, clues = pick_keyword()
-        await asyncio.sleep(30)
+
+        # wait_music
+        wait_music = discord.FFmpegPCMAudio("./music/30s.mp3")
+        voice_client.play(wait_music)
+        await asyncio.sleep(32)
+
+        # rule_music
         m = messenger.rule_message()
         await send_message(channel, m, True)
         for user in listOfUsers:
             await send_message(user, m)
-        rule_music = discord.FFmpegPCMAudio("./music/30s.mp3")
+        rule_music = discord.FFmpegPCMAudio("./music/32s.mp3")
         voice_client.play(rule_music)
-        await asyncio.sleep(60)
+        await asyncio.sleep(33)
+
+        # block_buster_opening
+        block_buster_opening = discord.FFmpegPCMAudio("./music/opening.mp3")
+        voice_client.play(block_buster_opening)
+        await asyncio.sleep(13)
+
+        # open hint
         await send_message(channel, messenger.keyword_message(len(keyWord)), True)
         for user in listOfUsers:
             await send_message(user, messenger.keyword_message(len(keyWord)))
+        open_hint = discord.FFmpegPCMAudio("./music/open_hint.mp3")
+        voice_client.play(open_hint)
+        await asyncio.sleep(15)
+
         status += 1
 
     if 1 <= status <= 5:  # During the game
@@ -341,6 +357,8 @@ async def main_game():
             for user in listOfUsers:
                 await send_message(user, user_answers)
             await send_message(channel, user_answers, True)
+            open_answer = discord.FFmpegPCMAudio("./music/answers.mp3")
+            voice_client.play(open_answer)
             await asyncio.sleep(5)
 
             for user in fake_list:
@@ -369,6 +387,7 @@ async def main_game():
 
             if 1 <= status <= 5:
                 status += 1
+                await asyncio.sleep(1)
 
     if status == 6:  # Puzzle is solved
         global game_finished
@@ -575,6 +594,8 @@ async def on_message(message):
             else:
                 answer = clues[status - 1][0]
             await message.author.send(messenger.question_message(question, clues, status, len(answer), status == 5))
+        if status == 0:
+            await send_message(message.author, messenger.register_message())
 
     if len(args) == 2 and args[1] == "stop":
         mess = "You have been unregistered."
