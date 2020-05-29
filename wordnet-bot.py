@@ -53,7 +53,6 @@ def create_credential_file():
 
     f = open("serviceAccountKey.json", "w")
     f.write(json.dumps(dict))
-    print(json.dumps(dict))
     f.close()
 
 
