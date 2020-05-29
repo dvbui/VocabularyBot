@@ -21,7 +21,7 @@ inflect = inflect.engine()
 ADMIN_ID = 361217404296232961
 
 # load new word list
-WORD_LIST = "VinceGREWordListFormatted.txt"
+WORD_LIST = ["./words/VinceGREWordListFormatted.txt", "./words/WordPowerMadeFormatted.txt"]
 wordDatabase = {}
 
 db = None
@@ -69,10 +69,11 @@ def initialize_firebase(create_file=True):
 
 def init_word_list():
     global wordDatabase
-    new_word_file = open(WORD_LIST, "r")
-    for line in new_word_file:
-        wordDatabase[line.strip()] = {"long": ""}
-    new_word_file.close()
+    for word_list in WORD_LIST:
+        new_word_file = open(word_list, "r")
+        for line in new_word_file:
+            wordDatabase[line.strip()] = {"long": ""}
+        new_word_file.close()
 
 
 # game information

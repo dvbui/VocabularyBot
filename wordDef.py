@@ -3,8 +3,8 @@ import vocs
 from nltk.corpus import wordnet
 
 # question data
-WORD_LIST = ["VocabularyWorkshopEasy.txt", "VocabularyWorkshopMedium.txt", "VocabularyWorkshopHard.txt"]
-SWEAR_WORDS_FILE = "swearWords.txt"
+WORD_LIST = ["./words/VocabularyWorkshopEasy.txt", "./words/VocabularyWorkshopMedium.txt", "./words/VocabularyWorkshopHard.txt"]
+SWEAR_WORDS_FILE = "./words/swearWords.txt"
 swear_words = {}
 master_word_data = [{}, {}, {}]
 
