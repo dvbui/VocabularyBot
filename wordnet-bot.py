@@ -472,12 +472,12 @@ async def on_member_join(member):
 @client.event
 async def on_ready():
     print("Bot is ready.")
+    init_word_list()
+    wordDef.init_swear_words_file()
     initialize_firebase()
     load_user_data()
-    init_word_list()
     global db
     messenger.init_message(db)
-    wordDef.init_swear_words_file()
     role_management.init_roles(client, db)
     game_music.load_opus_lib()
     await init_voice_client()
