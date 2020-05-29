@@ -36,6 +36,16 @@ def get_definition(word):
     return synset[random_id].definition()
 
 
+def get_good_synsets(word):
+    synsets = wordnet.synsets(word)
+    result = []
+    for synset in synsets:
+        definition = synset.definition()
+        if (not (word in definition)) and (not (has_swear_words(definition))):
+            result.append(synset)
+    return result
+
+
 # Input: a string
 # Output: a set with format { "string" : definition }
 # Each word / definition only appears once
@@ -82,6 +92,67 @@ def merge(fi, se):
             continue
         fi[w] = se[w]
     return fi
+
+
+def is_derivative(word):
+    return word[-1:] == "s" or word[-2:] == "ed"
+
+
+def pick_question(word, n=5):
+    word = word.lower()
+    if has_swear_words(word):
+        return None, None
+    if is_derivative(word):
+        return None, None
+
+    synset = get_good_synsets(word)
+    if len(synset) == 0:
+        return None, None
+    key_def = synset[0].definition()
+    res = {word: key_def}
+    def_set = {key_def: ""}
+    for s in synset:
+        set_of_related_synsets = [s.hyponyms(), s.hypernyms(), [s]]
+        for related_synsets in set_of_related_synsets:
+            for h in related_synsets:
+                lemma = h.lemmas()
+                definition = h.definition()
+                if definition in def_set:
+                    continue
+                if has_swear_words(definition):
+                    continue
+                if word in definition:
+                    continue
+
+                for w in lemma:
+                    related_word = w.name().lower()
+
+                    if word in related_word:
+                        continue
+                    if related_word in res:
+                        continue
+                    if is_derivative(related_word):
+                        continue
+                    if has_swear_words(related_word):
+                        continue
+                    if not related_word.isalpha():
+                        continue
+                    if related_word in definition:
+                        continue
+
+                    res[related_word] = definition
+                    def_set[definition] = ""
+                    break
+
+    if len(res) >= n:
+        clue_list = [(word, key_def)]
+        del res[word]
+        for w in res:
+            clue_list.append((w, res[w]))
+        clue_list = clue_list[0:n]
+        clue_list.reverse()
+        return word, clue_list
+    return None, None
 
 
 def choose_questions(word, n=4, definition=""):
@@ -143,7 +214,6 @@ def init_word_list(word_list_index=0):
     for line in new_word_file:
         master_word_data[word_list_index][line.strip()] = {"long": ""}
     new_word_file.close()
-    pass
 
 
 def generate_custom_question(difficulty=1, chosen_word=""):

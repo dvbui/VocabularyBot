@@ -208,48 +208,22 @@ def is_game_running():
 
 
 def pick_keyword():
-    clue_list = []
     global wordDatabase
     if len(wordDatabase) == 0:
         init_word_list()
 
-    word_definition = ""
     while len(wordDatabase) > 0:
         word, info = random.choice(list(wordDatabase.items()))
-        print(word+"\n"+str(info)+"\n"+str(len(wordDatabase))+"\n")
-
-        if inflect.singular_noun(word):
-            del wordDatabase[word]
-            continue
-
-        word_definition = wordDef.get_definition(word)
-        info["long"] = word_definition
-        if word_definition == "":
-            del wordDatabase[word]
-            continue
-
-        details = wordDef.choose_questions(word, definition=word_definition)
-        print(word)
-        print(details)
-
-        if details is None:
+        del wordDatabase[word]
+        word, clue_list = wordDef.pick_question(word)
+        if word is None:
             continue
         else:
-            break
+            return word, clue_list
 
     if len(wordDatabase) == 0:
         init_word_list()
         return pick_keyword()
-
-    for k in details:
-        clue_list.append((k, details[k]))
-    clue_list.append((word, word_definition))
-
-    if wordDef.has_swear_words(str(clue_list)+" "+word):
-        del wordDatabase[word]
-        return pick_keyword()
-
-    return word, clue_list
 
 
 async def send_message(user, message, special=False):

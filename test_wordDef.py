@@ -71,7 +71,7 @@ def test_pick_keyword():
     for word in wordDatabase:
         cnt += 1
         print(cnt)
-        if pick_keyword(word):
+        if not (wordDef.pick_question(word) == (None, None)):
             f.write(word+"\n")
     f.close()
 
