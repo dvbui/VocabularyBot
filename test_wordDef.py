@@ -17,7 +17,9 @@ def test_easy_list():
 
 
 wordDatabase = {}
-WORD_LIST = ["./words/VinceGREWordListFormatted.txt", "./words/WordPowerMadeEasyFormatted.txt"]
+WORD_LIST = ["./words/VinceGREWordListFormatted.txt", "./words/WordPowerMadeEasyFormatted.txt",
+             "./words/VocabularyWorkshopEasy.txt", "./words/VocabularyWorkshopMedium.txt",
+             "./words/VocabularyWorkshopHard.txt"]
 
 
 def init_word_list():
