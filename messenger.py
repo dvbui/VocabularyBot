@@ -68,7 +68,7 @@ def question_message(question, clues, index=1, number_of_character="", final_clu
     return mess
 
 
-def block_end_message(word, long_definition, winner):
+def block_end_message(word, winner):
     mess = "```\n"
     if winner != "":
         mess += "{} solved this block!".format(winner)+"\n\n"

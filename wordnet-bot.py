@@ -379,8 +379,7 @@ async def main_game():
         game_finished += 1
         acceptingKeyword = False
         acceptingAnswers = False
-        mess = messenger.block_end_message(keyWord, wordDatabase[keyWord]["long"], winner)
-        del wordDatabase[keyWord]
+        mess = messenger.block_end_message(keyWord, winner)
 
         await send_message(channel, mess, True)
         for user in listOfUsers:
