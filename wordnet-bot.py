@@ -467,7 +467,7 @@ async def guess_keyword(user, key_answer):
         winner = str(user)
         global acceptingKeyword
         acceptingKeyword = False
-        mess = "Puzzle solved. Everyone is eliminated!\n"
+        mess = "Blockbusted. Everyone is eliminated!\n"
         mess += "You gain {} points for your keyword answer".format(score)
         status = 6
     else:
@@ -477,7 +477,7 @@ async def guess_keyword(user, key_answer):
         score = max(1, (5 - status) * 2) * similarity
         if score != 0:
             listOfUsers[user]["score"] += score
-        mess = "Puzzle is not solved.\n"
+        mess = "Failed blockbusting attempt.\n"
         mess += "You get {} points for your answer.".format(score) + "\n"
         mess += "You have been eliminated from the game."
         global wrong_keyWords
