@@ -21,7 +21,7 @@ inflect = inflect.engine()
 ADMIN_ID = 361217404296232961
 
 # load new word list
-WORD_LIST = ["./words/VinceGREWordListFormatted.txt", "./words/WordPowerMadeFormatted.txt"]
+WORD_LIST = ["./words/playable.txt"]
 wordDatabase = {}
 
 db = None
