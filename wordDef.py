@@ -3,7 +3,9 @@ import vocs
 from nltk.corpus import wordnet
 
 # question data
-WORD_LIST = ["./words/VocabularyWorkshopEasy.txt", "./words/VocabularyWorkshopMedium.txt", "./words/VocabularyWorkshopHard.txt"]
+WORD_LIST = ["./words/VocabularyWorkshopEasy.txt",
+             "./words/VocabularyWorkshopMedium.txt",
+             "./words/VocabularyWorkshopHard.txt"]
 SWEAR_WORDS_FILE = "./words/swearWords.txt"
 swear_words = {}
 master_word_data = [{}, {}, {}]
@@ -216,7 +218,16 @@ def init_word_list(word_list_index=0):
     new_word_file.close()
 
 
-def generate_custom_question(difficulty=1, chosen_word=""):
+def generate_custom_antonym(difficulty=1, chosen_word=""):
+
+    if chosen_word != "":
+        for i in range(len(WORD_LIST)):
+            if len(master_word_data[i]) == 0:
+                init_word_list(i)
+            if chosen_word in master_word_data[i]:
+                difficulty = i
+                break
+
     if len(master_word_data[difficulty-1]) == 0:
         init_word_list(difficulty-1)
 
@@ -224,45 +235,57 @@ def generate_custom_question(difficulty=1, chosen_word=""):
         word, info = random.choice(list(master_word_data[difficulty-1].items()))
     else:
         word = chosen_word
-    info = get_definition(word)
+
     antonyms = get_antonyms(word)
-    chosen_antonym = ""
-    if len(antonyms) >= 1:
-        chosen_antonym = random.choice(antonyms)
+    antonyms = {antonyms[i]: "" for i in range(len(antonyms))}
+    removed = {}
+    for anto in antonyms:
+        if (anto.lower() in word.lower()) or (word.lower() in anto.lower()):
+            removed[anto] = ""
 
-    not_antonyms = {}
-    not_antonyms = merge(not_antonyms, get_related(chosen_antonym, "hyponyms"))
-    remove = {}
-    for key in not_antonyms:
-        if key.lower() in word.lower() or word.lower() in key.lower():
-            remove[key] = ""
+    for word in removed:
+        del antonyms[word]
 
-    for key in remove:
-        del not_antonyms[key]
+    antonyms = list(antonyms.keys())
 
-    if len(not_antonyms) < 3 or len(antonyms) < 1 or info == "" or info.count("\t") >= 6:
+    print(len(antonyms))
+    if len(antonyms) == 0:
         if chosen_word == "":
-            del master_word_data[difficulty-1][word]
-            return generate_custom_question(difficulty)
+            return generate_custom_antonym(difficulty, chosen_word)
         else:
-            return None
+            return None, None, None
 
-    not_antonyms = list(not_antonyms.keys())
-    not_antonyms = random.sample(not_antonyms, 3)
+    chosen_antonym = random.choice(antonyms)
+    not_antonym = list(master_word_data[difficulty-1].keys())
+    random.shuffle(not_antonym)
+
+    real_not_antonym = {}
+    for candidate in not_antonym:
+        if get_similarity(candidate, "", chosen_antonym) > 10 ** -9:
+            continue
+        if has_swear_words(candidate):
+            continue
+        if (candidate.lower() in chosen_antonym.lower()) or (chosen_antonym.lower() in candidate.lower()):
+            continue
+        if (candidate.lower() in word.lower()) or (word.lower() in candidate.lower()):
+            continue
+        real_not_antonym[candidate] = ""
+        if len(real_not_antonym) == 3:
+            break
+
+    not_antonyms = list(real_not_antonym.keys())
+
     question = "Which of the following words is an antonym for {}?\n".format(word)
     answer = random.randint(1, 4)
-    for i in range(0, answer-1):
-        question += "{}. {}\n".format(i+1, not_antonyms[i])
+    for i in range(0, answer - 1):
+        question += "{}. {}\n".format(i + 1, not_antonyms[i])
     question += "{}. {}\n".format(answer, chosen_antonym)
     for i in range(answer, 4):
-        question += "{}. {}\n".format(i+1, not_antonyms[i-1])
-
-    if has_swear_words(question+" "+word):
-        if chosen_word == "":
-            del master_word_data[difficulty-1][word]
-            return generate_custom_question(difficulty)
-        else:
-            return None
+        question += "{}. {}\n".format(i + 1, not_antonyms[i - 1])
 
     return question, answer, word
+
+
+def generate_custom_question(difficulty=1, chosen_word=""):
+    return generate_custom_antonym(difficulty, chosen_word)
 

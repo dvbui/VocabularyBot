@@ -101,6 +101,7 @@ def register_user(user, receive_message=True):
             "answer": "",
             "score": 0,
             "receive_message": receive_message,
+            "word_list": {},
             "eliminate": False,
             "subgame_answer": "",
             "subgame_playing": False,
@@ -121,6 +122,10 @@ def load_user_data():
             user_info = doc.to_dict()
             listOfUsers[user]["score"] = user_info["score"]
             listOfUsers[user]["receive_message"] = user_info["receive_message"]
+            if (not ("word_list" in user_info)) or (user_info["word_list"] == ""):
+                listOfUsers[user]["word_list"] = user_info["word_list"]
+            else:
+                listOfUsers[user]["word_list"] = pickle.loads(user_info["word_list"])
 
     global oldListOfUsers
     for user in listOfUsers:
@@ -133,20 +138,23 @@ def save_user_data():
     print("Saving user data!\n")
     saved_all = True
     for user in listOfUsers:
-        old_info = {"score": 0, "receive_message": False}
-        new_info = {"score": 1, "receive_message": True}
+        old_info = {"score": 0, "receive_message": False, "word_list": []}
+        new_info = {"score": 1, "receive_message": True, "word_list": []}
         if user in oldListOfUsers:
             old_info["score"] = oldListOfUsers[user]["score"]
             new_info["score"] = listOfUsers[user]["score"]
             old_info["receive_message"] = oldListOfUsers[user]["receive_message"]
             new_info["receive_message"] = listOfUsers[user]["receive_message"]
+            old_info["word_list"] = oldListOfUsers[user]["word_list"]
+            new_info["word_list"] = listOfUsers[user]["word_list"]
         print(str(user)+"\n"+str(old_info)+"\n"+str(new_info))
         if (not (user in oldListOfUsers)) or old_info != new_info:
             try:
                 doc_ref = db.collection(u'users').document(str(user.id))
                 doc_ref.set({
                     u'score': listOfUsers[user]["score"],
-                    u'receive_message': listOfUsers[user]["receive_message"]
+                    u'receive_message': listOfUsers[user]["receive_message"],
+                    u'word_list': pickle.dumps(listOfUsers[user]["word_list"])
                 })
             except:
                 saved_all = False
@@ -499,7 +507,7 @@ async def sub_game(author, channel, difficulty):
         thinking_time = 15
     if difficulty == 3:
         thinking_time = 20
-    question, answer, word = wordDef.generate_custom_question(difficulty)
+    question, answer, word = wordDef.generate_custom_antonym(difficulty)
     await send_message(channel, question, True)
     await send_message(channel, "Type olym answer [number] to answer this question", True)
     await send_message(channel, "You have {} seconds.".format(thinking_time), True)
@@ -666,6 +674,39 @@ async def on_message(message):
             role_management.add_role(db, server_id, author_id, role_id, float(args[3]), float(args[4]))
         except:
             print("Invalid parameters")
+
+    if len(args) >= 3 and args[1] == "suggest":
+        not_detected = {}
+        detected = {}
+        already_in = {}
+        user = message.author
+        if not (user in listOfUsers):
+            register_user(user, False)
+        for i in range(2, len(args)):
+            word = args[i].strip().lower()
+            if word.isalpha() and wordDef.get_definition(word) != "" and wordDef.generate_custom_antonym(chosen_word=word):
+                if not (word in listOfUsers[user]["word_list"]):
+                    detected[word] = ""
+                    listOfUsers[user]["word_list"][word] = {"mastery_level": 0,
+                                                            "streak": 0,
+                                                            "removed": False,
+                                                            "banned": 0}
+                else:
+                    already_in[word] = ""
+            else:
+                not_detected[word] = ""
+
+        await send_message(message.channel, "Added {} words to your dictionary.".format(len(detected)), True)
+        await send_message(message.channel, "{} words are already in your dictionary".format(len(already_in)), True)
+        mess = "The following words are not supported by the system\n"
+        begin = True
+        for word in not_detected:
+            if not begin:
+                mess += ", "
+            begin = False
+            mess += word
+        await send_message(message.channel, mess, True)
+        return
 
     if mess != "":
         await send_message(message.author, mess, True)
