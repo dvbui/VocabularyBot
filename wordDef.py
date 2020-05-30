@@ -225,7 +225,7 @@ def generate_custom_antonym(difficulty=1, chosen_word=""):
             if len(master_word_data[i]) == 0:
                 init_word_list(i)
             if chosen_word in master_word_data[i]:
-                difficulty = i
+                difficulty = i+1
                 break
 
     if len(master_word_data[difficulty-1]) == 0:
