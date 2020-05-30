@@ -123,7 +123,7 @@ def load_user_data():
             listOfUsers[user]["score"] = user_info["score"]
             listOfUsers[user]["receive_message"] = user_info["receive_message"]
             if (not ("word_list" in user_info)) or (user_info["word_list"] == ""):
-                listOfUsers[user]["word_list"] = user_info["word_list"]
+                listOfUsers[user]["word_list"] = {}
             else:
                 listOfUsers[user]["word_list"] = pickle.loads(user_info["word_list"])
 
