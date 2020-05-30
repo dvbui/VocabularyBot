@@ -683,24 +683,26 @@ async def on_message(message):
         if not (user in listOfUsers):
             register_user(user, False)
         for i in range(2, len(args)):
-            word = args[i].strip().lower()
-            cond = word.isalpha() and wordDef.get_definition(word) != ""
-            print(word+"\n"+wordDef.get_definition(word))
-            cond = cond and not (wordDef.generate_custom_antonym(chosen_word=word)[0] is None)
-            if cond:
-                if not (word in listOfUsers[user]["word_list"]):
-                    detected[word] = ""
-                    listOfUsers[user]["word_list"][word] = {"mastery_level": 0,
-                                                            "streak": 0,
-                                                            "removed": False,
-                                                            "banned": 0}
+            words = args[i].lower().replace(',', '').split('\n')
+            for word in words:
+                word = word.strip()
+                cond = word.isalpha() and wordDef.get_definition(word) != ""
+                print(word+"\n"+wordDef.get_definition(word))
+                cond = cond and not (wordDef.generate_custom_antonym(chosen_word=word)[0] is None)
+                if cond:
+                    if not (word in listOfUsers[user]["word_list"]):
+                        detected[word] = ""
+                        listOfUsers[user]["word_list"][word] = {"mastery_level": 0,
+                                                                "streak": 0,
+                                                                "removed": False,
+                                                                "banned": 0}
+                    else:
+                        already_in[word] = ""
                 else:
-                    already_in[word] = ""
-            else:
-                not_detected[word] = ""
+                    not_detected[word] = ""
 
-        await send_message(message.channel, "Added {} to your dictionary.".format(detected), True)
-        await send_message(message.channel, "{} are already in your dictionary".format(already_in), True)
+        await send_message(message.channel, "Added {} to your dictionary.".format(detected.keys()), True)
+        await send_message(message.channel, "{} are already in your dictionary".format(already_in.keys()), True)
         if len(not_detected) > 0:
             mess = "The following words are not supported by the system\n"
             begin = True
