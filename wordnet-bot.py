@@ -684,7 +684,10 @@ async def on_message(message):
             register_user(user, False)
         for i in range(2, len(args)):
             word = args[i].strip().lower()
-            if word.isalpha() and wordDef.get_definition(word) != "" and wordDef.generate_custom_antonym(chosen_word=word):
+            cond = word.isalpha() and wordDef.get_definition(word) != ""
+            print(word+"\n"+wordDef.get_definition(word))
+            cond = cond and not (wordDef.generate_custom_antonym(chosen_word=word)[0] is None)
+            if cond:
                 if not (word in listOfUsers[user]["word_list"]):
                     detected[word] = ""
                     listOfUsers[user]["word_list"][word] = {"mastery_level": 0,
@@ -696,16 +699,17 @@ async def on_message(message):
             else:
                 not_detected[word] = ""
 
-        await send_message(message.channel, "Added {} words to your dictionary.".format(len(detected)), True)
-        await send_message(message.channel, "{} words are already in your dictionary".format(len(already_in)), True)
-        mess = "The following words are not supported by the system\n"
-        begin = True
-        for word in not_detected:
-            if not begin:
-                mess += ", "
-            begin = False
-            mess += word
-        await send_message(message.channel, mess, True)
+        await send_message(message.channel, "Added {} to your dictionary.".format(detected), True)
+        await send_message(message.channel, "{} are already in your dictionary".format(already_in), True)
+        if len(not_detected) > 0:
+            mess = "The following words are not supported by the system\n"
+            begin = True
+            for word in not_detected:
+                if not begin:
+                    mess += ", "
+                begin = False
+                mess += word
+            await send_message(message.channel, mess, True)
         return
 
     if mess != "":
