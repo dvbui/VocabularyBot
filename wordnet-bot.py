@@ -254,7 +254,7 @@ async def play_music(file_name, retry=3):
             if voice_client.is_playing():
                 voice_client.stop()
             else:
-                voice_client.disconnect()
+                await voice_client.disconnect()
                 await init_voice_client()
             retry -= 1
 
