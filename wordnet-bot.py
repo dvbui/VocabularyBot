@@ -87,7 +87,7 @@ winner = ""
 acceptingAnswers = False
 acceptingKeyword = False
 game_finished = 0
-max_number_of_games = 10
+max_number_of_games = 2
 clock = 0
 block_info = {}
 # constant
