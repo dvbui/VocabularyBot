@@ -720,4 +720,6 @@ async def on_message(message):
 
 token = os.environ['CLIENT_TOKEN']
 
+print(token)
+
 client.run(token)
