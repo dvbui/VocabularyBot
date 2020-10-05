@@ -399,7 +399,7 @@ async def main_game():
         save_block()
         save_user_data()
         print("Finished {}".format(game_finished))
-        await role_management.update_roles(client, db, listOfUsers)
+        ## await role_management.update_roles(client, db, listOfUsers)
         if game_finished == max_number_of_games:
             os.system("bash ./restart.sh")
             return
@@ -458,7 +458,7 @@ async def on_ready():
     load_user_data()
     global db
     messenger.init_message(db)
-    role_management.init_roles(client, db)
+    ## role_management.init_roles(client, db)
     game_music.load_opus_lib()
     await init_voice_client()
     await main_game()
