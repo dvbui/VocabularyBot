@@ -87,7 +87,7 @@ winner = ""
 acceptingAnswers = False
 acceptingKeyword = False
 game_finished = 0
-max_number_of_games = 2
+max_number_of_games = 1
 clock = 0
 block_info = {}
 # constant
@@ -195,7 +195,6 @@ def load_block():
                     print("Cannot load block")
             except:
                 print("Cannot load block")
-
 
 def free_all_users():
     global listOfUsers
